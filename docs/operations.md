@@ -1,7 +1,6 @@
 # ใช้งานจริง (operations)
 
 > หลังปล่อยงาน: วัด เฝ้า แก้ เรียนรู้
-> สถานะ: v0.3.0 (2026-11-21)
 
 ## Monitoring · logging · alerting (baseline)
 อ้างอิง: Google SRE (สัญญาณ 4 ตัว: latency · traffic · errors · saturation)

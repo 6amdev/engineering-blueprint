@@ -15,7 +15,7 @@ const files = (all ? git(['ls-files']) : git(['diff', '--cached', '--name-only',
   .split('\n').filter(Boolean);
 const forbiddenWords = loadConfig().forbidden_words || [];
 
-let bad = 0;
+let bad = 0; let gateBad = 0;
 for (const f of files) {
   if (bannedPath(f)) { console.error(`FAIL ${f}: ไฟล์ประเภทนี้ห้ามเข้า git`); bad++; continue; }
   if (f === 'package-lock.json') continue; // hash ของ dependency ทำให้เตือนผิด
@@ -25,6 +25,8 @@ for (const f of files) {
   for (const h of scanText(text, { forbiddenWords })) { console.error(`FAIL ${f}:${h.line} ${h.rule}`); bad++; }
 }
 // ด่าน: การ์ดเปลี่ยนเป็น uat/deploy/release/close ต้องผ่าน gate · ไฟล์ด่านต่อท้ายได้อย่างเดียว
-if (!all) for (const x of stagedProblems()) { console.error(`FAIL gate ${x}`); bad++; }
-if (bad) { console.error(`\n${bad} จุด · commit ไม่ผ่าน (ดู docs/git.md §ค่าลับ)`); process.exit(1); }
+if (!all) for (const x of stagedProblems()) { console.error(`FAIL gate ${x}`); gateBad++; }
+if (bad) console.error(`\n${bad} จุด · commit ไม่ผ่าน (ดู docs/git.md §ค่าลับ)`);
+if (gateBad) console.error(`\nด่านยังไม่ครบ ${gateBad} ข้อ · commit ไม่ผ่าน (ดู docs/gates.md §บังคับด้วยสคริปต์ · node scripts/gate.mjs --help)`);
+if (bad || gateBad) process.exit(1);
 console.log(`OK secret-scan · ${files.length} ไฟล์`);

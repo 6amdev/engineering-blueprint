@@ -1,20 +1,23 @@
 #!/usr/bin/env node
 // gate.mjs — บันทึกผลด่านและคำอนุมัติของการ์ด แล้วตรวจว่าเดินต่อได้จริงไหม (hook pre-commit เรียกตอนการ์ดเปลี่ยนเป็น uat/deploy/release/close)
 //   ไฟล์: docs/gates/<card>.jsonl — 1 บรรทัด = 1 เหตุการณ์ · ต่อท้ายอย่างเดียว
-//   node scripts/gate.mjs open <card> --brief <ไฟล์> --budget-usd <เพดาน> [--max-rounds 3] [--gates UI,A11Y] [--no-prod] [--adr docs/decisions/…] [--lane … --risk R2]
+//   node scripts/gate.mjs open <card> --budget-usd <เพดาน> [--brief <ไฟล์> บังคับเฉพาะ lane feature] [--max-rounds 3] [--gates UI,A11Y] [--no-prod] [--adr docs/decisions/…] [--lane … --risk R2]
 //   node scripts/gate.mjs add <card> <GATE> pass|fail|conditional --by <ผู้ตรวจ> --evidence "…" [--sha X] [--from sha-ที่ผ่านแล้ว] [--mutations 6/6] [--owner … --due …] [--note …]
+//     --by ตามด่าน: VERIFY test-engineer · SEC/PRIVACY/DEPS security-engineer · REGRESSION regression-tester · REVIEW lead-reviewer · UI/PERF/A11Y qa-engineer · OBS runbook-rehearsal · หรือบทบาทคน
 //   node scripts/gate.mjs approve <card> <คำ> --role <บทบาท> --via card|chat|delegate [--sha X] [--note …] [--usd N] [--rounds N]
 //   node scripts/gate.mjs raise <card> R2|R3                  # เพิ่มระดับเสี่ยง (ลดไม่ได้ เปิดการ์ดใหม่)
 //   node scripts/gate.mjs cost <card> <usd> [--note …]
 //   node scripts/gate.mjs check <card> --stage uat|deploy|release|close
-// ขอบเขต: ตรวจความครบและความตรงกันของบันทึก · ไม่ยืนยันตัวตนผู้อนุมัติ ไม่รู้ว่าหลักฐานจริงแค่ไหน · revert / cherry-pick / merge ที่ไม่ชนกัน และ --no-verify ไม่ผ่าน hook
+//   node scripts/gate.mjs audit <base>..<head>              # CI: ตรวจซ้ำทุก commit ในช่วง แบบเดียวกับ hook (จับ --no-verify, merge, revert)
+// ขอบเขต: ตรวจความครบและความตรงกันของบันทึก · ไม่ยืนยันตัวตนผู้อนุมัติ ไม่รู้ว่าหลักฐานจริงแค่ไหน · revert / cherry-pick / merge ที่ไม่ชนกัน และ --no-verify ไม่ผ่าน hook (ให้ CI รัน audit)
 // exit: 0 = ผ่าน · 1 = ไม่ผ่าน · 2 = argument / ไฟล์ผิด · 3 = เกินงบหรือเกินรอบ หยุดถาม Owner
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { loadConfig, ROOT } from './lib/config.mjs';
+import { helpIfAsked, loadConfig, ROOT } from './lib/config.mjs';
 
 const ALWAYS = ['VERIFY', 'SEC', 'REGRESSION', 'REVIEW'];
 const OPTIONAL = ['UI', 'PERF', 'A11Y', 'PRIVACY', 'DEPS', 'OBS'];
@@ -24,6 +27,7 @@ const LANES = ['feature', 'change', 'bug', 'hotfix', 'chore'];
 const ROLES = ['owner', 'owner-reviewer', 'dev', 'frontend', 'ops', 'second'];
 // คำอนุมัติ → บทบาทที่ให้ได้
 const WORDS = new Map(Object.entries({ 'ack-brief': ['owner'], 'ack-scope': ['owner-reviewer', 'owner'], go: ['owner-reviewer', 'owner'], gates: ['owner-reviewer'], uat: ['owner-reviewer'], accept: ['owner', 'owner-reviewer'], deploy: ['ops', 'owner-reviewer'], second: ['second'], risk: ['owner'], delegate: ['owner'], budget: ['owner'] }));
+const EMPTY_TREE = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
 const STAGES = ['uat', 'deploy', 'release', 'close'];
 const OTHER_STATUS = ['intake', 'requirements', 'spec', 'design', 'build', 'gates', 'blocked', 'rejected']; // ไม่ต้องผ่านด่าน
 
@@ -35,7 +39,7 @@ const validId = (id) => /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(id || '');
 const cardsDir = () => (loadConfig().board?.local?.dir || 'docs/cards').replaceAll('\\', '/').replace(/^\.\/|\/$/g, '');
 
 // --- โค้ด = ทุกไฟล์ ยกเว้นเอกสารและภาพประกอบ (โค้ดที่ซ่อนใน docs/ ยังนับเป็นโค้ด)
-const isDoc = (f) => /\.md$/i.test(f) || /^(VERSION|LICENSE.*|NOTICE)$/.test(f) || f.startsWith('memory/') || /^docs\/gates\/[^/]+\.jsonl$/.test(f)
+const isDoc = (f) => /\.md$/i.test(f) || /^(VERSION|LICENSE.*|NOTICE)$/.test(f) || f.startsWith('memory/') || f === 'site/.vitepress/config.mjs' /* เมนูคู่มือ แก้หลังด่านได้ */ || /^docs\/gates\/[^/]+\.jsonl$/.test(f)
   || (/^(docs|site|templates|\.claude)\//.test(f) && /\.(png|jpe?g|gif|svg|webp|pdf|txt)$/i.test(f));
 const hashOf = (rows) => createHash('sha256').update(rows.filter(([f]) => !isDoc(f)).map(([f, id]) => `${f}\0${id}`).sort().join('\n')).digest('hex').slice(0, 40);
 const codeOfCommit = (sha) => { const t = gitTry('ls-tree', '-r', '-z', sha); return t === null ? null : hashOf(t.split('\0').filter(Boolean).map((l) => { const [meta, f] = l.split('\t'); const [mode, , id] = meta.split(' '); return [f, `${mode} ${id}`]; })); };
@@ -188,15 +192,15 @@ function approvalProblem(e, o, approvals) {
 }
 
 /** สำหรับ hook: ไฟล์ด่านต่อท้ายได้อย่างเดียวและถูกรูป · การ์ดเปลี่ยนสถานะต้องผ่าน · R ลดไม่ได้ */
-export function stagedProblems() {
+export function stagedProblems(base = fullSha('HEAD') ?? EMPTY_TREE) {
   const out = [];
-  const files = gitRaw('diff', '--cached', '--name-only', '--no-renames', '-z').split('\0').filter(Boolean);
+  const files = gitRaw('diff', '--cached', '--name-only', '--no-renames', '-z', base).split('\0').filter(Boolean);
   const dir = cardsDir().toLowerCase();
   for (const f of files) {
     const low = f.toLowerCase();
     if (low.startsWith('docs/gates/') && low.endsWith('.jsonl')) {
       const text = readText(f, true);
-      const old = gitTry('show', `HEAD:${f}`)?.replace(/\r/g, '').trimEnd() ?? null;
+      const old = gitTry('show', `${base}:${f}`)?.replace(/\r/g, '').trimEnd() ?? null;
       if (old !== null && text?.trimEnd() !== old && !text?.startsWith(`${old}\n`)) out.push(`${f}: แก้ ลบ หรือย้ายบันทึกเดิมไม่ได้ ต่อท้ายได้อย่างเดียว`);
       else if (!/^docs\/gates\/[A-Za-z0-9][A-Za-z0-9._-]*\.jsonl$/.test(f)) out.push(`${f}: ชื่อหรือที่อยู่ไฟล์ด่านผิด`);
       else if (text !== null) out.push(...parse(text, f).bad);
@@ -207,7 +211,7 @@ export function stagedProblems() {
       const id = path.posix.basename(f).replace(/\.md$/i, '');
       if (f !== `${cardsDir()}/${id}.md` || !validId(id)) { out.push(`${f}: การ์ดต้องอยู่ที่ ${cardsDir()}/<id>.md และ id เป็น A-Z a-z 0-9 . _ -`); continue; }
       const info = parseCard(text);
-      const before = parseCard(gitTry('show', `HEAD:${f}`)?.replace(/\r/g, ''));
+      const before = parseCard(gitTry('show', `${base}:${f}`)?.replace(/\r/g, ''));
       if (info.dup.length) out.push(`${id}: หัวการ์ดมี ${info.dup.join(', ')} มากกว่า 1 บรรทัด`);
       if (info.status !== null && !STAGES.includes(info.status) && !OTHER_STATUS.includes(info.status)) out.push(`${id}: status "${info.status}" ไม่รู้จัก (docs/cards/README.md)`);
       if (/^R[123]$/.test(before.risk ?? '') && (info.risk ?? '') < before.risk) out.push(`${id}: ลดระดับ ${before.risk} → ${info.risk} ไม่ได้ (เปิดการ์ดใหม่)`);
@@ -218,11 +222,41 @@ export function stagedProblems() {
   return out;
 }
 
+/** ตรวจทุก commit ในช่วง: อ่าน commit เข้า index ชั่วคราว แล้วใช้กติกาเดียวกับ hook เทียบ parent แรก */
+export function auditProblems(range) {
+  const [base, head] = range.split('..');
+  const commits = gitRaw('rev-list', '--reverse', '--topo-order', /^0+$/.test(base) ? head : range) // branch ใหม่: GitHub ส่ง base เป็น 000…
+   .split('\n').filter(Boolean);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'gate-audit-'));
+  const keep = process.env.GIT_INDEX_FILE;
+  const out = [];
+  try {
+    process.env.GIT_INDEX_FILE = path.join(tmp, 'index');
+    for (const c of commits) {
+      gitRaw('read-tree', c);
+      const parent = fullSha(`${c}^1`) ?? EMPTY_TREE;
+      out.push(...stagedProblems(parent).map((x) => `${c.slice(0, 7)} ${x}`));
+    }
+  } finally {
+    if (keep === undefined) delete process.env.GIT_INDEX_FILE; else process.env.GIT_INDEX_FILE = keep;
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+  return { out, count: commits.length };
+}
+
 function main() {
   const die = (m, rc = 2) => { console.error(`ERROR ${m}`); process.exit(rc); };
+  helpIfAsked(import.meta.url);
   const [cmd, card, ...rest] = process.argv.slice(2);
+  if (cmd === 'audit') {
+    let r;
+    try { r = auditProblems(/^\w[\w./~^-]*\.\.\w[\w./~^-]*$/.test(card ?? '') ? card : die('ใช้: gate.mjs audit <base>..<head>')); } catch { die(`อ่านช่วง ${card} ไม่ได้ (CI ต้อง checkout ทั้งประวัติ fetch-depth: 0)`); }
+    if (r.out.length) { console.error(`FAIL audit ${card}\n- ${r.out.join('\n- ')}`); process.exit(1); }
+    console.log(`OK audit ${card} · ${r.count} commit`);
+    return;
+  }
   const ALLOWED = { open: ['brief', 'budget-usd', 'max-rounds', 'gates', 'no-prod', 'adr', 'lane', 'risk'], add: ['by', 'evidence', 'sha', 'from', 'mutations', 'owner', 'due', 'note'], approve: ['role', 'via', 'sha', 'note', 'usd', 'rounds'], raise: [], cost: ['note'], check: ['stage'] };
-  if (!Object.hasOwn(ALLOWED, cmd ?? '')) die('ใช้: gate.mjs open|add|approve|raise|cost|check <card> … (ดูหัวไฟล์)');
+  if (!Object.hasOwn(ALLOWED, cmd ?? '')) die('ใช้: gate.mjs open|add|approve|raise|cost|check <card> … หรือ audit <base>..<head> (รายละเอียด: --help)');
   if (!validId(card)) die(`card id "${card}" ไม่ถูกต้อง`);
   const unknown = rest.find((x) => x.startsWith('--') && !ALLOWED[cmd].includes(x.slice(2)));
   if (unknown) die(`ไม่รู้จักตัวเลือก ${unknown}`);

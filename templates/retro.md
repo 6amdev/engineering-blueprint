@@ -1,7 +1,7 @@
 # แม่แบบ: retro
 
 > skill `retro` · ทำหลัง release หรือทุก N การ์ด · blameless: พูดถึงระบบและกระบวนการ ไม่ใช่ตัวคน
-> สถานะ: v0.3.0 (2026-11-21) · เก็บที่ `docs/retros/YYYY-MM-DD.md` · ห้ามใส่ค่าลับ / IP / ข้อมูลส่วนบุคคล (PII)
+> เก็บที่ `docs/retros/YYYY-MM-DD.md` · ห้ามใส่ค่าลับ / IP / ข้อมูลส่วนบุคคล (PII)
 
 ## รอบ · วันที่ · ช่วงที่ครอบ
 <YYYY-MM-DD> · การ์ด `C-<NNNN>`…`C-<NNNN>` · release <vX.Y.Z>

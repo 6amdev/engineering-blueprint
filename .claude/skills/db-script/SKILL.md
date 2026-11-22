@@ -4,7 +4,7 @@ description: เขียนสคริปต์อ่าน/เขียน DB
 ---
 # db-script — สคริปต์ DB ที่ตรวจและอนุมัติได้
 
-> สถานะ: v0.3.0 (2026-11-21) · กฎเต็ม: `docs/db-scripts.md` · ด่าน DB-READ / DB-WRITE ใน `docs/gates.md`
+> กฎเต็ม: `docs/db-scripts.md` · ด่าน DB-READ / DB-WRITE ใน `docs/gates.md`
 
 ## เมื่อไหร่ใช้
 ต้องใช้ข้อมูลจาก DB จริง หรือต้องแก้/ย้ายข้อมูล · เขียนข้อมูล prod = R3

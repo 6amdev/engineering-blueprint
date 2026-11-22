@@ -1,6 +1,5 @@
 # การ์ดงานแบบ local (`docs/cards/`)
 
-> สถานะ: v0.3.0 (2026-11-21)
 > ใช้เมื่อ `board.adapter` = `local` (ค่าเริ่มต้น) · 1 การ์ด = 1 ไฟล์ markdown · อยู่ใน git = ย้ายไปกับ folder และเป็น audit trail
 > คำสั่งทั้งหมดผ่าน `scripts/board.mjs` · ตั้งโฟลเดอร์อื่นได้ที่ `board.local.dir`
 

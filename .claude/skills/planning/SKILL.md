@@ -4,7 +4,7 @@ description: จัด backlog ก่อน intake — รวมคำขอ จ
 ---
 # planning — จัด backlog ก่อนหยิบงาน
 
-> สถานะ: v0.3.0 (2026-11-21) · agent: intake-analyst (BA/PM) · ต่อด้วย skill `intake`
+> agent: intake-analyst (BA/PM) · ต่อด้วย skill `intake`
 
 ## ใช้เมื่อ
 - มีคำขอใหม่หลายเรื่อง · จบ release · retro เสนอให้จัดใหม่ · change request กระทบเวลา/ขนาด

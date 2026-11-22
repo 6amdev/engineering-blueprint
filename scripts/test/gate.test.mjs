@@ -234,3 +234,15 @@ test('REVIEW ตรวจเต็มแล้วไม่ผ่าน → แ�
   const w = r.gate('cost', 'C-0001', '8'); assert.equal(w.status, 0); assert.match(w.stderr, /WARN/);
   r.ok('check', 'C-0001', '--stage', 'close');
 });
+test('audit: จับการข้าม hook (--no-verify) และการแก้บันทึกย้อนหลัง · งานที่ครบผ่าน', (t) => {
+  const r = repo(t); const base = r.git('rev-parse', 'HEAD');
+  r.ok('audit', `${base}..HEAD`);
+  full(r); r.card('close'); assert.equal(r.commit('chore: close').status, 0);
+  const ok = r.git('rev-parse', 'HEAD'); r.write('src/a.mjs', 'export const a = 3;\n'); r.commit('feat: next'); // โค้ดงานถัดไปไม่ทำให้การ์ดเดิมตก
+  r.ok('audit', `${base}..HEAD`);
+  r.write('docs/cards/C-0002.md', '# C-0002\n\n- lane: bug\n- R: R1\n- status: close\n'); r.git('add', '-A'); r.git('commit', '-q', '--no-verify', '-m', 'x');
+  bad(r.gate('audit', `${ok}..HEAD`), /C-0002 → close/);
+  const before = r.git('rev-parse', 'HEAD'); r.write(GATES, '{}\n'); r.git('add', '-A'); r.git('commit', '-q', '--no-verify', '-m', 'x');
+  bad(r.gate('audit', `${before}..HEAD`), /ต่อท้ายได้อย่างเดียว/);
+  assert.equal(r.gate('audit', 'nope..HEAD').status, 2); assert.equal(r.gate('audit').status, 2);
+});

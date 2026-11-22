@@ -11,9 +11,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { loadConfig, ROOT } from './lib/config.mjs';
+import { helpIfAsked, loadConfig, ROOT } from './lib/config.mjs';
 
 const die = (m, rc = 2) => { console.error(`ERROR ${m}`); process.exit(rc); };
+helpIfAsked(import.meta.url);
 const [cmd, card, ...rest] = process.argv.slice(2);
 if (!['post', 'read', 'new'].includes(cmd) || !card) {
   die('ใช้: board.mjs post <card> <draft.md> [--send] · board.mjs read <card> [--last N] · board.mjs new <card> "<title>"');

@@ -1,7 +1,5 @@
 # Security policy
 
-> สถานะ: v0.3.0 (2026-11-21)
-
 ## แจ้งช่องโหว่ (แบบส่วนตัว)
 **อย่าเปิด issue / PR / discussion สาธารณะ** สำหรับช่องโหว่ — ใช้ GitHub Security Advisories ของ repo นี้:
 1. ไปที่แท็บ **Security** ของ repo → **Advisories** → **Report a vulnerability** (private vulnerability reporting)

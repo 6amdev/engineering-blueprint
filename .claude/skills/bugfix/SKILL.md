@@ -4,7 +4,7 @@ description: แก้บั๊กแบบมีหลักฐาน — ท�
 ---
 # bugfix — lane `bug`
 
-> สถานะ: v0.3.0 (2026-11-21) · agent: intake-analyst · root-cause-analyst · implementer · test-engineer · แม่แบบ `templates/bug-report.md`
+> agent: intake-analyst · root-cause-analyst · implementer · test-engineer · แม่แบบ `templates/bug-report.md`
 
 ## ใช้เมื่อ
 - ระบบทำไม่ตรง spec/AC ที่ ack แล้ว · prod ไม่ได้เสียหนักตอนนี้ (หนัก = skill `hotfix`)
@@ -13,7 +13,7 @@ description: แก้บั๊กแบบมีหลักฐาน — ท�
 - คำแจ้ง (ข้อความ · ภาพ · log) · spec / AC ที่เกี่ยว · sha ที่เกิด
 
 ## ขั้นตอน
-1. intake ย่อ: กรอก `templates/bug-report.md` · severity S1–S4 · ระดับ R · lane (`bug` หรือ `hotfix`) · checklist เปิดด่าน (`docs/gates.md`)
+1. intake ย่อ: กรอก `templates/bug-report.md` · severity SEV1–SEV4 (`docs/operations.md`) · ระดับ R · lane (`bug` หรือ `hotfix`) · checklist เปิดด่าน (`docs/gates.md`)
 2. ทำซ้ำบน dev/UAT ด้วยข้อมูลสมมติ · ทำซ้ำไม่ได้ = เก็บหลักฐานเพิ่ม (log query + ช่วงเวลา) ห้ามเดาแก้
 3. root-cause-analyst หาต้นเหตุ: `file:line@sha` + ทำไมเทสเดิมไม่จับ · ต้องอ่านข้อมูลจริง = ด่าน DB-READ
 4. ตัดสิน: การแก้ทำให้กลับมาตรง spec เดิม = ข้ามขั้น 1–3 (เขียนเหตุผลในการ์ด) · เปลี่ยนพฤติกรรม/spec = ทำ 1–3 หรือส่ง skill `change-request`

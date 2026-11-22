@@ -8,8 +8,9 @@
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { scanText } from './lib/scan.mjs';
-import { loadConfig, ROOT } from './lib/config.mjs';
+import { helpIfAsked, loadConfig, ROOT } from './lib/config.mjs';
 
+helpIfAsked(import.meta.url);
 const file = process.argv[2];
 if (!file || !fs.existsSync(file)) { console.error('ใช้: node scripts/draft-check.mjs <draft.md>'); process.exit(2); }
 const text = fs.readFileSync(file, 'utf8');
@@ -21,7 +22,7 @@ for (const sha of new Set(text.match(/\b[0-9a-f]{40}\b/g) || [])) {
   catch { fails.push(`sha ${sha.slice(0, 8)}… ไม่มีใน repo นี้`); }
 }
 if (cfg.post_signature && !text.trimEnd().endsWith(cfg.post_signature)) fails.push('ลายเซ็นท้ายโพสต์ไม่ตรง config post_signature');
-if (/ไม่ตอบ\s*=|no answer\s*=|ถ้าไม่ตอบ.*(จะ|ทำ)/i.test(text)) fails.push('ความเงียบไม่ใช่การอนุมัติ — ระบุคำถามและรอคำตอบ (AGENTS.md §7)');
+if (/ไม่ตอบ\s*=|no (answer|reply|response)\s*(=|means)|(ถ้า|หาก)(ไม่มี(ใคร|คน|การ)?|ไม่)ตอบ[^\n]*(จะ|ทำ|เดิน|ไป)ต่อ|(ถ้า|หาก)ไม่ตอบ[^\n]*(จะ|ทำ|ถือว่า)|silence (is|means)/i.test(text)) fails.push('ความเงียบไม่ใช่การอนุมัติ — ระบุคำถามและรอคำตอบ (AGENTS.md §7)');
 
 if (fails.length) { console.error(`FAIL draft-check ${file}\n- ${fails.join('\n- ')}`); process.exit(1); }
 console.log(`OK draft-check ${file}`);

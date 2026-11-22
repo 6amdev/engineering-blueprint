@@ -1,6 +1,8 @@
 # เอกสารต่อขั้น — จาก requirement ถึงคู่มือผู้ใช้
 
-> สถานะ: v0.3.0 (2026-11-21) · ทุกงานสร้างเอกสารตามขั้นและ lane · แม่แบบอยู่ `templates/` · skill ที่เขียนอยู่ `.claude/skills/`
+> ทุกงานสร้างเอกสารตามขั้นและ lane · แม่แบบอยู่ `templates/` · skill ที่เขียนอยู่ `.claude/skills/`
+
+> ไฟล์และ folder ที่ยังไม่มี (เช่น `docs/backlog.md` `docs/glossary.md` `docs/design-system.md` `docs/retros/`) สร้างตอนใช้ครั้งแรก
 
 | ขั้น | เอกสาร | ที่เก็บ | แม่แบบ | skill | ใครยืนยัน |
 |---|---|---|---|---|---|

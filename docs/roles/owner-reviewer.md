@@ -1,7 +1,6 @@
 # Owner + Owner-reviewer
 
 > Owner = ตัดสินเรื่องธุรกิจ · Owner-reviewer = ตรวจว่าทำถูกและปลอดภัย · ทีมเล็กอาจเป็นคนเดียวกัน
-> สถานะ: v0.3.0 (2026-11-21)
 
 ## หน้าที่
 - **Owner:** เป้าหมายและวัดผล · ลำดับ backlog (skill `planning`) · กฎธุรกิจ · ข้อความที่ผู้ใช้เห็น · ack brief / PRD / change request

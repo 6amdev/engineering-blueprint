@@ -1,6 +1,6 @@
 # ด่าน (gates)
 
-> สถานะ: v0.3.0 (2026-11-21) · รหัสตามหมวด ไม่ชนกัน
+> รหัสตามหมวด ไม่ชนกัน
 > ทุกด่าน: เป้า · ใครตรวจ (agent + คนอนุมัติ) · เปิดเมื่อไร · เกณฑ์ผ่าน (วัดได้) · หลักฐานที่แนบ · ไม่ผ่านแล้วทำอะไร
 > ศัพท์ (R1–R3 · RED · oracle · sha) อยู่ `docs/workflow.md`
 
@@ -20,9 +20,10 @@
 3. ผลด่าน: `gate.mjs add C-0001 VERIFY pass --by test-engineer --evidence "npm test → pass 12, fail 0" --mutations 5/5` · ตรวจเฉพาะส่วนที่เปลี่ยนใส่ `--from <sha ที่ผ่านแล้ว>`
 4. ต้นทุน: `gate.mjs cost C-0001 3.20` (ตัวเลขจาก `scripts/cost-report.mjs`) · เกินงบหรือเกินรอบ = exit 3 หยุดถาม Owner
 5. `gate.mjs check C-0001 --stage uat|deploy|release|close` หรือปล่อยให้ hook ตรวจตอน commit
+6. ใน CI: `gate.mjs audit <base>..<head>` ตรวจซ้ำทุก commit แบบเดียวกับ hook จับคนที่ใช้ `--no-verify` หรือ merge / revert (แม่แบบ `templates/github-ci.yml`)
 
-**ตรวจให้:** brief และ `docs/stack-decisions.md` ไม่มีช่องที่ยังไม่ตอบ (lane feature) · ด่านครบตาม lane + ที่เปิดไว้ · VERIFY/SEC/PRIVACY ผ่านแบบมีเงื่อนไขไม่ได้ · โค้ดไม่เปลี่ยนหลังตรวจ (ไม่นับ *.md, ภาพประกอบ, VERSION, memory) · บั๊กลอง ≥ 5 จับครบ (R2/R3) · คำอนุมัติครบตามระดับ R บนโค้ดปัจจุบันหลังผลด่านล่าสุด · งบและบันทึกต้นทุน · รูปแบบทุกบรรทัด · R ลดไม่ได้ (เพิ่มด้วย `raise`)
-**ตรวจไม่ได้:** ตัวตนผู้อนุมัติ · หลักฐานจริงแค่ไหน · คนที่ใช้ `--no-verify` หรือ commit จาก revert / cherry-pick / merge ที่ไม่ผ่าน hook · บอร์ด Trello/GitHub (เรียก `check` เองก่อนขยับการ์ด)
+**ตรวจให้:** brief และ `docs/stack-decisions.md` ไม่มีช่องที่ยังไม่ตอบ (lane feature) · ด่านครบตาม lane + ที่เปิดไว้ · VERIFY/SEC/PRIVACY ผ่านแบบมีเงื่อนไขไม่ได้ · โค้ดไม่เปลี่ยนหลังตรวจ (ไม่นับ *.md, ภาพประกอบ, VERSION, memory, เมนูคู่มือ `site/.vitepress/config.mjs`) · บั๊กลอง ≥ 5 จับครบ (R2/R3 ทุก lane รวม hotfix) · คำอนุมัติครบตามระดับ R บนโค้ดปัจจุบันหลังผลด่านล่าสุด · งบและบันทึกต้นทุน · รูปแบบทุกบรรทัด · R ลดไม่ได้ (เพิ่มด้วย `raise`)
+**ตรวจไม่ได้:** ตัวตนผู้อนุมัติ · หลักฐานจริงแค่ไหน · คนที่ใช้ `--no-verify` หรือ commit จาก revert / cherry-pick / merge ที่ไม่ผ่าน hook ถ้าไม่ได้เปิด CI (`audit`) · บอร์ด Trello/GitHub (เรียก `check` เองก่อนขยับการ์ด)
 
 ## คำตัดสิน: ผ่าน / ผ่านแบบมีเงื่อนไข / ไม่ผ่าน
 - **ผ่าน** — เกณฑ์ครบทุกข้อ + หลักฐานครบ
@@ -148,7 +149,7 @@
 
 ### DEP (ใบขอ deploy)
 - **ผ่านเมื่อ:** `templates/deploy-request.md` กรอกครบทุกข้อ · UAT ผ่านบน sha เดียวกัน · ด่านที่ผูก sha ผ่านบน sha นี้ (แนบผล CI) · rollback sha + ขั้นถอยเขียนแล้ว · GATE-OBS ผ่าน (ถ้าเปิด)
-- **ใครตรวจ:** uat-release เตรียม (skill `deploy-request`) · ผู้อนุมัติไล่ checklist ในใบเอง → **อนุมัติ:** Ops + Owner-reviewer (R2/R3)
+- **ใครตรวจ:** uat-release เตรียม (skill `deploy-request`) · ผู้อนุมัติไล่ checklist ในใบเอง → **อนุมัติ:** Ops (R1) · Ops + Owner-reviewer (R2/R3) · R3 มีคนที่สอง (`second`) ก่อนใบนี้
 - **หลักฐาน:** link ใบขอ · ลิงก์ผลด่าน/CI · บรรทัดอนุมัติ
 - **ไม่ผ่าน:** แก้ใบ · sha เปลี่ยน = ทำด่านที่ผูก sha ใหม่
 

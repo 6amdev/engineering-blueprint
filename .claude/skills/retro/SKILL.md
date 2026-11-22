@@ -4,7 +4,7 @@ description: ทบทวนรอบงานแบบ blameless หลัง r
 ---
 # retro — ทบทวนรอบงาน
 
-> สถานะ: v0.3.0 (2026-11-21) · agent: status-reporter (ตัวเลข) · intake-analyst (สรุป) · แม่แบบ `templates/retro.md`
+> agent: status-reporter (ตัวเลข) · intake-analyst (สรุป) · แม่แบบ `templates/retro.md`
 
 ## ใช้เมื่อ
 - หลังทุก release · ทุก N การ์ด (ค่า N อยู่ `docs/workflow.md`) · หลัง postmortem ที่มี action เชิงกระบวนการ

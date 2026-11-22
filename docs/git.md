@@ -1,7 +1,5 @@
 # Git — วิธีใช้ในทีม
 
-> สถานะ: v0.3.0 (2026-11-21)
-
 > ใช้กับทุกโปรเจกต์ที่สร้างจาก blueprint · มาตรฐาน: trunk-based development · Conventional Commits 1.0 · SemVer 2.0
 > hook ตรวจให้เอง (`.githooks/`) · ตั้งให้อัตโนมัติตอน `npm install` (`prepare`) · ห้ามเลี่ยงด้วย `--no-verify`
 
@@ -36,7 +34,7 @@ type: `feat` `fix` `docs` `style` `refactor` `perf` `test` `build` `ci` `chore` 
 ## 4. Pull request + review
 1. branch ผ่านด่านในเครื่อง (`docs/gates.md`) → push branch (เมื่อสั่ง) → เปิด PR ด้วยแม่แบบ `templates/code-review.md`
 2. PR บอก: การ์ด · scope ทำ / ไม่ทำ · หลักฐานเทส (RED → GREEN · ไม่มีเทสที่เคยผ่านแล้วกลับมาไม่ผ่าน · ลิงก์ผล CI) · ความเสี่ยง R · วิธีถอย
-3. CI ผ่าน (แม่แบบ `templates/github-ci.yml`) + reviewer อย่างน้อย 1 (R3: คนที่ไม่ใช่ผู้เขียน + security-engineer) → **squash merge**
+3. CI ผ่าน (แม่แบบ `templates/github-ci.yml` · รวม `gate.mjs audit` · branch ต้องอัปเดตกับ `main` ก่อน squash ไม่งั้นโค้ดหลังรวมไม่ใช่โค้ดที่ตรวจ) + reviewer อย่างน้อย 1 (R3: คนที่ไม่ใช่ผู้เขียน + security-engineer) → **squash merge**
 4. ผู้เขียนไม่ approve งานตัวเอง (ทีมคนเดียว: ดู `docs/roles/README.md`) · แก้ตาม review เป็น commit ใหม่ ไม่ force-push ระหว่าง review
 - ตั้งบน GitHub (owner ทำ): protect `main` · require PR + CI + 1 review · ห้าม force-push · ลบ branch หลัง merge
 

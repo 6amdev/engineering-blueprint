@@ -1,9 +1,10 @@
 # engineering-blueprint — rules for every AI coding agent
 
 A project template for a small, professional engineering team that works with AI agents, from the first
-request to a system in production with a user manual. Create a project from it with `scripts/new-project.mjs`. Any agent that reads this
+request to a system in production with a user manual. Any agent that reads this
 file (Claude Code, Codex, Cursor, Gemini CLI, others) must be able to work from short instructions, without confusion.
-Status: **v0.5.1 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
+Create a project with `scripts/new-project.mjs`; bring an existing one up to date with `scripts/upgrade-project.mjs`. <!-- blueprint-only -->
+Status: **v1.0.0 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
 standards-based content. Slots marked `กรอกต่อโปรเจกต์:` are filled per project (ask the owner for those).
 
 This file is the single source of rules. Tool-specific files only add to it: `CLAUDE.md` (Claude Code).
@@ -58,7 +59,7 @@ Ask for approval only at the points for the risk level (`docs/workflow.md` → �
 | Fill-in forms | `templates/` |
 | User manual (web doc) | `site/` → `npm run docs:dev` / `docs:build` |
 | Scripts: board, gate records + check, draft check, secret scan, hooks, cost report | `scripts/` (config `blueprint.config.json` from `blueprint.config.example.json`) |
-| Blueprint = main system; create a new project (`node scripts/new-project.mjs <folder>`) | `docs/blueprint.md` | <!-- blueprint-only -->
+| Blueprint = main system; create a project (`node scripts/new-project.mjs <folder>`) · upgrade one (`node scripts/upgrade-project.mjs <folder>`) | `docs/blueprint.md` | <!-- blueprint-only -->
 
 ## 6. Workflow (short; full in `docs/workflow.md`)
 intake → Definition of Ready → requirements (PRD + stories) → spec + test inventory → challenger / scope → owner ack
@@ -87,7 +88,8 @@ Conditional gates turned on at intake when the work touches them: GATE-PERF · G
 
 ## 8. Commands
 `npm install` (also turns on git hooks) · `npm run secret-scan` · docs site `npm run docs:dev` / `docs:build` · board `node scripts/board.mjs post|read <card>`.
-กรอกต่อโปรเจกต์: dev · test · build · deploy.
+Every script here explains itself: `node scripts/<name>.mjs --help`.
+กรอกต่อโปรเจกต์: dev · test (point it at your own folder, e.g. `node --test test/`; a bare `node --test` also runs the 3-minute `scripts/test/`) · build · deploy.
 
 ## 9. Owner decisions
 - 2026-11-21 · This blueprint is **public and free to use** (Apache-2.0, chosen 2026-11-22). Generic principles, international standards and original code only; roles are named by function. Repo name `engineering-blueprint` (rename allowed). <!-- blueprint-only -->

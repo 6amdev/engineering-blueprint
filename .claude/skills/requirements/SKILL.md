@@ -4,7 +4,7 @@ description: แปลง brief จาก intake เป็น PRD + user stories
 ---
 # requirements — brief เป็น PRD + user stories
 
-> สถานะ: v0.3.0 (2026-11-21) · ขั้น 1
+> ขั้น 1
 
 ## เมื่อไหร่ใช้
 หลัง intake ผ่าน DoR · lane `feature` เสมอ · `change` ใช้เฉพาะส่วนที่เปลี่ยน · `bug` ข้ามยกเว้นการแก้เปลี่ยนพฤติกรรม · งานเล็ก R1 ใช้ brief แทน PRD ได้ (ระบุบนการ์ด)

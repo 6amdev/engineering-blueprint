@@ -4,7 +4,7 @@ description: เขียน CHANGELOG (Keep a Changelog) + release notes แล
 ---
 # release-notes — CHANGELOG + release notes
 
-> สถานะ: v0.3.0 (2026-11-21) · ขั้น 8
+> ขั้น 8
 
 ## เมื่อไหร่ใช้
 ทุก release ที่ขึ้น production (หลัง deploy สำเร็จ) · ข้ามส่วนฝั่งผู้ใช้ได้ถ้าผู้ใช้ไม่เห็นความต่าง แต่ CHANGELOG ยังอัป

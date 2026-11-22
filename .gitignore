@@ -5,6 +5,7 @@ blueprint.config.json
 .claude/settings.local.json
 node_modules/
 .scratch/
+.blueprint-upgrade/
 *.log
 site/.vitepress/cache/
 site/.vitepress/dist/

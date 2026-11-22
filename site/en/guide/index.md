@@ -1,7 +1,5 @@
 # Overview
 
-> Status: v0.3.0 (2026-11-21)
-
 ::: warning Example
 This page is an **example** manual for a "Meeting Room Booking" system, to show the format. Fill in per project:
 replace it with your own system. Written with the `user-manual` skill from `templates/user-manual-page.md`;

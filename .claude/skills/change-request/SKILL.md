@@ -4,7 +4,7 @@ description: รับคำขอเปลี่ยน scope ที่ ack แ�
 ---
 # change-request — lane `change`
 
-> สถานะ: v0.3.0 (2026-11-21) · agent: intake-analyst · solution-architect · challenger (R2/R3) · แม่แบบ `templates/change-request.md`
+> agent: intake-analyst · solution-architect · challenger (R2/R3) · แม่แบบ `templates/change-request.md`
 
 ## ใช้เมื่อ
 - งานที่ owner ack scope แล้ว (brief / PRD / spec / design) ต้องเปลี่ยน · ระหว่างทำหรือหลังปล่อย

@@ -4,7 +4,7 @@ description: แก้เหตุบน production ด่วน — บรร�
 ---
 # hotfix — lane `hotfix`
 
-> สถานะ: v0.3.0 (2026-11-21) · agent หลัก: root-cause-analyst → implementer → test-engineer · กติกาเต็ม `docs/workflow.md` (hotfix)
+> agent หลัก: root-cause-analyst → implementer → test-engineer · กติกาเต็ม `docs/workflow.md` (hotfix)
 
 ## ใช้เมื่อ
 - prod เสียหรือเสี่ยงเสีย **ตอนนี้** และรอรอบปกติไม่ได้ · ไม่ใช่ = skill `bugfix`

@@ -7,7 +7,7 @@ Clone it, run one command, and get a project folder with rules, a workflow, docu
 
 ![One request goes through a virtual IT department and becomes a system with a manual](docs/images/hero.en.svg)
 
-> Status: v0.5.1. The principles come from experience of working as a team. Two full cycles have been run on local trials ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
+> Status: v1.0.0. The principles come from experience of working as a team. Two full cycles have been run on local trials ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
 
 **Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [What is asked](#what-is-asked-before-work-starts) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [23 skills](#23-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
 
@@ -277,7 +277,7 @@ FAIL commit-msg: "update stuff"
 The scanners lower risk; they do not catch everything. This repo is not a certification of any standard.
 
 ## Trial run
-One run (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local only, fake data, no production, under the 0.3.0 rules.
+**First run** (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local only, fake data, no production, under the 0.3.0 rules.
 
 | | Result |
 |---|---|
@@ -302,7 +302,9 @@ One run (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local
 | Seeded bugs | 5 of 6 confirmed caught | 8 of 8 |
 | Rules skipped | Card closed with VERIFY incomplete | None; `gate.mjs` stopped the work twice for budget |
 
-Not good yet: still costly for one screen; the first UI score was lenient (16/16, then 14 when strict); upgrading a project is manual.
+Not good yet: still costly for one screen; the first UI score was lenient (16/16, then 14 when strict).
+
+**Every lane rehearsed before 1.0.0:** an agent that had never seen the repo started from the README, created a project, and took a `bug` R1, a `chore` R1, a `hotfix` R2 to prod and a `feature` R3 to prod through the real hooks until all four cards closed. One agent played every role and the approvals and deploys were simulated, so this proves the tooling, not the quality of the work. The friction it found is fixed ([`CHANGELOG.md`](CHANGELOG.md), Thai).
 
 ## Start
 You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
@@ -329,6 +331,7 @@ Open the folder with your agent and type:
 | Ask for status | `Have status-reporter summarise the open cards` |
 | Stop for today | `Close the session with skill handoff` |
 | Check whether a card may close | `node scripts/gate.mjs check C-0001 --stage close` |
+| Upgrade an existing project (run in the blueprint folder) | `node scripts/upgrade-project.mjs ../my-project` to preview, then add `--apply` |
 | See the cost (Claude Code) | `node scripts/cost-report.mjs <session.jsonl>` |
 
 For a whole organisation read [`docs/onboarding.md`](docs/onboarding.md) (Thai). The board is files in the repo by default, with nothing to sign up for. Trello and GitHub Issues adapters exist but have not been tested with real posts.
@@ -352,14 +355,16 @@ docs/              workflow, gates, standards, roles, deploy, cards, ADR
 templates/         document templates
 .claude/skills/    procedures (plain markdown)
 .claude/agents/    agent roles
-scripts/           project creator, board, scanners, cost report, README diagrams
+scripts/           project creator and upgrader, gates, board, scanners, cost report, README diagrams
 site/              sample user manual (VitePress)
 memory/            agent memory (not in git)
 ```
 
 ## Known limits
-- No command yet to upgrade a project already created.
-- Hooks work only on machines where `npm install` has run.
+- Hooks work only on machines where `npm install` has run, and `--no-verify` skips them. Turn on CI from `templates/github-ci.yml` so `gate.mjs audit` checks again.
+- `gate.mjs` cannot know who really typed an approval, or how true the evidence is.
+- The Trello and GitHub boards have not been tested with real posts, and the hook does not check cards kept outside the repo.
+- The manual uses VitePress 1; `npm audit` reports 3 issues in its dev server (no stable fix as of 2026-11-22). Run `docs:dev` on your own machine only; the built files contain no dev server.
 - Default numbers in the docs (such as performance budgets) are starting points for your team to adjust.
 - Files in `docs/` are in Thai.
 

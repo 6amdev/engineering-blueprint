@@ -17,4 +17,4 @@ features:
     details: Cancel or move a booking from My bookings.
 ---
 
-<!-- Example. Fill in per project: system name (text) · what it helps users do in one sentence (tagline) · 3 main tasks (features) · status: v0.3.0 (2026-11-21) -->
+<!-- Example. Fill in per project: system name (text) · what it helps users do in one sentence (tagline) · 3 main tasks (features) -->
