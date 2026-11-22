@@ -3,7 +3,7 @@
 A project template for a small, professional engineering team that works with AI agents, from the first
 request to a system in production with a user manual. Create a project from it with `scripts/new-project.mjs`. Any agent that reads this
 file (Claude Code, Codex, Cursor, Gemini CLI, others) must be able to work from short instructions, without confusion.
-Status: **v0.4.0 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
+Status: **v0.5.0 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
 standards-based content. Slots marked `กรอกต่อโปรเจกต์:` are filled per project (ask the owner for those).
 
 This file is the single source of rules. Tool-specific files only add to it: `CLAUDE.md` (Claude Code).
@@ -23,7 +23,7 @@ Reply to the person in their language (Thai by default: short, plain; keep techn
 
 ## 2. Start every new piece of work with intake
 Do not design or code from a one-line request. Follow `.claude/skills/intake/SKILL.md`: read the repo first, ask
-1–3 questions at a time with options + one recommendation, until the brief passes the Definition of Ready.
+1–3 questions at a time with options + one recommendation, covering `docs/intake-map.md` from business to every part of the tech stack (`docs/stack-decisions.md`), until the brief passes the Definition of Ready. Anything unanswered is `❓`, and `gate.mjs` refuses "go" while one is left.
 
 ## 3. Short sessions: split, delegate, close
 - One card / task = one session. A separate task = its own session or sub-agent with a full brief (files · goal · what done looks like).
@@ -44,7 +44,8 @@ Ask for approval only at the points for the risk level (`docs/workflow.md` → �
 | Documents per stage (requirement → manual) | `docs/documents.md` |
 | Gates, codes, pass/fail | `docs/gates.md` |
 | Standards we follow and why | `docs/standards.md` |
-| Stack | `docs/stack.md` |
+| Questions before any work (business → UI → tech stack) | `docs/intake-map.md` |
+| Stack: criteria · decisions | `docs/stack.md` · `docs/stack-decisions.md` |
 | Roles (owner · owner-reviewer · dev · frontend · ops) + virtual department of agents + RACI by team size | `docs/roles/` |
 | Cards on the default local board | `docs/cards/` |
 | How to post / ask / chase | `docs/posting.md` |
@@ -56,7 +57,7 @@ Ask for approval only at the points for the risk level (`docs/workflow.md` → �
 | Agent role prompts | `.claude/agents/*.md` |
 | Fill-in forms | `templates/` |
 | User manual (web doc) | `site/` → `npm run docs:dev` / `docs:build` |
-| Scripts: board, draft check, secret scan, hooks, cost report | `scripts/` (config `blueprint.config.json` from `blueprint.config.example.json`) |
+| Scripts: board, gate records + check, draft check, secret scan, hooks, cost report | `scripts/` (config `blueprint.config.json` from `blueprint.config.example.json`) |
 | Blueprint = main system; create a new project (`node scripts/new-project.mjs <folder>`) | `docs/blueprint.md` | <!-- blueprint-only -->
 
 ## 6. Workflow (short; full in `docs/workflow.md`)
@@ -72,6 +73,7 @@ Conditional gates turned on at intake when the work touches them: GATE-PERF · G
 - **The blueprint is public:** a change made in the blueprint itself must be generic. No confidential content. A lesson learned on a project comes back only as a principle in your own words. Local `blueprint.config.json` → `forbidden_words` (never in git) blocks the words you list at commit. <!-- blueprint-only -->
 - **Separation of duties:** a second person approves an R3 change. A one-person team records an explicit owner risk acceptance on the card instead — weaker, and say so.
 - **Lawful work only:** do not do work that is unlawful, deceptive, or uses systems, data or content without the right to. Found one → stop and say so on the card. No approval, exception or risk acceptance replaces the law or that right.
+- **Record every gate and approval** with `scripts/gate.mjs` (`docs/gates.md`); a card moves to uat/deploy/release/close only when `gate.mjs check` passes. Over budget or rounds (exit 3) → stop and ask the owner. Never edit or delete a recorded line.
 - **Gates never shrink.** Speed comes from ordering, not skipping. A hook, gate or safety check refuses → stop and ask; never route around it or hand it to another session.
 - **Design before code**; **RED test before code**; the oracle is the spec — never change a test to match the code.
 - **Decide vs ask:** reversible / additive / no high-risk path = decide yourself. Business rules, high-risk paths (irreversible data changes, auth, business-critical data), security, user-facing text = ask the owner as: question · options (ก/ข) · one recommendation + reason · what it blocks. Silence is never approval.

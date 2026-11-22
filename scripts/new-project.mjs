@@ -49,6 +49,7 @@ edit('AGENTS.md', (s) => s.replace(/^# .*$/m, `# ${name} — rules for every AI 
 edit('README.md', () => `# ${name}\n\nกรอกต่อโปรเจกต์: ระบบนี้คืออะไร (1–2 ประโยค)\n\nสร้างจาก blueprint ${fs.readFileSync(path.join(ROOT, 'VERSION'), 'utf8').trim()} · กติกาอยู่ \`AGENTS.md\` · สถานะ \`docs/HANDOFF.md\` · เริ่มงานแรกด้วย skill \`intake\`\n`);
 fs.writeFileSync(path.join(dest, 'docs/HANDOFF.md'),
   `# HANDOFF — ▶ ตอนนี้\n\n> จบงานเมื่อไรให้อัปเดตไฟล์นี้\n\n## ▶ ตอนนี้ (${today})\n- **เสร็จ:** สร้างโปรเจกต์จาก blueprint\n- **ถัดไป:** รัน skill \`intake\` กับงานแรก → brief ผ่าน DoR\n- **รอ:** owner เล่างานแรก\n- **ใช้งานจริง:** ยังไม่มี\n`);
+fs.copyFileSync(path.join(dest, 'templates/stack-decisions.md'), path.join(dest, 'docs/stack-decisions.md')); // ตอบให้ครบตอน intake
 fs.mkdirSync(path.join(dest, 'memory'), { recursive: true });
 fs.writeFileSync(path.join(dest, 'memory/MEMORY.md'), '# MEMORY — สารบัญ (1 บรรทัดต่อเรื่อง · เนื้อหาอยู่ในไฟล์ของมัน)\n');
 fs.writeFileSync(path.join(dest, '.blueprint.json'), JSON.stringify({

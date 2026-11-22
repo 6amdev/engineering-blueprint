@@ -8,7 +8,8 @@
     "secret-scan": "node scripts/hooks/pre-commit.mjs --all",
     "docs:dev": "vitepress dev site",
     "docs:build": "vitepress build site",
-    "docs:preview": "vitepress preview site"
+    "docs:preview": "vitepress preview site",
+    "gate:test": "node --test scripts/test/gate.test.mjs"
   },
   "devDependencies": {
     "vitepress": "1.6.3"

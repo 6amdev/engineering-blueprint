@@ -7,11 +7,22 @@
 ## หลัก: ด่านไม่ลด · ถูกปฏิเสธ = หยุดถาม
 - ด่านเสมอเปิดทุกงาน · ด่านเงื่อนไขเปิดตอน intake (checklist ท้ายหน้า) · เปิดแล้วปิดกลางทางไม่ได้
 - ความเร็วมาจากการเรียงลำดับและทำขนาน ไม่ใช่การข้ามด่าน
-- ด่านส่วนใหญ่คน/agent ตรวจตาม checklist · ส่วนที่อัตโนมัติคือ git hook · secret scan · `draft-check` · CI ของโปรเจกต์
+- ด่านส่วนใหญ่คน/agent ตรวจตาม checklist · ส่วนที่อัตโนมัติคือ git hook · secret scan · `draft-check` · `gate.mjs` (ด่านและคำอนุมัติครบ) · CI ของโปรเจกต์
 - hook / CI / ด่านปฏิเสธ = หยุด อ่านเหตุผล แก้ต้นเหตุ หรือถามคน · ห้ามอ้อม (`--no-verify`, ปิด hook, แก้เทสให้ผ่าน, ส่งต่อ session อื่น)
 - หลักฐานทุกชิ้นอ้างได้: `file:line@sha` · คำสั่ง + บรรทัดผล · ลิงก์ผล CI · log query + ช่วงเวลา · ไม่ได้ตรวจ = เขียน "ยังไม่ได้ตรวจ"
 - ผลด่านโพสต์ในการ์ด (`node scripts/board.mjs post <card> <file>`) · sha ที่ตรวจต้องตรงกับ sha ที่จะขึ้น · sha เปลี่ยน = เทสอัตโนมัติรันเต็มเสมอ · ด่านที่ agent/คนตรวจ: ตรวจ diff จาก sha ที่ด่านนั้นผ่านล่าสุด แล้วบันทึกทั้งสอง sha · ตรวจเต็มใหม่เมื่อ diff แตะเรื่องของด่านนั้น หรือเป็น R3
 - กรอกต่อโปรเจกต์: คำสั่งตรวจของโปรเจกต์ (เทสทั้งชุด · lint · SCA · load test)
+
+## บังคับด้วยสคริปต์ (`scripts/gate.mjs`)
+บันทึกเป็นไฟล์ `docs/gates/<card>.jsonl` 1 บรรทัดต่อเหตุการณ์ ต่อท้ายอย่างเดียว · hook `pre-commit` ไม่ให้ commit ที่เปลี่ยน status การ์ดเป็น uat / deploy / release / close ถ้าตรวจไม่ผ่าน (บอร์ด `local`)
+1. ตอน intake: `node scripts/gate.mjs open C-0001 --brief docs/requirements/0001-x.md --budget-usd 10 --max-rounds 3 --gates UI,A11Y --no-prod`
+2. ได้คำอนุมัติ: `gate.mjs approve C-0001 go --role owner-reviewer --via chat` (คำ: ack-brief · ack-scope · go · gates · uat · accept · deploy · second · risk · delegate · budget)
+3. ผลด่าน: `gate.mjs add C-0001 VERIFY pass --by test-engineer --evidence "npm test → pass 12, fail 0" --mutations 5/5` · ตรวจเฉพาะส่วนที่เปลี่ยนใส่ `--from <sha ที่ผ่านแล้ว>`
+4. ต้นทุน: `gate.mjs cost C-0001 3.20` (ตัวเลขจาก `scripts/cost-report.mjs`) · เกินงบหรือเกินรอบ = exit 3 หยุดถาม Owner
+5. `gate.mjs check C-0001 --stage uat|deploy|release|close` หรือปล่อยให้ hook ตรวจตอน commit
+
+**ตรวจให้:** brief และ `docs/stack-decisions.md` ไม่มีช่องที่ยังไม่ตอบ (lane feature) · ด่านครบตาม lane + ที่เปิดไว้ · VERIFY/SEC/PRIVACY ผ่านแบบมีเงื่อนไขไม่ได้ · โค้ดไม่เปลี่ยนหลังตรวจ (ไม่นับ *.md, ภาพประกอบ, VERSION, memory) · บั๊กลอง ≥ 5 จับครบ (R2/R3) · คำอนุมัติครบตามระดับ R บนโค้ดปัจจุบันหลังผลด่านล่าสุด · งบและบันทึกต้นทุน · รูปแบบทุกบรรทัด · R ลดไม่ได้ (เพิ่มด้วย `raise`)
+**ตรวจไม่ได้:** ตัวตนผู้อนุมัติ · หลักฐานจริงแค่ไหน · คนที่ใช้ `--no-verify` หรือ commit จาก revert / cherry-pick / merge ที่ไม่ผ่าน hook · บอร์ด Trello/GitHub (เรียก `check` เองก่อนขยับการ์ด)
 
 ## คำตัดสิน: ผ่าน / ผ่านแบบมีเงื่อนไข / ไม่ผ่าน
 - **ผ่าน** — เกณฑ์ครบทุกข้อ + หลักฐานครบ

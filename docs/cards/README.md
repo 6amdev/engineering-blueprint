@@ -47,6 +47,7 @@ node scripts/board.mjs read C-0001 --last 5                    # อ่านล
 
 ## 5. status (ตามขั้นใน `docs/workflow.md`)
 `intake` → `requirements` → `spec` → `design` → `build` → `gates` → `uat` → `deploy` → `release` → `close`
+- `uat` · `deploy` · `release` · `close` ต้องผ่าน `gate.mjs check` (hook ตรวจตอน commit) · status อื่นนอกรายการ hook ปฏิเสธ · ไม่รับงาน = `rejected`
 - เพิ่มได้ 1 ค่า: `blocked` (โพสต์บอกว่ารอใคร · ตั้งแต่เมื่อไร · ปลดด้วยอะไร) · กลับมาให้ใส่ขั้นเดิม
 - lane ที่ข้ามขั้น (เช่น `bug`) ข้ามค่า status นั้นไปเลย ไม่ต้องใส่ทุกค่า
 

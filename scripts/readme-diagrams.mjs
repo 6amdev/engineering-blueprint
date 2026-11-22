@@ -57,14 +57,14 @@ const T = {
     legend: { skill: 'skill = วิธีทำงาน', agent: 'agent = ผู้ทำ', doc: 'เอกสารที่ได้', person: 'คน = ผู้อนุมัติ' },
     hero: {
       title: 'คำขอ 1 ประโยค ผ่านแผนก IT เสมือน จนเป็นระบบพร้อมคู่มือ', ask: ['“อยากได้', 'ระบบจอง', 'ห้องประชุม”'], you: 'คุณพิมพ์', dept: 'แผนก IT เสมือน',
-      facts: ['10 ขั้น', '21 skill', '16 agent'], flow: ['ถามให้ชัด', 'ออกแบบ', 'เขียนเทส + โค้ด', 'agent อีกชุดตรวจ', 'ส่งขึ้นระบบ'], get: 'ได้กลับมา',
+      facts: ['10 ขั้น', '23 skill', '16 agent'], flow: ['ถามให้ชัด', 'ออกแบบ', 'เขียนเทส + โค้ด', 'agent อีกชุดตรวจ', 'ส่งขึ้นระบบ'], get: 'ได้กลับมา',
       outs: ['โค้ดพร้อมเทส', 'เอกสารทุกขั้น', 'ผลตรวจทุกด่าน', 'คู่มือผู้ใช้', 'สถานะส่งต่อได้'], human: 'คน: ตอบคำถาม · อนุมัติทุกจุดสำคัญ · รับผิดชอบผลลัพธ์',
     },
     wf: {
       title: 'งาน 1 ชิ้น เดินผ่าน 10 ขั้น', sub: 'แต่ละขั้นมี skill ให้ทำตาม มี agent ลงมือ ได้เอกสาร และมีคนยืนยันก่อนไปต่อ',
       names: ['รับงาน · ถามจนชัด', 'ความต้องการ', 'ข้อกำหนด', 'ออกแบบ', 'เขียนเทสก่อน แล้วเขียนโค้ด', 'ด่านตรวจ', 'ทดลองใช้ก่อนขึ้นจริง', 'ขึ้นระบบจริง', 'ปล่อยให้ผู้ใช้', 'ปิดงาน · ส่งต่อ'],
-      docs: ['brief ผ่าน DoR', 'PRD + user stories', 'spec + รายการเทส', 'ADR + design brief', 'โค้ด + ผลเทส', 'ผลรีวิว + ผลด่าน', 'ผลทดสอบ + sign-off', 'ใบขอ deploy + runbook', 'release notes + คู่มือ', 'HANDOFF + DoD'],
-      ok: ['Owner ยืนยัน', 'Owner ACK', 'Owner-reviewer ACK', 'Owner-reviewer “go”', 'Dev อ่านผลเทส', 'Owner-reviewer', 'Owner-reviewer', 'Ops + Owner-reviewer', 'Owner', 'Owner-reviewer'],
+      docs: ['brief + stack ครบ', 'PRD + user stories', 'spec + รายการเทส', 'ADR + design brief', 'โค้ด + ผลเทส', 'ผลรีวิว + ผลด่าน', 'ผลทดสอบ + sign-off', 'ใบขอ deploy + runbook', 'release notes + คู่มือ', 'HANDOFF + DoD'],
+      ok: ['Owner ยืนยัน', 'Owner ACK', 'Owner-reviewer ACK', '“go” + เลือกหน้าตา', 'Dev อ่านผลเทส', 'Owner-reviewer', 'Owner-reviewer', 'Ops + Owner-reviewer', 'Owner', 'Owner-reviewer'],
     },
     team: {
       title: 'ใครคุยกับใคร', sub: 'agent ไม่คุยกันเอง ทุกอย่างผ่าน session หลัก และบันทึกลงการ์ด', people: 'คน · ตัดสินและอนุมัติ', main: 'session หลัก', mainSub: ['คุยกับคนผ่านการ์ด', 'แจกงานและรวมผล'],
@@ -92,14 +92,14 @@ const T = {
     legend: { skill: 'skill = how', agent: 'agent = who does it', doc: 'document produced', person: 'person = approver' },
     hero: {
       title: 'One request goes through a virtual IT department and becomes a system with a manual', ask: ['“I need a', 'meeting-room', 'booking app”'], you: 'You type', dept: 'Virtual IT department',
-      facts: ['10 stages', '21 skills', '16 agents'], flow: ['Ask until clear', 'Design', 'Tests + code', 'Separate check', 'Release'], get: 'You get',
+      facts: ['10 stages', '23 skills', '16 agents'], flow: ['Ask until clear', 'Design', 'Tests + code', 'Separate check', 'Release'], get: 'You get',
       outs: ['Code with tests', 'Docs per stage', 'Gate results', 'User manual', 'Handoff state'], human: 'People: answer questions · approve every key point · own the result',
     },
     wf: {
       title: 'One piece of work, ten stages', sub: 'Each stage has a skill to follow, agents that do it, a document, and a person who confirms',
       names: ['Intake · ask until clear', 'Requirements', 'Specification', 'Design', 'Failing test first, then code', 'Quality gates', 'Try it before production', 'Go live', 'Release to users', 'Close · hand over'],
-      docs: ['Brief passing DoR', 'PRD + user stories', 'Spec + test inventory', 'ADR + design brief', 'Code + test results', 'Review + gate results', 'Test results + sign-off', 'Deploy request + runbook', 'Release notes + manual', 'HANDOFF + DoD'],
-      ok: ['Owner confirms', 'Owner ACK', 'Owner-reviewer ACK', 'Owner-reviewer “go”', 'Dev reads test results', 'Owner-reviewer', 'Owner-reviewer', 'Ops + Owner-reviewer', 'Owner', 'Owner-reviewer'],
+      docs: ['Brief + full stack', 'PRD + user stories', 'Spec + test inventory', 'ADR + design brief', 'Code + test results', 'Review + gate results', 'Test results + sign-off', 'Deploy request + runbook', 'Release notes + manual', 'HANDOFF + DoD'],
+      ok: ['Owner confirms', 'Owner ACK', 'Owner-reviewer ACK', '“go” + picks the look', 'Dev reads test results', 'Owner-reviewer', 'Owner-reviewer', 'Ops + Owner-reviewer', 'Owner', 'Owner-reviewer'],
     },
     team: {
       title: 'Who talks to whom', sub: 'Agents do not talk to each other: everything goes through the main session and onto the card', people: 'People · decide and approve', main: 'Main session', mainSub: ['talks to people on the card', 'hands out work, merges results'],
@@ -126,7 +126,7 @@ const T = {
 };
 
 const STAGE = ['intake', 'requirements', 'spec', 'design', 'build', 'gates', 'UAT', 'deploy', 'release', 'close'];
-const SKILLS = [['intake'], ['requirements'], ['spec'], ['design'], ['tdd'], ['gate-check', 'code-review', 'security-review'], ['uat'], ['deploy-request'], ['release-notes', 'user-manual'], ['handoff']];
+const SKILLS = [['intake', 'grill'], ['requirements'], ['spec'], ['design', 'ui-design'], ['tdd'], ['gate-check', 'code-review', 'security-review'], ['uat'], ['deploy-request'], ['release-notes', 'user-manual'], ['handoff']];
 const AGENTS = [['intake-analyst'], ['intake-analyst'], ['solution-architect', 'challenger', 'lead-reviewer'], ['solution-architect', 'lead-reviewer'], ['implementer'],
   ['test-engineer', 'security-engineer', 'regression-tester', 'lead-reviewer'], ['uat-release', 'qa-engineer'], ['uat-release', 'runbook-rehearsal'], ['tech-writer'], ['tech-writer', 'status-reporter']];
 const DEPT = [['intake-analyst'], ['solution-architect', 'challenger'], ['implementer'], ['test-engineer', 'qa-engineer', 'regression-tester'], ['security-engineer'],

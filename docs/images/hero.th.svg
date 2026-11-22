@@ -11,7 +11,7 @@
 <rect x="290" y="28" width="380" height="282" rx="20" fill="#171E30" stroke="none" stroke-width="1.5"/>
 <text x="480" y="72" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="25" font-weight="700" fill="#FFA62B" text-anchor="middle">แผนก IT เสมือน</text>
 <text x="362" y="112" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#fff" text-anchor="middle">10 ขั้น</text>
-<text x="480" y="112" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#fff" text-anchor="middle">21 skill</text>
+<text x="480" y="112" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#fff" text-anchor="middle">23 skill</text>
 <text x="598" y="112" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#fff" text-anchor="middle">16 agent</text>
 <circle cx="346" cy="142" r="12" fill="#FFA62B"/>
 <text x="346" y="148" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="700" fill="#1B2233" text-anchor="middle">1</text>

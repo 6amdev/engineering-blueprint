@@ -7,9 +7,9 @@ Clone it, run one command, and get a project folder with rules, a workflow, docu
 
 ![One request goes through a virtual IT department and becomes a system with a manual](docs/images/hero.en.svg)
 
-> Status: v0.4.0. The principles come from experience of working as a team. One full cycle has been run on a local trial ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
+> Status: v0.5.0. The principles come from experience of working as a team. One full cycle has been run on a local trial ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
 
-**Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [21 skills](#21-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
+**Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [What is asked](#what-is-asked-before-work-starts) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [23 skills](#23-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
 
 ## Why
 AI writes code fast. Real work usually breaks on everything around the code:
@@ -34,6 +34,23 @@ Four words to know:
 ![One piece of work, ten stages](docs/images/workflow.en.svg)
 
 `planning` orders the backlog before stage 0; `retro` improves the way of working after stage 9. Full version: [`docs/workflow.md`](docs/workflow.md) (Thai).
+
+## What is asked before work starts
+In rounds of 1–3 questions, each with a recommendation; "as recommended" is a valid answer. Anything the repo can answer is not asked ([`docs/intake-map.md`](docs/intake-map.md), Thai).
+
+| Area | Examples |
+|---|---|
+| A Business | Problem, measure, out of scope, rules and exceptions, budget |
+| B Users | Who, how many, flows, unusual cases |
+| C Acceptance | Given/When/Then |
+| D Data and security | Personal data, sign-in, permissions, backup |
+| E Look and feel | Brand, feeling, choose from sketches |
+| F Every part of the tech stack | Front end, back end, data, identity, integrations, hosting, delivery, testing, operations, limits |
+| G Going live | Who approves, tolerated downtime, who is called |
+| H Working together | Approval points, budget per card, number of fix rounds |
+
+**Not sure? You get examples to choose from**: two or three, with pros, cons, cost, how hard to undo, and one recommendation, such as screen sketches, real situations or [tech-stack sets](docs/stack.md).
+An unanswered item is `❓`, and `gate.mjs` refuses "go" while any is left (lane `feature`).
 
 ## How agents work together
 
@@ -144,17 +161,19 @@ Blocks: booking design
 A) No
 ```
 
-## 21 skills
+## 23 skills
 Skills are markdown files in [`.claude/skills/`](.claude/skills/), so any tool can read them.
 
 | Phase | Skill | Use it when |
 |---|---|---|
 | **Before** | `planning` | Ordering and sizing the backlog |
-| | `intake` | A new request arrives; ask until clear |
+| | `intake` | A new request arrives; ask everything from business to tech stack |
+| | `grill` | Interview on a document or design, one question at a time, fixing the document on the way |
 | | `change-request` | Something already agreed must change |
 | **Think** | `requirements` | Turning the brief into a PRD and user stories |
 | | `spec` | Writing the spec, expected results and test inventory |
 | | `design` | Comparing options, recording reasons, asking for "go" |
+| | `ui-design` | Two or three looks to choose from, colours/spacing/states defined, then the real page is scored |
 | **Build** | `tdd` | Test before code |
 | | `bugfix` | Reproduce, find the cause, smallest fix |
 | | `hotfix` | Production is broken now |
@@ -238,8 +257,9 @@ Changed code = full test run, and gates re-check what changed. Criteria and appr
 ### What is enforced, what is guidance
 | Enforced by code | Instructions for agents, checklists for people |
 |---|---|
-| Secret, IP and forbidden-word scan at commit | The ten stages and all gates |
-| Commit message format | Separation of duties and approvals |
+| Secret, IP and forbidden-word scan at commit | What each gate checks, and how true the evidence is |
+| Commit message format | Who the approver really is; separation of duties |
+| A card moves to uat/deploy/release/close only when gates, approvals and budget are recorded (local board) | Order of stages 0–4 |
 | Draft check before a post goes to the board | Document content from templates |
 
 Real output when something is blocked (messages are in Thai):
@@ -269,7 +289,7 @@ One run (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local
 | Output | Code, documents, manual in 2 languages, runbook, UAT results |
 
 **Not good yet:** a small job used many documents and tokens; it waited for a person at many points; the main session asked for something beyond the spec once and against the spec once (review caught it); one of six seeded bugs could not be confirmed as caught, so GATE-VERIFY does not count as passed under the rules; UAT was checked by an agent and then accepted by the owner.
-0.4.0 changes this ([`CHANGELOG.md`](CHANGELOG.md), Thai), but it **has not been re-run to measure whether it is better**.
+0.4.0–0.5.0 change this ([`CHANGELOG.md`](CHANGELOG.md), Thai). Replaying the trial through `gate.mjs`, it refuses to close the card (seeded bugs not all caught, gates run on other code, over the example budget). **No new job has been run yet to measure whether it is better.**
 
 ## Start
 You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
@@ -287,12 +307,15 @@ Open the folder with your agent and type:
 | You want to | Type |
 |---|---|
 | Start new work | `Start card C-0001 with skill intake` |
+| Question a document thoroughly | `Grill docs/requirements/0001-x.md` |
+| Design a screen | `Sketch three directions to choose from, use skill ui-design` |
 | Report a bug | `The page hangs after Save, use skill bugfix` |
 | Ask for a change | `Allow booking 30 days ahead, use skill change-request` |
 | Fix production now | `Nobody can log in, use skill hotfix` |
 | Check security | `Review card C-0001 with skill security-review` |
 | Ask for status | `Have status-reporter summarise the open cards` |
 | Stop for today | `Close the session with skill handoff` |
+| Check whether a card may close | `node scripts/gate.mjs check C-0001 --stage close` |
 | See the cost (Claude Code) | `node scripts/cost-report.mjs <session.jsonl>` |
 
 For a whole organisation read [`docs/onboarding.md`](docs/onboarding.md) (Thai). The board is files in the repo by default, with nothing to sign up for. Trello and GitHub Issues adapters exist but have not been tested with real posts.

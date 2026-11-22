@@ -23,10 +23,10 @@ planning ─▶ 0 intake ─▶ 1 requirements ─▶ 2 spec ─▶ 3 design ─
 
 | ขั้น | ทำอะไร | skill / agent | ออกจากขั้นเมื่อ | งานเล็กข้ามได้? |
 |---|---|---|---|---|
-| 0 intake | ถามจนได้ brief · เลือก lane · ตั้งระดับ R · เปิดด่านเงื่อนไข | `intake` · intake-analyst | brief ผ่าน **DoR** + owner ยืนยัน | ไม่ |
+| 0 intake | ถามครบตาม `docs/intake-map.md` ถึง tech stack · ได้ brief · เลือก lane · ตั้งระดับ R · เปิดด่านเงื่อนไข | `intake` · `grill` · intake-analyst | brief ผ่าน **DoR** + owner ยืนยัน | ไม่ |
 | 1 requirements | PRD + user stories + Given/When/Then | `requirements` · intake-analyst | owner ack | ได้ (brief พอ) ถ้า R1 |
 | 2 spec | spec + oracle + รายการเทส · challenger ค้าน (R2/R3 บังคับ) | `spec` · solution-architect · challenger · lead-reviewer | Owner-reviewer ack scope (GATE-SPEC) | ได้ถ้า R1 |
-| 3 design | ADR + design brief 5–8 บรรทัด | `design` · solution-architect | review ผ่าน + คำว่า **"go"** (GATE-DESIGN) | ได้ถ้า R1 |
+| 3 design | ADR + design brief 5–8 บรรทัด · มีหน้าจอ: เลือกจากภาพร่าง | `design` · `ui-design` · solution-architect | review ผ่าน + คำว่า **"go"** (GATE-DESIGN) | ได้ถ้า R1 |
 | 4 build | เทส RED → โค้ด → refactor | `tdd` · implementer | เทสใหม่ผ่าน · ไม่มีเทสที่เคยผ่านแล้วกลับมาไม่ผ่าน | ไม่ |
 | 5 gates | ด่านเสมอ + ด่านเงื่อนไขที่เปิดไว้ตอน intake | `gate-check` · `code-review` · `security-review` · agent ตามด่าน (`docs/gates.md`) | ทุกด่านที่เปิด = ผ่าน | ไม่ |
 | 6 UAT | ประกาศ sha + ช่วงเวลา → ขึ้น UAT → L2 + หน้าจริง (เมื่อ UI เปลี่ยน) | `uat` · uat-release · qa-engineer | เกณฑ์ผ่านทุกข้อบน UAT | ไม่ (hotfix ย่อช่วงเวลาได้) |
@@ -87,6 +87,7 @@ planning ─▶ 0 intake ─▶ 1 requirements ─▶ 2 spec ─▶ 3 design ─
 - [ ] ขอบเขต: ทำ / **ไม่ทำ**
 - [ ] flow หลัก + เคสผิดปกติหลัก
 - [ ] acceptance criteria ≥ 1 ต่อ flow (Given/When/Then)
+- [ ] `docs/stack-decisions.md` ตอบครบทุกบรรทัด (งานใหม่ถามครบ · งานต่อยอดถามเฉพาะที่เปลี่ยน) · ไม่มี ❓
 - [ ] ข้อมูล · PII · สิทธิ์ · ระบบรอบข้าง ระบุแล้ว · NFR ที่เกี่ยวมีตัวเลข (ตัวเลขที่ agent เติมเองอยู่ในหัวข้อ "ข้อสมมติ")
 - [ ] ความเสี่ยง + ระดับ R เบื้องต้น · lane · ด่านเงื่อนไขที่เปิด (checklist ใน `docs/gates.md`)
 - [ ] รู้ว่าใครตัดสินเรื่องไหน

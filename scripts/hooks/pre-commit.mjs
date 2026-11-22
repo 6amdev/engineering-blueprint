@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-// pre-commit.mjs — สแกนไฟล์ที่ stage ก่อน commit: ชื่อไฟล์ต้องห้าม · ค่าลับ · IP สาธารณะ · คำต้องห้าม (config)
+// pre-commit.mjs — สแกนไฟล์ที่ stage ก่อน commit: ชื่อไฟล์ต้องห้าม · ค่าลับ · IP สาธารณะ · คำต้องห้าม (config) · ด่านของการ์ด
 //   (hook เรียกเอง)  node scripts/hooks/pre-commit.mjs
 //   (CI / ตรวจทั้ง repo) node scripts/hooks/pre-commit.mjs --all
 // exit: 0 = ผ่าน · 1 = เจอ (ห้ามเลี่ยงด้วย --no-verify · แก้ไฟล์ หรือถาม owner)
 import { execFileSync } from 'node:child_process';
 import { scanText, bannedPath } from '../lib/scan.mjs';
 import { loadConfig, ROOT } from '../lib/config.mjs';
+import { stagedProblems } from '../gate.mjs';
 
 const all = process.argv.includes('--all');
 const runOpts = { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 50_000_000, encoding: 'utf8' };
@@ -23,5 +24,7 @@ for (const f of files) {
   if (text.includes('\0')) continue; // ไฟล์ binary
   for (const h of scanText(text, { forbiddenWords })) { console.error(`FAIL ${f}:${h.line} ${h.rule}`); bad++; }
 }
+// ด่าน: การ์ดเปลี่ยนเป็น uat/deploy/release/close ต้องผ่าน gate · ไฟล์ด่านต่อท้ายได้อย่างเดียว
+if (!all) for (const x of stagedProblems()) { console.error(`FAIL gate ${x}`); bad++; }
 if (bad) { console.error(`\n${bad} จุด · commit ไม่ผ่าน (ดู docs/git.md §ค่าลับ)`); process.exit(1); }
 console.log(`OK secret-scan · ${files.length} ไฟล์`);
