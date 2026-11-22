@@ -1,5 +1,8 @@
 # Changelog (blueprint)
 
+## Unreleased
+- เปิด CI บน repo นี้ (`.github/workflows/ci.yml`) · แม่แบบ CI ใช้ Node 24 และ actions v7
+
 ## 1.0.0 — 2026-11-22
 - `scripts/upgrade-project.mjs`: ดึงเวอร์ชันใหม่เข้าโปรเจกต์เดิมแบบเทียบ 3 ทาง ไม่ทับสิ่งที่โปรเจกต์แก้ · เทส `npm run project:test`
 - `gate.mjs audit <base>..<head>`: ให้ CI ตรวจทุก commit ซ้ำ จับ `--no-verify` และการแก้บันทึก · อยู่ใน `templates/github-ci.yml`

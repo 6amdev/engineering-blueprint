@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 export const BLUEPRINT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 // ของตัวหลักเอง ไม่ตามไปกับโปรเจกต์
 const SKIP = [/^memory\/(?!README\.md$)/, /^scripts\/(new-project|upgrade-project|readme-diagrams|lib\/project-files|test\/project\.test)\.mjs$/,
-  /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/, /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/, /^README\.en\.md$/, /^docs\/images\//];
+  /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/, /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/, /^README\.en\.md$/, /^docs\/images\//, /^\.github\//];
 // โปรเจกต์เป็นเจ้าของตั้งแต่วันแรก upgrade ไม่แตะ
 const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json'];
 export const isOwned = (f) => OWNED.includes(f) || (f.startsWith('site/') && f.endsWith('.md')); // หน้าคู่มือ = เนื้อหาของโปรเจกต์
