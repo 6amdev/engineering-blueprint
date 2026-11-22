@@ -1,5 +1,14 @@
 # Changelog (blueprint)
 
+## 0.4.0 — 2026-11-22 (บทเรียนจากการเดินครบรอบครั้งแรก)
+- จุดอนุมัติตามระดับ R: R1 ตรวจรับครั้งเดียว · R2 "go" + ตรวจรับ · R3 แบบเต็ม · มอบอำนาจต่อการ์ดได้ · ด่านยังครบ
+- อนุมัติในแชต (มือถือ) บันทึกบนการ์ดได้สำหรับ R1/R2
+- `requirement-brief-lite.md` สำหรับงานเล็ก · DoR อยู่ที่เดียว · แม่แบบโพสต์เหลือรูปเดียว · ตัวเลขที่ agent เติมแยกเป็น "ข้อสมมติ"
+- agent อ่านเฉพาะ brief + ไฟล์ที่จำเป็น · brief ต้องอ้างข้อ spec
+- GATE-VERIFY R2/R3 ต้องใส่บั๊กลอง · กติกาตรวจซ้ำเมื่อ sha เปลี่ยน
+- `scripts/cost-report.mjs` สรุป token และต้นทุน
+- แก้: hook รับรหัสการ์ดตัวใหญ่ใน scope · `npm install` แล้วไฟล์ lock ไม่เปลี่ยน
+
 ## 0.3.0 — 2026-11-22 (เผยแพร่ครั้งแรก)
 - "1 แผนก": agent 16 ตัวมีบทบาทตามแผนก (BA/PM · solution-architect · dev · QA · security · DevOps/SRE · tech writer · reviewer) + tools แบบสิทธิ์น้อยสุด
 - ช่องทางงาน 5 แบบ: feature · change · bug · hotfix · chore · ระดับเสี่ยง R1–R3 · planning ก่อน · retro หลัง

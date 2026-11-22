@@ -7,9 +7,9 @@ Clone it, run one command, and get a project folder with rules, a workflow, docu
 
 ![One request goes through a virtual IT department and becomes a system with a manual](docs/images/hero.en.svg)
 
-> Status: v0.3.0. First release. The principles come from experience of working as a team, but this repo itself has not been through a full real project yet. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
+> Status: v0.4.0. The principles come from experience of working as a team. One full cycle has been run on a local trial ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
 
-**Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [21 skills](#21-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Start](#start)
+**Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [21 skills](#21-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
 
 ## Why
 AI writes code fast. Real work usually breaks on everything around the code:
@@ -209,6 +209,17 @@ Risk raises the depth; it never removes a gate:
 | Review | 1 AI | AI + 1 person | AI + a person who is not the author |
 | Deploy | Normal | One target at a time + watch | + kill switch + rehearsed rollback |
 
+### How often people approve
+Every gate still runs; what changes is how often the work waits for a person ([`docs/workflow.md`](docs/workflow.md), Thai). The ten-stage picture above is the full R3 form.
+
+| | R1 | R2 | R3 |
+|---|---|---|---|
+| Before code | Not asked, if the Owner approved it for the whole project in advance | One "go" | ACK brief, ACK scope, "go" |
+| After gates | One acceptance | One acceptance | Gate results, UAT, second person |
+| Production | Ops | Ops + Owner-reviewer | + second person |
+
+For R1/R2 a chat answer from a phone counts once the agent records it on the card. Push, deleting data, live systems and scope changes are always asked.
+
 ## Quality gates
 
 ```mermaid
@@ -222,7 +233,7 @@ flowchart TD
     F --> B
 ```
 
-Changed code = new sha = check again. Criteria and approvers per gate: [`docs/gates.md`](docs/gates.md) (Thai).
+Changed code = full test run, and gates re-check what changed. Criteria and approvers per gate: [`docs/gates.md`](docs/gates.md) (Thai).
 
 ### What is enforced, what is guidance
 | Enforced by code | Instructions for agents, checklists for people |
@@ -244,6 +255,21 @@ FAIL commit-msg: "update stuff"
 ```
 
 The scanners lower risk; they do not catch everything. This repo is not a certification of any standard.
+
+## Trial run
+One run (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local only, fake data, no production, under the 0.3.0 rules.
+
+| | Result |
+|---|---|
+| Time | 55 minutes, including waiting for answers |
+| Cost | About 19.7 USD at API prices (10 agents 60%, main session 40%; that session already carried a long history of other work) |
+| Tests | 30: 29 passed, 1 skipped (not possible on Windows) |
+| Challenger, before any code | Found 5 major problems |
+| Code review | Failed twice (2 major, then 1), passed on round 3 |
+| Output | Code, documents, manual in 2 languages, runbook, UAT results |
+
+**Not good yet:** a small job used many documents and tokens; it waited for a person at many points; the main session asked for something beyond the spec once and against the spec once (review caught it); one of six seeded bugs could not be confirmed as caught, so GATE-VERIFY does not count as passed under the rules; UAT was checked by an agent and then accepted by the owner.
+0.4.0 changes this ([`CHANGELOG.md`](CHANGELOG.md), Thai), but it **has not been re-run to measure whether it is better**.
 
 ## Start
 You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
@@ -267,6 +293,7 @@ Open the folder with your agent and type:
 | Check security | `Review card C-0001 with skill security-review` |
 | Ask for status | `Have status-reporter summarise the open cards` |
 | Stop for today | `Close the session with skill handoff` |
+| See the cost (Claude Code) | `node scripts/cost-report.mjs <session.jsonl>` |
 
 For a whole organisation read [`docs/onboarding.md`](docs/onboarding.md) (Thai). The board is files in the repo by default, with nothing to sign up for. Trello and GitHub Issues adapters exist but have not been tested with real posts.
 
@@ -289,7 +316,7 @@ docs/              workflow, gates, standards, roles, deploy, cards, ADR
 templates/         document templates
 .claude/skills/    procedures (plain markdown)
 .claude/agents/    agent roles
-scripts/           project creator, board, scanners, README diagrams
+scripts/           project creator, board, scanners, cost report, README diagrams
 site/              sample user manual (VitePress)
 memory/            agent memory (not in git)
 ```

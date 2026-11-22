@@ -56,7 +56,7 @@ description: รับงานใหม่โดยถามให้ชัด�
 พบเรื่องใหม่ระหว่างงาน = เปิดด่านเพิ่มบนการ์ดทันที
 
 ## ผลลัพธ์
-- `docs/requirements/NNNN-slug.md` (`R-NNNN`) จาก `templates/requirement-brief.md` · ข้อที่ไม่รู้ = "ยังไม่ได้ตรวจ / รอ <ใคร>"
+- `docs/requirements/NNNN-slug.md` (`R-NNNN`) จาก `templates/requirement-brief.md` (R1 หรือ R2 ที่มี flow เดียว: `requirement-brief-lite.md`) · ตัวเลขที่เติมเองอยู่ในหัวข้อ "ข้อสมมติ" · ข้อที่ไม่รู้ = "ยังไม่ได้ตรวจ / รอ <ใคร>"
 - ตรวจ **Definition of Ready** (`docs/workflow.md`) · ไม่ครบ = ถามต่อ
 - ครบแล้ว: สรุปสั้นให้ owner ยืนยัน → อัป `docs/HANDOFF.md` → skill `requirements` (หรือขั้นที่ lane กำหนด)
 

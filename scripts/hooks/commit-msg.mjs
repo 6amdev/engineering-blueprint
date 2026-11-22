@@ -6,7 +6,7 @@ import fs from 'node:fs';
 
 const TYPES = 'feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert';
 const first = fs.readFileSync(process.argv[2], 'utf8').split(/\r?\n/).find((l) => l && !l.startsWith('#')) || '';
-const ok = new RegExp(String.raw`^(${TYPES})(\([a-z0-9._/-]+\))?!?: \S.{0,99}$`).test(first)
+const ok = new RegExp(String.raw`^(${TYPES})(\([A-Za-z0-9._/-]+\))?!?: \S.{0,99}$`).test(first)
   || /^(Merge|Revert) /.test(first) || /^(fixup|squash|amend)! /.test(first);
 if (!ok) {
   console.error(`FAIL commit-msg: "${first}"

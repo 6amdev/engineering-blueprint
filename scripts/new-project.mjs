@@ -42,7 +42,8 @@ pkg.name = name;
 delete pkg.license; // โค้ดของโปรเจกต์เลือก license เอง
 fs.copyFileSync(path.join(ROOT, 'LICENSE'), path.join(dest, 'LICENSE-blueprint')); // ไฟล์ที่มาจาก blueprint
 fs.writeFileSync(path.join(dest, 'package.json'), JSON.stringify(pkg, null, 2) + '\n');
-edit('package-lock.json', (s) => s.replace(/"name": "engineering-blueprint"/g, `"name": "${name}"`));
+edit('package-lock.json', (s) => s.replace(/"name": "engineering-blueprint"/g, `"name": "${name}"`)
+  .replace(/("packages": \{\s*"": \{[^{}]*?)\s*"license": "Apache-2\.0",/, '$1'));
 edit('AGENTS.md', (s) => s.replace(/^# .*$/m, `# ${name} — rules for every AI coding agent`)
   .split(/\r?\n/).filter((l) => !l.includes('<!-- blueprint-only -->')).join('\n'));
 edit('README.md', () => `# ${name}\n\nกรอกต่อโปรเจกต์: ระบบนี้คืออะไร (1–2 ประโยค)\n\nสร้างจาก blueprint ${fs.readFileSync(path.join(ROOT, 'VERSION'), 'utf8').trim()} · กติกาอยู่ \`AGENTS.md\` · สถานะ \`docs/HANDOFF.md\` · เริ่มงานแรกด้วย skill \`intake\`\n`);

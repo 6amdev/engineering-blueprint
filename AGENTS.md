@@ -3,7 +3,7 @@
 A project template for a small, professional engineering team that works with AI agents, from the first
 request to a system in production with a user manual. Create a project from it with `scripts/new-project.mjs`. Any agent that reads this
 file (Claude Code, Codex, Cursor, Gemini CLI, others) must be able to work from short instructions, without confusion.
-Status: **v0.3.0 (2026-11-21)** — a full virtual department: docs, skills, agents and templates hold generic,
+Status: **v0.4.0 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
 standards-based content. Slots marked `กรอกต่อโปรเจกต์:` are filled per project (ask the owner for those).
 
 This file is the single source of rules. Tool-specific files only add to it: `CLAUDE.md` (Claude Code).
@@ -32,7 +32,7 @@ Do not design or code from a one-line request. Follow `.claude/skills/intake/SKI
 - In a shared folder: never stash, reset or switch branches.
 
 ## 4. Report so a busy owner can decide
-Short messages. Show results as images, files or links. Put each decision as options with one recommendation. Group the steps only a person can do.
+Ask for approval only at the points for the risk level (`docs/workflow.md` → จุดอนุมัติตามระดับ R); record answers given in chat on the card at once. Short messages. Show results as images, files or links. Put each decision as options with one recommendation. Group the steps only a person can do.
 
 ## 5. Map — where things are
 | Want | File |
@@ -56,7 +56,7 @@ Short messages. Show results as images, files or links. Put each decision as opt
 | Agent role prompts | `.claude/agents/*.md` |
 | Fill-in forms | `templates/` |
 | User manual (web doc) | `site/` → `npm run docs:dev` / `docs:build` |
-| Scripts: board, draft check, secret scan, hooks | `scripts/` (config `blueprint.config.json` from `blueprint.config.example.json`) |
+| Scripts: board, draft check, secret scan, hooks, cost report | `scripts/` (config `blueprint.config.json` from `blueprint.config.example.json`) |
 | Blueprint = main system; create a new project (`node scripts/new-project.mjs <folder>`) | `docs/blueprint.md` | <!-- blueprint-only -->
 
 ## 6. Workflow (short; full in `docs/workflow.md`)

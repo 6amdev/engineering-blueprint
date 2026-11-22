@@ -55,5 +55,6 @@ node scripts/board.mjs read C-0001 --last 5                    # อ่านล
 - R3: ต้องมีคนที่สองอนุมัติ · ทีมคนเดียว = Owner บันทึกรับความเสี่ยงชัดเจนบนการ์ด ซึ่งอ่อนกว่า (`docs/roles/README.md`)
 
 ## 7. การอนุมัติ = ความเห็นบนการ์ด
+ตอบในแชต: session หลักบันทึกแทนด้วยบทบาท `agent` ตาม `docs/posting.md` (ไม่ตั้ง `BOARD_ROLE` เป็นคน)
 ack brief/PRD · "go" · อนุมัติอ่านข้อมูลจริง (ผูก hash ของสคริปต์) · อนุมัติ deploy → โพสต์ด้วย `BOARD_ROLE` ของผู้อนุมัติ + sha / ลิงก์
 → git history + ไฟล์การ์ด = audit trail (เท่าที่สิทธิ์ของ repo และตัวตนใน commit เชื่อถือได้)

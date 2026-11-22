@@ -10,6 +10,7 @@ description: ทบทวนรอบงานแบบ blameless หลัง r
 - หลังทุก release · ทุก N การ์ด (ค่า N อยู่ `docs/workflow.md`) · หลัง postmortem ที่มี action เชิงกระบวนการ
 
 ## เข้า
+- token และต้นทุน: `node scripts/cost-report.mjs <session.jsonl> --since <เริ่มงาน>` (Claude Code) · เวลาที่ใช้ · จำนวนครั้งที่รอคน
 - git log ช่วงนั้น · การ์ดที่ปิด · บันทึก deploy · `docs/postmortems/` · retro รอบก่อน `docs/retros/`
 
 ## ขั้นตอน
