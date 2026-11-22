@@ -11,8 +11,9 @@ import { stagedProblems } from '../gate.mjs';
 const all = process.argv.includes('--all');
 const runOpts = { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 50_000_000, encoding: 'utf8' };
 const git = (argv) => execFileSync('git', argv, runOpts);
-const files = (all ? git(['ls-files']) : git(['diff', '--cached', '--name-only', '--diff-filter=ACMR']))
-  .split('\n').filter(Boolean);
+const list = (argv) => git(argv).split('\0').filter(Boolean); // -z: ชื่อไฟล์ภาษาไทยไม่ถูกแปลงเป็นรหัส
+const links = new Set(list(['ls-files', '-s', '-z']).filter((l) => l.startsWith('160000 ')).map((l) => l.split('\t')[1])); // submodule ไม่มีเนื้อหาใน repo นี้
+const files = (all ? list(['ls-files', '-z']) : list(['diff', '--cached', '--name-only', '-z', '--diff-filter=ACMRT'])).filter((f) => !links.has(f));
 const forbiddenWords = loadConfig().forbidden_words || [];
 
 let bad = 0; let gateBad = 0;
@@ -20,7 +21,7 @@ for (const f of files) {
   if (bannedPath(f)) { console.error(`FAIL ${f}: ไฟล์ประเภทนี้ห้ามเข้า git`); bad++; continue; }
   if (f === 'package-lock.json') continue; // hash ของ dependency ทำให้เตือนผิด
   let text;
-  try { text = git(["show", `:${f}`]); } catch { continue; } // อ่านจาก index (= HEAD ใน CI)
+  try { text = git(["show", `:${f}`]); } catch { console.error(`FAIL ${f}: อ่านไฟล์จาก git ไม่ได้ จึงตรวจไม่ได้`); bad++; continue; } // อ่านจาก index (= HEAD ใน CI)
   if (text.includes('\0')) continue; // ไฟล์ binary
   for (const h of scanText(text, { forbiddenWords })) { console.error(`FAIL ${f}:${h.line} ${h.rule}`); bad++; }
 }

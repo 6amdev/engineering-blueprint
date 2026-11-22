@@ -246,3 +246,76 @@ test('audit: จับการข้าม hook (--no-verify) และกา�
   bad(r.gate('audit', `${before}..HEAD`), /ต่อท้ายได้อย่างเดียว/);
   assert.equal(r.gate('audit', 'nope..HEAD').status, 2); assert.equal(r.gate('audit').status, 2);
 });
+
+// --- ผู้ตรวจแยกก่อนออก 1.0.0
+const status = (r, body) => r.write('docs/cards/C-0001.md', `# C-0001\n\n${body}\n`);
+test('config ในเครื่องย้ายที่เก็บการ์ดเพื่อเลี่ยง hook ไม่ได้', (t) => {
+  for (const d of ['docs/elsewhere', 'docs//cards', './docs/cards/']) { const r = repo(t); r.write('blueprint.config.json', JSON.stringify({ board: { local: { dir: d } } })); r.card('close'); bad(r.commit('docs: close'), /C-0001 → close/); }
+  const r = repo(t); r.write('blueprint.config.json', '{bad'); bad(r.gate('open', 'C-0001', '--budget-usd', '5'), /JSON/);
+});
+test('status เขียนรูปอื่น ซ่อน หรือวางผิดที่ = hook ปฏิเสธ', (t) => {
+  for (const l of ['+ status: close', '- **status**: close', '- **status:** close', '- status： close', 'status: close', '- status:', '---\n- status: close', '<!-->\n- status: close\n<!-- -->']) {
+    const r = repo(t); status(r, `- lane: feature\n- R: R2\n${l}`); bad(r.commit('docs: card'), /ไม่พบ "- status|C-0001 → close/);
+  }
+});
+test('ลบหรือย้ายการ์ดออก · การ์ดเป็น symlink · ลด R ผ่านค่าแปลก = hook ปฏิเสธ', (t) => {
+  for (const to of ['docs/C-0001.md', 'docs/cards/C-0001.markdown', null]) { const r = repo(t); if (to) r.git('mv', 'docs/cards/C-0001.md', to); else r.git('rm', '-q', 'docs/cards/C-0001.md'); bad(r.commit('docs: move'), /ลบหรือย้ายการ์ด/); }
+  const s = repo(t); const id = execFileSync('git', ['hash-object', '-w', '--stdin'], { cwd: s.dir, input: '../x.md', encoding: 'utf8' }).trim();
+  s.git('update-index', '--add', '--cacheinfo', `120000,${id},docs/cards/C-0002.md`); bad(spawnSync('git', ['commit', '-qm', 'docs: link'], { cwd: s.dir, encoding: 'utf8' }), /symlink/);
+  for (const v of ['R?', 'r1', '']) { const r = repo(t, { risk: 'R3' }); status(r, `- lane: feature\n- R: ${v}\n- status: build`); bad(r.commit('docs: r'), /ลดระดับ/); }
+});
+test('ขึ้น R กลางทาง: ทำใหม่ตามระดับแล้วปิดได้ · ของเดิมไม่นับ', (t) => {
+  const r = repo(t); open(r); approve(r, 'go', 'owner-reviewer'); approve(r, 'delegate', 'owner'); allGates(r);
+  r.ok('raise', 'C-0001', 'R3'); status(r, '- lane: feature\n- R: R3\n- status: build'); r.commit('docs: raise');
+  bad(r.gate('check', 'C-0001', '--stage', 'uat'), /ตรวจเต็มก่อนขึ้นเป็น R3/);
+  const card = (w, role) => r.ok('approve', 'C-0001', w, '--role', role, '--via', 'card');
+  for (const [w, role] of [['ack-brief', 'owner'], ['ack-scope', 'owner-reviewer']]) card(w, role);
+  bad(r.gate('check', 'C-0001', '--stage', 'uat'), /go ก่อนผลด่านแรก หลังขึ้นเป็น R3/);
+  card('go', 'owner-reviewer'); allGates(r); r.ok('check', 'C-0001', '--stage', 'uat');
+  for (const [w, role] of [['gates', 'owner-reviewer'], ['uat', 'owner-reviewer'], ['second', 'second']]) card(w, role);
+  r.ok('cost', 'C-0001', '1'); status(r, '- lane: feature\n- R: R3\n- status: close'); const c = r.commit('docs: close'); assert.equal(c.status, 0, c.stderr);
+});
+test('ตรวจเฉพาะส่วนที่เปลี่ยน แต่บั๊กลองจับไม่ครบ = ไม่ผ่าน', (t) => {
+  const r = repo(t); open(r); approve(r, 'go', 'owner-reviewer'); allGates(r); const a = r.git('rev-parse', 'HEAD');
+  r.write('src/a.mjs', 'export const a = 2;\n'); r.commit('fix: a'); ['SEC', 'REGRESSION', 'REVIEW'].forEach((g) => pass(r, g, '--from', a));
+  r.ok('add', 'C-0001', 'VERIFY', 'pass', '--by', 'test-engineer', '--evidence', 'npm test -> pass 12', '--from', a, '--mutations', '0/6');
+  bad(r.gate('check', 'C-0001', '--stage', 'uat'), /บั๊กลองมีตัวที่เทสจับไม่ได้/);
+});
+test('ด่านที่มีผลแล้วหรือเปิดเพิ่มกลางทาง ต้องผ่าน · PRIVACY ต้อง R3', (t) => {
+  const r = repo(t); full(r); r.ok('add', 'C-0001', 'DEPS', 'fail', '--by', 'security-engineer', '--evidence', 'npm audit: 1 high'); bad(r.gate('check', 'C-0001', '--stage', 'close'), /ด่าน DEPS ไม่ผ่าน/);
+  const q = repo(t); full(q); q.ok('update', 'C-0001', '--gates', 'GATE-PERF, a11y'); bad(q.gate('check', 'C-0001', '--stage', 'close'), /ด่าน PERF ยังไม่มีผล[\s\S]*ด่าน A11Y ยังไม่มีผล/);
+  bad(q.gate('update', 'C-0001', '--gates', 'PRIVACY'), /R3/); bad(q.gate('update', 'C-0001', '--gates', 'NOPE'), /ไม่รู้จัก NOPE/);
+  const h = repo(t, { lane: 'hotfix' }); h.ok('open', 'C-0001', '--budget-usd', '5', '--no-prod'); ['VERIFY', 'REVIEW'].forEach((g) => pass(h, g)); h.ok('add', 'C-0001', 'SEC', 'fail', '--by', 'security-engineer', '--evidence', 'High at src/a.mjs:1'); bad(h.gate('check', 'C-0001', '--stage', 'uat'), /ด่าน SEC ไม่ผ่าน/);
+  const p = repo(t, { risk: 'R1' }); bad(p.gate('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '5', '--gates', 'PRIVACY'), /R3/);
+});
+test('merge แล้วทิ้งผลที่ไม่ผ่านของอีกฝั่ง = hook และ audit ปฏิเสธ · รวมครบ = ผ่าน', (t) => {
+  const r = repo(t); open(r); approve(r, 'go', 'owner-reviewer'); r.commit('docs: open'); const base = r.git('rev-parse', 'HEAD');
+  r.git('checkout', '-q', '-b', 'b'); r.ok('add', 'C-0001', 'SEC', 'fail', '--by', 'security-engineer', '--evidence', 'High at src/a.mjs:1'); r.commit('docs: fail'); const theirs = fs.readFileSync(path.join(r.dir, GATES), 'utf8').trim().split('\n').at(-1);
+  r.git('checkout', '-q', 'main'); pass(r, 'SEC'); r.commit('docs: pass'); spawnSync('git', ['merge', '-q', 'b'], { cwd: r.dir });
+  r.git('checkout', '--ours', GATES); bad(r.commit('docs: merge'), /บันทึกของอีกฝั่งหาย/);
+  r.git('commit', '-q', '--no-verify', '-m', 'docs: merge'); bad(r.gate('audit', `${base}..HEAD`), /บันทึกของอีกฝั่งหาย/);
+  r.git('reset', '-q', '--hard', 'HEAD~1'); spawnSync('git', ['merge', '-q', 'b'], { cwd: r.dir }); r.git('checkout', '--ours', GATES); append(r, theirs);
+  const c = r.commit('docs: merge'); assert.equal(c.status, 0, c.stderr); r.ok('audit', `${base}..HEAD`);
+});
+test('ADR ต้องไม่ใช่แม่แบบ · deploy ก่อนตรวจรับไม่นับ · LICENSE.mjs นับเป็นโค้ด', (t) => {
+  const r = repo(t, { risk: 'R1' }); r.write('docs/decisions/0000-template.md', '# x\n'); bad(r.gate('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '5', '--adr', 'docs/decisions/0000-template.md'), /adr/);
+  const q = repo(t); q.ok('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '10'); approve(q, 'go', 'owner-reviewer'); allGates(q);
+  for (const role of ['ops', 'owner-reviewer']) q.ok('approve', 'C-0001', 'deploy', '--role', role, '--via', 'card');
+  approve(q, 'accept', 'owner'); bad(q.gate('check', 'C-0001', '--stage', 'release'), /หลังตรวจรับ/);
+  for (const f of ['LICENSE.mjs', 'LICENSES/run.mjs']) { const x = repo(t); full(x); x.write(f, 'x\n'); closeFails(x, /โค้ดเปลี่ยน/); }
+});
+test('brief: path แบบ Windows ใช้ได้ · เปลี่ยนชื่อด้วย update · ช่องแม่แบบ ว่าง หรือคำตอบ stack ว่าง = ให้ go ไม่ได้', (t) => {
+  const r = repo(t); r.ok('open', 'C-0001', '--brief', 'docs\\requirements\\0001.md', '--budget-usd', '10', '--no-prod'); approve(r, 'go', 'owner-reviewer'); allGates(r); approve(r, 'accept', 'owner'); r.ok('cost', 'C-0001', '1');
+  r.git('mv', 'docs/requirements/0001.md', 'docs/requirements/0001-x.md'); bad(r.gate('check', 'C-0001', '--stage', 'close'), /ไม่พบ/);
+  r.ok('update', 'C-0001', '--brief', 'docs/requirements/0001-x.md'); r.card('close'); const c = r.commit('docs: close'); assert.equal(c.status, 0, c.stderr);
+  const go = (q) => q.gate('approve', 'C-0001', 'go', '--role', 'owner-reviewer', '--via', 'chat'); const q = repo(t); open(q);
+  for (const b of ['# brief\n\n', '- Given <บริบท>\n']) { q.write('docs/requirements/0001.md', b); bad(go(q), /ว่าง/); }
+  q.write('docs/requirements/0001.md', '- ok\n'); q.write('docs/stack-decisions.md', '| กลุ่ม | DB |  | | |\n'); bad(go(q), /ไม่ได้ตอบ/);
+});
+test('ตัวเลือกไม่มีค่า = error · ต้นทุนไม่เพี้ยนจากทศนิยม · budget กลางงานได้ · โค้ด stage ค้างบันทึกไม่ได้', (t) => {
+  const r = repo(t); bad(r.gate('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '3.3', '--gates'), /--gates ต้องมีค่า/);
+  r.ok('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '3.3', '--no-prod'); bad(r.gate('add', 'C-0001', 'SEC', 'pass', '--from', ''), /--from ต้องมีค่า/);
+  r.ok('cost', 'C-0001', '1.1'); r.ok('cost', 'C-0001', '2.2'); r.write('src/b.mjs', 'x\n'); bad(r.gate('approve', 'C-0001', 'budget', '--role', 'owner', '--via', 'chat'), /--usd/); approve(r, 'budget', 'owner', '--usd', '9');
+  r.git('add', 'src/b.mjs'); bad(r.gate('add', 'C-0001', 'SEC', 'pass', '--by', 'security-engineer', '--evidence', 'ASVS L1 reviewed'), /stage/);
+});
+test('ค่าลับในไฟล์ชื่อภาษาไทย = hook ปฏิเสธ', (t) => { const r = repo(t); r.write('src/ไทย.mjs', `const h = "${[8, 8, 8, 8].join('.')}";\n`); bad(r.commit('feat: x'), /public-ip/); });

@@ -26,7 +26,7 @@ description: ไล่ด่านทั้งหมดของงานชิ�
    - **GATE-PRIVACY** (security-engineer): data inventory · วัตถุประสงค์ · retention · สิทธิ์เข้าถึง · PDPA/GDPR
    - **GATE-DEPS** (security-engineer): ช่องโหว่ที่รู้ (SCA) + ความเข้ากันของ licence สำหรับ dependency ใหม่/อัป
    - **GATE-OBS** (runbook-rehearsal/ops): log · metrics · alert · dashboard · SLO · runbook — ก่อนขึ้น prod ครั้งแรก/เส้นทางสำคัญเปลี่ยน
-4. ถ้าระหว่างงานพบว่าแตะเรื่องที่ยังไม่ได้เปิดด่าน (เช่น เพิ่ม dependency, เก็บ PII) → **เปิดด่านเพิ่มบนการ์ด** แล้วรัน · ห้ามปล่อยผ่าน
+4. ถ้าระหว่างงานพบว่าแตะเรื่องที่ยังไม่ได้เปิดด่าน (เช่น เพิ่ม dependency, เก็บ PII) → **เปิดด่านเพิ่มบนการ์ด** (`node scripts/gate.mjs update <card> --gates DEPS` · PRIVACY ต้องขึ้น R3 ก่อนด้วย `raise`) แล้วรัน · ห้ามปล่อยผ่าน
 5. ทำตารางสรุป: ด่าน · ผู้ตรวจ · sha · ผ่าน/ไม่ผ่าน/ไม่เกี่ยว (ระบุเหตุผล) · หลักฐาน (`file:line@sha` · path สคริปต์ + sha256 + บรรทัดผล · log + ช่วงเวลา) · ยังไม่ได้ตรวจ = เขียนตรง ๆ
 6. **ด่านไม่ผ่าน = หยุด** แก้ที่ต้นเหตุแล้วรันด่านนั้น (และด่านที่ได้รับผลกระทบ) ใหม่ · ห้ามอ้อม ห้ามส่งให้ session อื่นอ้อมด่าน · hook/สคริปต์ปฏิเสธ = หยุดถาม
 7. บันทึกทุกผลด้วย `node scripts/gate.mjs add …` แล้วรัน `gate.mjs check <card> --stage uat` · FAIL = หยุด แก้ต้นเหตุ ไม่แก้ไฟล์ด่านให้ผ่าน

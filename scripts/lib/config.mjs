@@ -15,7 +15,8 @@ export function helpIfAsked(url) {
 export function loadConfig() {
   for (const f of ['blueprint.config.json', 'blueprint.config.example.json']) {
     const p = path.join(ROOT, f);
-    if (fs.existsSync(p)) return { ...JSON.parse(fs.readFileSync(p, 'utf8')), _file: f };
+    if (!fs.existsSync(p)) continue;
+    try { return { ...JSON.parse(fs.readFileSync(p, 'utf8')), _file: f }; } catch (e) { console.error(`ERROR ${f} ไม่ใช่ JSON ที่ถูกต้อง: ${e.message}`); process.exit(2); }
   }
   return { _file: null };
 }

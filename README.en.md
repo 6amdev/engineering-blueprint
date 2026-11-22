@@ -304,7 +304,7 @@ The scanners lower risk; they do not catch everything. This repo is not a certif
 
 Not good yet: still costly for one screen; the first UI score was lenient (16/16, then 14 when strict).
 
-**Every lane rehearsed before 1.0.0:** an agent that had never seen the repo started from the README, created a project, and took a `bug` R1, a `chore` R1, a `hotfix` R2 to prod and a `feature` R3 to prod through the real hooks until all four cards closed. One agent played every role and the approvals and deploys were simulated, so this proves the tooling, not the quality of the work. The friction it found is fixed ([`CHANGELOG.md`](CHANGELOG.md), Thai).
+**Every lane rehearsed before 1.0.0:** an agent that had never seen the repo started from the README, created a project, and took a `bug` R1, a `chore` R1, a `hotfix` R2 to prod and a `feature` R3 to prod through the real hooks until all four cards closed. One agent played every role and the approvals and deploys were simulated, so this proves the tooling, not the quality of the work. A separate reviewer then attacked `gate.mjs` and found 17 high or medium issues; all are fixed and covered by 11 new tests. The friction it found is fixed ([`CHANGELOG.md`](CHANGELOG.md), Thai).
 
 ## Start
 You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
