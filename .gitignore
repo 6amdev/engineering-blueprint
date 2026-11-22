@@ -1,0 +1,15 @@
+.env*
+!.env.example
+.mcp.json
+blueprint.config.json
+.claude/settings.local.json
+node_modules/
+.scratch/
+*.log
+site/.vitepress/cache/
+site/.vitepress/dist/
+memory/*
+!memory/README.md
+
+# บันทึกส่วนตัวของ maintainer (ไม่ขึ้น git เด็ดขาด)
+.private/

@@ -1,0 +1,15 @@
+{
+  "name": "engineering-blueprint",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "node scripts/hooks/install.mjs",
+    "secret-scan": "node scripts/hooks/pre-commit.mjs --all",
+    "docs:dev": "vitepress dev site",
+    "docs:build": "vitepress build site",
+    "docs:preview": "vitepress preview site"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.3"
+  }
+}

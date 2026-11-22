@@ -1,0 +1,19 @@
+{
+  "_comment": "คัดลอกเป็น blueprint.config.json ต่อโปรเจกต์ (ไม่ขึ้น git) · ห้ามใส่ค่าลับ ใช้ชื่อตัวแปร env แทน",
+  "forbidden_words": [],
+  "post_signature": "",
+  "board": {
+    "adapter": "local",
+    "_adapters": "local (ค่าเริ่มต้น · การ์ด = ไฟล์ใน repo) · trello · github · none",
+    "local": {
+      "dir": "docs/cards"
+    },
+    "trello": {
+      "key_env": "TRELLO_KEY",
+      "token_env": "TRELLO_TOKEN"
+    },
+    "github": {
+      "repo": ""
+    }
+  }
+}

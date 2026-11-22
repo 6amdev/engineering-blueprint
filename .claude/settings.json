@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env*)",
+      "Read(./**/.env*)",
+      "Read(./.mcp.json)",
+      "Read(~/.secrets/**)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Bash(git push --force*)",
+      "Bash(git * --no-verify*)",
+      "Bash(git config --unset core.hooksPath*)",
+      "Bash(git config core.hooksPath *)"
+    ]
+  }
+}
