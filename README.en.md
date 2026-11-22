@@ -7,7 +7,7 @@ Clone it, run one command, and get a project folder with rules, a workflow, docu
 
 ![One request goes through a virtual IT department and becomes a system with a manual](docs/images/hero.en.svg)
 
-> Status: v0.5.0. The principles come from experience of working as a team. One full cycle has been run on a local trial ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
+> Status: v0.5.1. The principles come from experience of working as a team. Two full cycles have been run on local trials ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
 
 **Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [What is asked](#what-is-asked-before-work-starts) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [23 skills](#23-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
 
@@ -289,7 +289,20 @@ One run (2026-11-22): a meeting-room booking app, lane `feature`, risk R2, local
 | Output | Code, documents, manual in 2 languages, runbook, UAT results |
 
 **Not good yet:** a small job used many documents and tokens; it waited for a person at many points; the main session asked for something beyond the spec once and against the spec once (review caught it); one of six seeded bugs could not be confirmed as caught, so GATE-VERIFY does not count as passed under the rules; UAT was checked by an agent and then accepted by the owner.
-0.4.0–0.5.0 change this ([`CHANGELOG.md`](CHANGELOG.md), Thai). Replaying the trial through `gate.mjs`, it refuses to close the card (seeded bugs not all caught, gates run on other code, over the example budget). **No new job has been run yet to measure whether it is better.**
+0.4.0–0.5.0 change this ([`CHANGELOG.md`](CHANGELOG.md), Thai). Replaying the trial through `gate.mjs`, it refuses to close the card (seeded bugs not all caught, gates run on other code, over the example budget).
+
+**Second run (0.5.0 rules):** the same app's screen rebuilt as a timeline, lane `change`, R2 (a smaller job, so not directly comparable)
+
+| | First | Second |
+|---|---|---|
+| Time | 55 min | 58 min including waiting |
+| Cost (API prices) | 19.7 USD | 13.0 USD (44% the already long main session), excluding the three sketches made before the card opened |
+| Questions about the work | 5 | Pick a look, go, acceptance, plus 2 about the budget |
+| Code review | Passed on round 3 | Passed on round 2 |
+| Seeded bugs | 5 of 6 confirmed caught | 8 of 8 |
+| Rules skipped | Card closed with VERIFY incomplete | None; `gate.mjs` stopped the work twice for budget |
+
+Not good yet: still costly for one screen; the first UI score was lenient (16/16, then 14 when strict); upgrading a project is manual.
 
 ## Start
 You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).

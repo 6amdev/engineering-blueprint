@@ -3,7 +3,7 @@
 A project template for a small, professional engineering team that works with AI agents, from the first
 request to a system in production with a user manual. Create a project from it with `scripts/new-project.mjs`. Any agent that reads this
 file (Claude Code, Codex, Cursor, Gemini CLI, others) must be able to work from short instructions, without confusion.
-Status: **v0.5.0 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
+Status: **v0.5.1 (2026-11-22)** — a full virtual department: docs, skills, agents and templates hold generic,
 standards-based content. Slots marked `กรอกต่อโปรเจกต์:` are filled per project (ask the owner for those).
 
 This file is the single source of rules. Tool-specific files only add to it: `CLAUDE.md` (Claude Code).

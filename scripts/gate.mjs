@@ -100,6 +100,11 @@ function budgetState({ ev, o }) {
   if (rounds > limitRounds) over.push(`เกินจำนวนรอบในงบ: ไม่ผ่าน ${rounds} รอบ จาก ${limitRounds}`);
   return over;
 }
+function budgetWarning({ ev, o }) {
+  const limit = ev.filter((e) => e.t === 'approve' && e.word === 'budget' && e.role === 'owner').reduce((v, e) => e.usd ?? v, o.budget_usd);
+  const spent = ev.filter((e) => e.t === 'cost').reduce((s, e) => s + e.usd, 0);
+  return spent >= limit * 0.8 && spent <= limit ? `ใช้ไป ${spent.toFixed(2)} จาก ${limit} USD (เกิน 80%) ประเมินก่อนเปิดงานเพิ่ม กันไว้ปิดงานราว 10%` : null;
+}
 
 /** @returns {string[]} ข้อที่ยังไม่ครบ (ว่าง = ผ่าน) */
 export function evaluate(card, stage, { staged = false } = {}) {
@@ -131,7 +136,7 @@ export function evaluate(card, stage, { staged = false } = {}) {
     if (code !== null && !now(last)) p.push(`ด่าน ${g}: โค้ดเปลี่ยนหลังตรวจ (ตรวจที่ ${last.sha.slice(0, 7)})`);
     // ไล่ from ย้อนกลับไปจนถึงครั้งที่ตรวจเต็ม
     let cur = last; let k = list.length - 1;
-    while (cur?.from) { const want = cur.from; k -= 1; while (k >= 0 && !(list[k].sha === want && list[k].result !== 'fail')) k -= 1; cur = list[k]; }
+    while (cur?.from) { const want = cur.from; k -= 1; while (k >= 0 && list[k].sha !== want) k -= 1; cur = list[k]; } // ครั้งก่อนหน้าไม่ผ่านก็ได้ ถ้าเป็นการตรวจเต็ม แล้วครั้งนี้ตรวจส่วนที่แก้
     if (!cur) p.push(`ด่าน ${g}: ตรวจเฉพาะส่วนที่เปลี่ยน แต่ไม่มีครั้งที่ตรวจเต็มก่อนหน้า`);
     if (risk === 'R3' && last.from) p.push(`ด่าน ${g}: R3 ต้องตรวจเต็มที่โค้ดล่าสุด`);
     if (g === 'VERIFY' && risk !== 'R1') {
@@ -281,7 +286,10 @@ function main() {
   const had = fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : '';
   fs.appendFileSync(f, `${had && !had.endsWith('\n') ? '\n' : ''}${JSON.stringify(e)}\n`);
   console.log(`OK ${cmd} → ${gateFile(card)}`);
-  const over = budgetState(load(card, false));
+  const after = load(card, false);
+  const warn = budgetWarning(after);
+  if (warn) console.error(`WARN ${warn}`);
+  const over = budgetState(after);
   if (over.length) { console.error(`STOP ${over.join(' · ')} · หยุดถาม Owner (gate.mjs approve ${card} budget --role owner …)`); process.exit(3); }
 }
 

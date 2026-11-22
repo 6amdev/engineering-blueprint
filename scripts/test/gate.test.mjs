@@ -226,3 +226,11 @@ test('squash / เขียน history ใหม่แต่โค้ดเท�
   const r = repo(t); full(r); r.git('commit', '-q', '--amend', '-m', 'chore: rewritten'); r.write('VERSION', '2\n'); r.write('CHANGELOG.md', 'x\n');
   r.ok('check', 'C-0001', '--stage', 'close'); r.write('docs/cards/C-0009.md', '# C-0009\n'); assert.equal(r.commit('docs: card').status, 0);
 });
+test('REVIEW ตรวจเต็มแล้วไม่ผ่าน → แก้ → ตรวจส่วนที่แก้ด้วย --from ได้ · เตือนเมื่อใช้งบ 80%', (t) => {
+  const r = repo(t); open(r); approve(r, 'go', 'owner-reviewer'); ['VERIFY', 'SEC', 'REGRESSION'].forEach((g) => pass(r, g));
+  r.ok('add', 'C-0001', 'REVIEW', 'fail', '--by', 'lead-reviewer', '--evidence', 'MAJOR 1 at src/a.mjs:1'); const a = r.git('rev-parse', 'HEAD');
+  r.write('src/a.mjs', 'export const a = 2;\n'); r.commit('fix: a');
+  ['VERIFY', 'SEC', 'REGRESSION', 'REVIEW'].forEach((g) => pass(r, g, '--from', a)); approve(r, 'accept', 'owner');
+  const w = r.gate('cost', 'C-0001', '8'); assert.equal(w.status, 0); assert.match(w.stderr, /WARN/);
+  r.ok('check', 'C-0001', '--stage', 'close');
+});
