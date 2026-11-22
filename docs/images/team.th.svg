@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1104" width="960" height="1104" role="img" aria-label="ใครคุยกับใคร">
+<title>ใครคุยกับใคร</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6475"/></marker><marker id="b" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#5B6475"/></marker></defs>
+<rect width="960" height="1104" rx="20" fill="#FBFAF6"/>
+<text x="40" y="58" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="32" font-weight="700" fill="#1B2233" text-anchor="start">ใครคุยกับใคร</text>
+<text x="40" y="92" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#5B6475" text-anchor="start">agent ไม่คุยกันเอง ทุกอย่างผ่าน session หลัก และบันทึกลงการ์ด</text>
+<rect x="28" y="118" width="904" height="116" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="480" y="154" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#B25E00" text-anchor="middle">คน · ตัดสินและอนุมัติ</text>
+<rect x="46" y="174" width="166" height="44" rx="10" fill="#fff" stroke="#B25E00" stroke-width="1.5"/>
+<text x="129" y="203" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="middle">Owner</text>
+<rect x="221" y="174" width="166" height="44" rx="10" fill="#fff" stroke="#B25E00" stroke-width="1.5"/>
+<text x="304" y="203" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="middle">Owner-reviewer</text>
+<rect x="396" y="174" width="166" height="44" rx="10" fill="#fff" stroke="#B25E00" stroke-width="1.5"/>
+<text x="479" y="203" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="middle">Dev</text>
+<rect x="571" y="174" width="166" height="44" rx="10" fill="#fff" stroke="#B25E00" stroke-width="1.5"/>
+<text x="654" y="203" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="middle">Frontend</text>
+<rect x="746" y="174" width="166" height="44" rx="10" fill="#fff" stroke="#B25E00" stroke-width="1.5"/>
+<text x="829" y="203" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="middle">Ops</text>
+<path d="M700 238V300" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)" marker-start="url(#b)"/>
+<text x="716" y="276" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">ถาม / อนุมัติ</text>
+<rect x="28" y="306" width="390" height="136" rx="14" fill="#171E30" stroke="none" stroke-width="1.5"/>
+<text x="223" y="352" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="26" font-weight="700" fill="#FFA62B" text-anchor="middle">session หลัก</text>
+<text x="223" y="386" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#E8ECF8" text-anchor="middle">คุยกับคนผ่านการ์ด</text>
+<text x="223" y="416" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#E8ECF8" text-anchor="middle">แจกงานและรวมผล</text>
+<rect x="542" y="306" width="390" height="136" rx="14" fill="#FFFFFF" stroke="#3D4A60" stroke-width="2"/>
+<text x="737" y="352" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="26" font-weight="700" fill="#1B2233" text-anchor="middle">การ์ดงาน</text>
+<text x="737" y="386" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#3D4A60" text-anchor="middle">docs/cards/C-0001.md</text>
+<text x="737" y="416" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#5B6475" text-anchor="middle">คำถาม · คำอนุมัติ · หลักฐาน</text>
+<path d="M424 374H534" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)" marker-start="url(#b)"/>
+<text x="480" y="360" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="middle">อ่าน / โพสต์</text>
+<path d="M150 446V506" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<text x="138" y="482" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">brief งาน</text>
+<path d="M290 506V446" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<text x="304" y="482" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">ผล + หลักฐาน</text>
+<rect x="28" y="514" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="46" y="547" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">รับงาน</text>
+<rect x="46" y="562" width="167.18" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="582" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">intake-analyst</text>
+<rect x="334" y="514" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="352" y="547" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">ออกแบบ</text>
+<rect x="352" y="562" width="208.65999999999997" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="582" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">solution-architect</text>
+<rect x="352" y="598" width="125.7" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="618" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">challenger</text>
+<rect x="640" y="514" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="658" y="547" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">พัฒนา</text>
+<rect x="658" y="562" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="669" y="582" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">implementer</text>
+<rect x="28" y="658" width="292" height="166" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="46" y="691" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">ทดสอบ</text>
+<rect x="46" y="706" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="726" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">test-engineer</text>
+<rect x="46" y="742" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="762" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">qa-engineer</text>
+<rect x="46" y="778" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="798" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">regression-tester</text>
+<rect x="334" y="658" width="292" height="166" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="352" y="691" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">ขึ้นระบบ</text>
+<rect x="352" y="706" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="726" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">uat-release</text>
+<rect x="352" y="742" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="762" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">runbook-rehearsal</text>
+<rect x="352" y="778" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="798" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">prod-reader</text>
+<rect x="640" y="658" width="292" height="166" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="658" y="691" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">ความปลอดภัย</text>
+<rect x="658" y="706" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="669" y="726" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">security-engineer</text>
+<rect x="28" y="838" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="46" y="871" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">รีวิว</text>
+<rect x="46" y="886" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">lead-reviewer</text>
+<rect x="46" y="922" width="208.65999999999997" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="942" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">approval-rehearsal</text>
+<rect x="334" y="838" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="352" y="871" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">เอกสาร</text>
+<rect x="352" y="886" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="363" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">tech-writer</text>
+<rect x="640" y="838" width="292" height="130" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="658" y="871" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">หาสาเหตุ</text>
+<rect x="658" y="886" width="208.65999999999997" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="669" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">root-cause-analyst</text>
+<rect x="28" y="982" width="292" height="94" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<text x="46" y="1015" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#1B2233" text-anchor="start">รายงาน</text>
+<rect x="46" y="1030" width="177.55" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="57" y="1050" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">status-reporter</text>
+<text x="348" y="1006" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="start">• คนเขียนโค้ด กับคนตรวจ เป็นคนละ agent</text>
+<text x="348" y="1037" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="start">• agent อนุมัติแทนคนไม่ได้ · ความเงียบไม่ใช่การอนุมัติ</text>
+<text x="348" y="1068" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#1B2233" text-anchor="start">• ทุกข้อเท็จจริงต้องมีที่มา ถ้าไม่ได้ตรวจ เขียนว่า “ยังไม่ได้ตรวจ”</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 950" width="960" height="950" role="img" aria-label="How people pass the baton">
+<title>How people pass the baton</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6475"/></marker><marker id="b" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#5B6475"/></marker></defs>
+<rect width="960" height="950" rx="20" fill="#FBFAF6"/>
+<text x="40" y="58" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="32" font-weight="700" fill="#1B2233" text-anchor="start">How people pass the baton</text>
+<text x="40" y="92" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#5B6475" text-anchor="start">Each role receives a complete package, decides its own part, and passes evidence on</text>
+<rect x="28" y="120" width="904" height="124" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<rect x="28" y="120" width="226" height="124" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="141" y="190" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#B25E00" text-anchor="middle">Owner</text>
+<text x="276" y="158" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Answers with option A or B</text>
+<text x="276" y="190" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Decides business rules and wording</text>
+<text x="276" y="222" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Says clearly what is out of scope</text>
+<rect x="632" y="134" width="284" height="96" rx="14" fill="#E8ECF2" stroke="none" stroke-width="1.5"/>
+<text x="650" y="162" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="17" font-weight="400" fill="#5B6475" text-anchor="start">Passes on</text>
+<text x="650" y="189" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">Confirmed brief</text>
+<text x="650" y="216" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">the word ACK</text>
+<path d="M774 244V259" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="262" width="904" height="124" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<rect x="28" y="262" width="226" height="124" rx="14" fill="#171E30" stroke="#171E30" stroke-width="1.5"/>
+<text x="141" y="332" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#FFA62B" text-anchor="middle">Dev + agents</text>
+<text x="276" y="300" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Short design before any code</text>
+<text x="276" y="332" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Failing test first, then code</text>
+<text x="276" y="364" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Full self-check before handing over</text>
+<rect x="632" y="276" width="284" height="96" rx="14" fill="#E8ECF2" stroke="none" stroke-width="1.5"/>
+<text x="650" y="304" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="17" font-weight="400" fill="#5B6475" text-anchor="start">Passes on</text>
+<text x="650" y="331" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">One complete package</text>
+<text x="650" y="358" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">diff · tests · gates</text>
+<path d="M774 386V401" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="404" width="904" height="124" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<rect x="28" y="404" width="226" height="124" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="141" y="474" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#B25E00" text-anchor="middle">Owner-reviewer</text>
+<text x="276" y="442" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Gives “go” before coding starts</text>
+<text x="276" y="474" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Compares work with agreed scope</text>
+<text x="276" y="506" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Reads evidence, not claims</text>
+<rect x="632" y="418" width="284" height="96" rx="14" fill="#E8ECF2" stroke="none" stroke-width="1.5"/>
+<text x="650" y="446" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="17" font-weight="400" fill="#5B6475" text-anchor="start">Passes on</text>
+<text x="650" y="473" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">“go” · gates passed</text>
+<text x="650" y="500" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">tied to the checked sha</text>
+<path d="M774 528V543" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="546" width="904" height="124" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<rect x="28" y="546" width="226" height="124" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="141" y="616" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#B25E00" text-anchor="middle">Frontend</text>
+<text x="276" y="584" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Agrees the contract first</text>
+<text x="276" y="616" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Opens the real page on UAT</text>
+<text x="276" y="648" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Checks mobile, dark mode, errors</text>
+<rect x="632" y="560" width="284" height="96" rx="14" fill="#E8ECF2" stroke="none" stroke-width="1.5"/>
+<text x="650" y="588" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="17" font-weight="400" fill="#5B6475" text-anchor="start">Passes on</text>
+<text x="650" y="615" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">GATE-UI passed</text>
+<text x="650" y="642" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">screenshots + sha</text>
+<path d="M774 670V685" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="688" width="904" height="124" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<rect x="28" y="688" width="226" height="124" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="141" y="758" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#B25E00" text-anchor="middle">Ops</text>
+<text x="276" y="726" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Gets a request ready to follow</text>
+<text x="276" y="758" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">One target at a time, then watches</text>
+<text x="276" y="790" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">May stop or roll back, no waiting</text>
+<rect x="632" y="702" width="284" height="96" rx="14" fill="#E8ECF2" stroke="none" stroke-width="1.5"/>
+<text x="650" y="730" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="17" font-weight="400" fill="#5B6475" text-anchor="start">Passes on</text>
+<text x="650" y="757" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">Deploy finished</text>
+<text x="650" y="784" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#3D4A60" text-anchor="start">post-deploy checks</text>
+<rect x="28" y="830" width="904" height="92" rx="14" fill="#fff" stroke="#B25E00" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="52" y="866" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="600" fill="#B25E00" text-anchor="start">Incomplete package = sent back with the reason, never guessed</text>
+<text x="52" y="900" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="600" fill="#B25E00" text-anchor="start">Code or script changed after approval = check and ask again</text>
+</svg>

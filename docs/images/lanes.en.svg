@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 736" width="960" height="736" role="img" aria-label="Which stages each kind of work goes through">
+<title>Which stages each kind of work goes through</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6475"/></marker><marker id="b" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#5B6475"/></marker></defs>
+<rect width="960" height="736" rx="20" fill="#FBFAF6"/>
+<text x="40" y="58" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="32" font-weight="700" fill="#1B2233" text-anchor="start">Which stages each kind of work goes through</text>
+<text x="40" y="92" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#5B6475" text-anchor="start">The lane is chosen at intake</text>
+<rect x="513" y="112" width="132" height="512" rx="14" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="282" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">0</text>
+<text x="282" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">intake</text>
+<text x="348" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">1</text>
+<text x="348" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">req</text>
+<text x="414" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">2</text>
+<text x="414" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">spec</text>
+<text x="480" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">3</text>
+<text x="480" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">design</text>
+<text x="546" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">4</text>
+<text x="546" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">build</text>
+<text x="612" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">5</text>
+<text x="612" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">gates</text>
+<text x="678" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">6</text>
+<text x="678" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">UAT</text>
+<text x="744" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">7</text>
+<text x="744" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">deploy</text>
+<text x="810" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">8</text>
+<text x="810" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">release</text>
+<text x="876" y="144" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#1B2233" text-anchor="middle">9</text>
+<text x="876" y="168" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="400" fill="#5B6475" text-anchor="middle">close</text>
+<line x1="28" y1="190" x2="932" y2="190" stroke="#D9D5CB"/>
+<text x="40" y="228" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" font-weight="700" fill="#5336B5" text-anchor="start">feature</text>
+<text x="40" y="256" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">New capability</text>
+<circle cx="282" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="348" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="414" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="480" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="546" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="612" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="678" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="744" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="810" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="876" cy="234" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<line x1="28" y1="276" x2="932" y2="276" stroke="#D9D5CB"/>
+<text x="40" y="314" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" font-weight="700" fill="#5336B5" text-anchor="start">change</text>
+<text x="40" y="342" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">Change to agreed scope</text>
+<circle cx="282" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="348" cy="320" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M348 304a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="414" cy="320" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M414 304a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="480" cy="320" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M480 304a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="546" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="612" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="678" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="744" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="810" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="876" cy="320" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<line x1="28" y1="362" x2="932" y2="362" stroke="#D9D5CB"/>
+<text x="40" y="400" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" font-weight="700" fill="#5336B5" text-anchor="start">bug</text>
+<text x="40" y="428" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">Differs from the spec</text>
+<circle cx="282" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="348" cy="406" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M348 390a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="414" cy="406" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M414 390a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="480" cy="406" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M480 390a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="546" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="612" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="678" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="744" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="810" cy="406" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M810 390a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="876" cy="406" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<line x1="28" y1="448" x2="932" y2="448" stroke="#D9D5CB"/>
+<text x="40" y="486" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" font-weight="700" fill="#5336B5" text-anchor="start">hotfix</text>
+<text x="40" y="514" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">Production broken now</text>
+<circle cx="282" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M282 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="348" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M348 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="414" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M414 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="480" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M480 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="546" cy="492" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="612" cy="492" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="678" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M678 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="744" cy="492" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="810" cy="492" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M810 476a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="876" cy="492" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<line x1="28" y1="534" x2="932" y2="534" stroke="#D9D5CB"/>
+<text x="40" y="572" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="22" font-weight="700" fill="#5336B5" text-anchor="start">chore</text>
+<text x="40" y="600" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">Maintenance</text>
+<circle cx="282" cy="578" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M282 562a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="348" cy="578" r="16" fill="#fff" stroke="#D9D5CB" stroke-width="3"/>
+<circle cx="414" cy="578" r="16" fill="#fff" stroke="#D9D5CB" stroke-width="3"/>
+<circle cx="480" cy="578" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M480 562a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="546" cy="578" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="612" cy="578" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="678" cy="578" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="744" cy="578" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="810" cy="578" r="16" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M810 562a16 16 0 0 0 0 32z" fill="#0B6B55"/>
+<circle cx="876" cy="578" r="16" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<circle cx="56" cy="658" r="12" fill="#0B6B55" stroke="#0B6B55" stroke-width="3"/>
+<text x="78" y="664" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Required</text>
+<circle cx="210.64" cy="658" r="12" fill="#fff" stroke="#0B6B55" stroke-width="3"/>
+<path d="M210.64 646a12 12 0 0 0 0 24z" fill="#0B6B55"/>
+<text x="232.64" y="664" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Short, or only if affected</text>
+<circle cx="560.22" cy="658" r="12" fill="#fff" stroke="#D9D5CB" stroke-width="3"/>
+<text x="582.22" y="664" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#1B2233" text-anchor="start">Skipped</text>
+<text x="40" y="708" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700" fill="#B25E00" text-anchor="start">No lane may skip stage 4 (tests) or stage 5 (gates)</text>
+</svg>

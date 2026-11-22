@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1579" width="960" height="1579" role="img" aria-label="One piece of work, ten stages">
+<title>One piece of work, ten stages</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6475"/></marker><marker id="b" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#5B6475"/></marker></defs>
+<rect width="960" height="1579" rx="20" fill="#FBFAF6"/>
+<text x="40" y="58" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="32" font-weight="700" fill="#1B2233" text-anchor="start">One piece of work, ten stages</text>
+<text x="40" y="92" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="400" fill="#5B6475" text-anchor="start">Each stage has a skill to follow, agents that do it, a document, and a person who confirms</text>
+<rect x="40" y="117" width="20" height="20" rx="6" fill="#E9E4FB" stroke="#5336B5" stroke-width="1.5"/>
+<text x="69" y="133" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">skill = how</text>
+<rect x="215.86" y="117" width="20" height="20" rx="6" fill="#DDF3EC" stroke="#0B6B55" stroke-width="1.5"/>
+<text x="244.86" y="133" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">agent = who does it</text>
+<rect x="473.80000000000007" y="117" width="20" height="20" rx="6" fill="#E8ECF2" stroke="#3D4A60" stroke-width="1.5"/>
+<text x="502.80000000000007" y="133" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">document produced</text>
+<rect x="711.22" y="117" width="20" height="20" rx="6" fill="#FFF1D6" stroke="#B25E00" stroke-width="1.5"/>
+<text x="740.22" y="133" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="400" fill="#5B6475" text-anchor="start">person = approver</text>
+<rect x="28" y="164" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="204" r="24" fill="#171E30"/>
+<text x="68" y="212" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">0</text>
+<text x="112" y="204" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Intake · ask until clear</text>
+<rect x="112" y="222" width="84.22" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="242" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">intake</text>
+<rect x="204.22" y="222" width="167.18" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="215.22" y="242" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">intake-analyst</text>
+<text x="912" y="202" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">intake</text>
+<text x="616" y="234" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Brief passing DoR</text>
+<text x="616" y="262" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner confirms</text>
+<path d="M68 276V288" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="290" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="330" r="24" fill="#171E30"/>
+<text x="68" y="338" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">1</text>
+<text x="112" y="330" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Requirements</text>
+<rect x="112" y="348" width="146.44000000000003" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">requirements</text>
+<rect x="266.44000000000005" y="348" width="167.18" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="277.44000000000005" y="368" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">intake-analyst</text>
+<text x="912" y="328" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">requirements</text>
+<text x="616" y="360" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ PRD + user stories</text>
+<text x="616" y="388" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner ACK</text>
+<path d="M68 402V414" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="416" width="904" height="146" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="456" r="24" fill="#171E30"/>
+<text x="68" y="464" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">2</text>
+<text x="112" y="456" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Specification</text>
+<rect x="112" y="474" width="63.48" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="494" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">spec</text>
+<rect x="183.48" y="474" width="208.65999999999997" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="194.48" y="494" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">solution-architect</text>
+<rect x="400.14" y="474" width="125.7" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="411.14" y="494" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">challenger</text>
+<rect x="112" y="513" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="123" y="533" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">lead-reviewer</text>
+<text x="912" y="454" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">spec</text>
+<text x="616" y="486" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Spec + test inventory</text>
+<text x="616" y="514" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner-reviewer ACK</text>
+<path d="M68 562V574" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="576" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="616" r="24" fill="#171E30"/>
+<text x="68" y="624" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">3</text>
+<text x="112" y="616" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Design</text>
+<rect x="112" y="634" width="84.22" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="654" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">design</text>
+<rect x="204.22" y="634" width="208.65999999999997" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="215.22" y="654" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">solution-architect</text>
+<rect x="420.88" y="634" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="431.88" y="654" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">lead-reviewer</text>
+<text x="912" y="614" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">design</text>
+<text x="616" y="646" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ ADR + design brief</text>
+<text x="616" y="674" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner-reviewer “go”</text>
+<path d="M68 688V700" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="702" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="742" r="24" fill="#171E30"/>
+<text x="68" y="750" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">4</text>
+<text x="112" y="742" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Failing test first, then code</text>
+<rect x="112" y="760" width="53.11" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="780" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">tdd</text>
+<rect x="173.11" y="760" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="184.11" y="780" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">implementer</text>
+<text x="912" y="740" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">build</text>
+<text x="616" y="772" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Code + test results</text>
+<text x="616" y="800" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Dev reads test results</text>
+<path d="M68 814V826" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="828" width="904" height="185" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="868" r="24" fill="#171E30"/>
+<text x="68" y="876" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">5</text>
+<text x="112" y="868" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Quality gates</text>
+<rect x="112" y="886" width="125.7" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">gate-check</text>
+<rect x="245.7" y="886" width="136.07000000000002" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="256.7" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">code-review</text>
+<rect x="389.77" y="886" width="177.55" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="400.77" y="906" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">security-review</text>
+<rect x="112" y="925" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="123" y="945" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">test-engineer</text>
+<rect x="276.81000000000006" y="925" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="287.81000000000006" y="945" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">security-engineer</text>
+<rect x="112" y="964" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="123" y="984" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">regression-tester</text>
+<rect x="318.28999999999996" y="964" width="156.81000000000003" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="329.28999999999996" y="984" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">lead-reviewer</text>
+<text x="912" y="866" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">gates</text>
+<text x="616" y="898" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Review + gate results</text>
+<text x="616" y="926" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner-reviewer</text>
+<path d="M68 1013V1025" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="1027" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="1067" r="24" fill="#171E30"/>
+<text x="68" y="1075" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">6</text>
+<text x="112" y="1067" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Try it before production</text>
+<rect x="112" y="1085" width="53.11" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="1105" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">uat</text>
+<rect x="173.11" y="1085" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="184.11" y="1105" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">uat-release</text>
+<rect x="317.18000000000006" y="1085" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="328.18000000000006" y="1105" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">qa-engineer</text>
+<text x="912" y="1065" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">UAT</text>
+<text x="616" y="1097" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Test results + sign-off</text>
+<text x="616" y="1125" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner-reviewer</text>
+<path d="M68 1139V1151" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="1153" width="904" height="146" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="1193" r="24" fill="#171E30"/>
+<text x="68" y="1201" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">7</text>
+<text x="112" y="1193" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Go live</text>
+<rect x="112" y="1211" width="167.18" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="1231" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">deploy-request</text>
+<rect x="287.18" y="1211" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="298.18" y="1231" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">uat-release</text>
+<rect x="112" y="1250" width="198.29" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="123" y="1270" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">runbook-rehearsal</text>
+<text x="912" y="1191" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">deploy</text>
+<text x="616" y="1223" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Deploy request + runbook</text>
+<text x="616" y="1251" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Ops + Owner-reviewer</text>
+<path d="M68 1299V1311" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="1313" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="1353" r="24" fill="#171E30"/>
+<text x="68" y="1361" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">8</text>
+<text x="112" y="1353" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Release to users</text>
+<rect x="112" y="1371" width="156.81000000000003" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="1391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">release-notes</text>
+<rect x="276.81000000000006" y="1371" width="136.07000000000002" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="287.81000000000006" y="1391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">user-manual</text>
+<rect x="420.8800000000001" y="1371" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="431.8800000000001" y="1391" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">tech-writer</text>
+<text x="912" y="1351" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">release</text>
+<text x="616" y="1383" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ Release notes + manual</text>
+<text x="616" y="1411" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner</text>
+<path d="M68 1425V1437" fill="none" stroke="#5B6475" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="28" y="1439" width="904" height="112" rx="14" fill="#FFFFFF" stroke="#D9D5CB" stroke-width="1.5"/>
+<circle cx="68" cy="1479" r="24" fill="#171E30"/>
+<text x="68" y="1487" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="700" fill="#FFA62B" text-anchor="middle">9</text>
+<text x="112" y="1479" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="23" font-weight="700" fill="#1B2233" text-anchor="start">Close · hand over</text>
+<rect x="112" y="1497" width="94.58999999999999" height="31" rx="9" fill="#E9E4FB" stroke="none" stroke-width="1.5"/>
+<text x="123" y="1517" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#5336B5" text-anchor="start">handoff</text>
+<rect x="214.58999999999997" y="1497" width="136.07000000000002" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="225.58999999999997" y="1517" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">tech-writer</text>
+<rect x="358.65999999999997" y="1497" width="177.55" height="31" rx="9" fill="#DDF3EC" stroke="none" stroke-width="1.5"/>
+<text x="369.65999999999997" y="1517" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="17" font-weight="600" fill="#0B6B55" text-anchor="start">status-reporter</text>
+<text x="912" y="1477" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="18" font-weight="400" fill="#5B6475" text-anchor="end">close</text>
+<text x="616" y="1509" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="600" fill="#3D4A60" text-anchor="start">▤ HANDOFF + DoD</text>
+<text x="616" y="1537" font-family="'IBM Plex Sans Thai','Noto Sans Thai','Leelawadee UI','Thonburi',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="18" font-weight="700" fill="#B25E00" text-anchor="start">✓ Owner-reviewer</text>
+</svg>

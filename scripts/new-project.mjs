@@ -13,7 +13,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // ของตัวหลักเอง ไม่ตามไปกับโปรเจกต์
 const SKIP = [/^memory\/(?!README\.md$)/, /^scripts\/new-project\.mjs$/, /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/,
-  /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/];
+  /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/,
+  /^README\.en\.md$/, /^docs\/images\//, /^scripts\/readme-diagrams\.mjs$/];
 const die = (m) => { console.error(`ERROR ${m}`); process.exit(2); };
 const git = (args, cwd) => execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
 
