@@ -3,14 +3,14 @@
 //   node scripts/upgrade-project.mjs <project-folder> [--apply] [--base <commit ของ blueprint>]
 // เทียบ 3 ทาง: ไฟล์ตอนสร้าง (.blueprint.json) · ไฟล์ในโปรเจกต์ตอนนี้ · ไฟล์ใหม่ใน blueprint
 //   โปรเจกต์ไม่ได้แก้ → ใช้ของใหม่ · แก้คนละจุด → รวมให้ · แก้จุดเดียวกัน → ไม่แตะไฟล์ วางของใหม่ไว้ที่ .blueprint-upgrade/ ให้คนรวม
-// ไม่แตะ: README, HANDOFF, stack-decisions, memory, package-lock และไฟล์ที่ไม่ได้มาจาก blueprint · ไม่ commit ให้
+// ไม่แตะ: README, HANDOFF, stack-decisions, memory, package-lock, หน้าคู่มือ site/ และไฟล์ที่ไม่ได้มาจาก blueprint · ไม่ commit ให้
 // ไม่ใส่ --apply = แสดงรายการอย่างเดียว · exit: 0 = ได้ · 1 = มีไฟล์ที่ต้องรวมเอง · 2 = ใช้ผิด / ยังไม่พร้อม
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { helpIfAsked } from './lib/config.mjs';
-import { BLUEPRINT, git, OWNED, projectFiles, versionAt } from './lib/project-files.mjs';
+import { BLUEPRINT, git, isOwned, projectFiles, versionAt } from './lib/project-files.mjs';
 
 helpIfAsked(import.meta.url);
 
@@ -72,7 +72,7 @@ const todo = { add: [], update: [], merge: [], remove: [] };
 const conflicts = []; const kept = [];
 const writes = new Map(); // path → Buffer หรือ null (ลบ)
 for (const f of [...new Set([...B.keys(), ...N.keys()])].sort()) {
-  if (OWNED.includes(f)) continue;
+  if (isOwned(f)) continue;
   const n = N.get(f)?.data ?? null;
   const [bl, nl] = [lf(B.get(f)?.data ?? null), lf(n)];
   const st = fs.lstatSync(path.join(dest, f), { throwIfNoEntry: false });

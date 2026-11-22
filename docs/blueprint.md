@@ -17,7 +17,7 @@ blueprint (repo นี้ · VERSION)          ← ปรับวิธีท�
 1. แก้ในตัวหลัก → ขึ้น `VERSION` (SemVer: กติกาเปลี่ยนจนของเดิมใช้ไม่ได้ = major · เพิ่ม skill/แม่แบบ = minor · แก้คำ = patch) → `CHANGELOG.md`
 2. ดึงเข้าโปรเจกต์: `node scripts/upgrade-project.mjs <folder>` ดูรายการก่อน → ใส่ `--apply` → `git diff` → `npm install` → `npm run gate:test` → commit ในโปรเจกต์
    - ไฟล์ที่โปรเจกต์ไม่ได้แก้ = แทนที่ · แก้คนละจุด = รวมให้ · แก้จุดเดียวกัน = ไม่แตะ วางของใหม่ไว้ที่ `.blueprint-upgrade/` ให้รวมเอง
-   - ไม่แตะ README · HANDOFF · stack-decisions · memory · โค้ดของโปรเจกต์ · ไม่ commit ให้
+   - ไม่แตะ README · HANDOFF · stack-decisions · memory · หน้าคู่มือ `site/` · โค้ดของโปรเจกต์ · ไม่ commit ให้
    - ไฟล์ที่โปรเจกต์คัดลอกมาเองก่อนมีคำสั่งนี้: ระบุจุดเริ่มด้วย `--base <commit ของ blueprint>`
 
 ## บทเรียนจากโปรเจกต์ → ตัวหลัก

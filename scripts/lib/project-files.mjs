@@ -8,7 +8,8 @@ export const BLUEPRINT = path.resolve(path.dirname(fileURLToPath(import.meta.url
 const SKIP = [/^memory\/(?!README\.md$)/, /^scripts\/(new-project|upgrade-project|readme-diagrams|lib\/project-files|test\/project\.test)\.mjs$/,
   /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/, /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/, /^README\.en\.md$/, /^docs\/images\//];
 // โปรเจกต์เป็นเจ้าของตั้งแต่วันแรก upgrade ไม่แตะ
-export const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json'];
+const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json'];
+export const isOwned = (f) => OWNED.includes(f) || /^site/.*.md$/.test(f); // หน้าคู่มือ = เนื้อหาของโปรเจกต์
 
 export const git = (args, cwd = BLUEPRINT, encoding = 'utf8') => execFileSync('git', args, { cwd, encoding, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 200_000_000 });
 export const versionAt = (commit) => git(['show', `${commit}:VERSION`]).trim();
