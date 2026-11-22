@@ -38,6 +38,8 @@ const today = new Date().toISOString().slice(0, 10);
 const edit = (f, fn) => { const p = path.join(dest, f); if (fs.existsSync(p)) fs.writeFileSync(p, fn(fs.readFileSync(p, 'utf8'))); };
 const pkg = JSON.parse(fs.readFileSync(path.join(dest, 'package.json'), 'utf8'));
 pkg.name = name;
+delete pkg.license; // โค้ดของโปรเจกต์เลือก license เอง
+fs.copyFileSync(path.join(ROOT, 'LICENSE'), path.join(dest, 'LICENSE-blueprint')); // ไฟล์ที่มาจาก blueprint
 fs.writeFileSync(path.join(dest, 'package.json'), JSON.stringify(pkg, null, 2) + '\n');
 edit('package-lock.json', (s) => s.replace(/"name": "engineering-blueprint"/g, `"name": "${name}"`));
 edit('AGENTS.md', (s) => s.replace(/^# .*$/m, `# ${name} — rules for every AI coding agent`)

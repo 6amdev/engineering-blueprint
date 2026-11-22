@@ -1,6 +1,7 @@
 {
   "name": "engineering-blueprint",
   "private": true,
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "prepare": "node scripts/hooks/install.mjs",

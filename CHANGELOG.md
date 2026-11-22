@@ -10,6 +10,7 @@
 - แม่แบบ 19 ชิ้นพร้อมกรอก (ใหม่: change-request · bug-report · retro)
 - บอร์ด `local` เป็นค่าเริ่มต้น: การ์ดเป็นไฟล์ `docs/cards/` ไม่ต้องใช้ Trello · `board.mjs new|post|read`
 - README บอกว่าทำเพื่ออะไร ตัวอย่างงาน 1 ชิ้น และอะไรบังคับจริง/อะไรเป็นแนวทาง · `SECURITY.md` · `CONTRIBUTING.md`
+- license Apache-2.0 · โปรเจกต์ใหม่ได้ `LICENSE-blueprint`
 
 ## 0.2.0 — 2026-11-21
 - `docs/git.md`: branch · Conventional Commits · PR + review · SemVer tag · hotfix · worktree · rollback · ค่าลับ · บอร์ด

@@ -6,7 +6,7 @@
 - **เสร็จ:** กติกา · workflow 10 ขั้น 5 ช่องทาง · ด่าน · agent 16 · skill 21 · แม่แบบ · บอร์ด `local` · hook สแกนค่าลับและรูปแบบ commit · `draft-check` · `new-project` · web doc · README
 - **ถัดไป:** (1) สร้างโปรเจกต์จริง 1 ชิ้นด้วย `new-project` เดินครบ 1 การ์ด จดจุดติด (2) `upgrade-project` ดึงเวอร์ชันใหม่เข้าโปรเจกต์เดิม (3) สคริปต์ตรวจด่านที่ตอนนี้เป็น checklist ให้คน
 - **รอ owner:**
-  - license: แนะนำ Apache-2.0 (ยังไม่มีไฟล์ `LICENSE` = ยังไม่ให้สิทธิ์ใช้ต่อ)
   - ยืนยันค่าเริ่มต้น: WIP ≤ 2/คน · retro ทุก 5 การ์ด/2 สัปดาห์ · p95 ≤ 300 ms, LCP ≤ 2.5 s · coverage 80% ไฟล์ที่แตะ · PR ≤ 400 บรรทัด · ASVS L1 (R2) / L2 (R3) · บล็อก CVSS ≥ 7.0 · postmortem ภายใน 5 วันทำการ · `challenger` บังคับ R2/R3 · Ops อนุมัติการอ่านข้อมูลจริง
 - **ยังไม่ได้ตรวจ:** CI บน GitHub (ยังเป็นแม่แบบ `templates/github-ci.yml` ยังไม่เปิดใช้) · ส่งขึ้น Trello / GitHub Issues จริง · web doc ที่ 375px · เดินครบรอบกับงานจริง
+- **license:** Apache-2.0 (owner เลือก 2026-11-22)
 - **ใช้งานจริง:** ยังไม่มี

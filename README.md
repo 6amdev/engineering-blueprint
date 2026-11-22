@@ -95,7 +95,8 @@ memory/            ความจำของ agent (ไม่ขึ้น git)
 ร่วมพัฒนา: [`CONTRIBUTING.md`](CONTRIBUTING.md) · แจ้งช่องโหว่: [`SECURITY.md`](SECURITY.md)
 
 ## License
-ตั้งใจให้ใช้ฟรี แต่ยังไม่ได้เลือก license — จนกว่าจะมีไฟล์ `LICENSE` อ่านได้ แต่ยังไม่ให้สิทธิ์คัดลอกไปใช้ต่อ
+[Apache-2.0](LICENSE) · Copyright 2026 6amdev
+ใช้ แก้ไข แจกต่อ และใช้ในงานบริษัทได้ฟรี โดยทำตามเงื่อนไขใน `LICENSE` (เช่น คงข้อความลิขสิทธิ์ และระบุไฟล์ที่แก้) · โปรเจกต์ที่สร้างด้วย `new-project` ได้สำเนาชื่อ `LICENSE-blueprint` ซึ่งครอบเฉพาะไฟล์ที่มาจาก blueprint โค้ดของโปรเจกต์เลือก license เองได้
 
 ---
 
@@ -107,4 +108,4 @@ role prompts, step-by-step skills and document templates. People decide and appr
 **Enforced by code:** secret/IP/word scan and commit-message check (git hooks), draft check before posting to the board.
 **Guidance only:** the workflow, quality gates, approvals and templates. This is v0.3.0: early, documentation in Thai, not certified against any standard.
 
-Start: clone → `node scripts/new-project.mjs ../my-project` → `npm install` there → open it with your agent. License: meant to be free to use, but not chosen yet (no reuse rights until a `LICENSE` file exists).
+Start: clone → `node scripts/new-project.mjs ../my-project` → `npm install` there → open it with your agent. License: [Apache-2.0](LICENSE).

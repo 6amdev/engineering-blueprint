@@ -88,7 +88,7 @@ Conditional gates turned on at intake when the work touches them: GATE-PERF · G
 กรอกต่อโปรเจกต์: dev · test · build · deploy.
 
 ## 9. Owner decisions
-- 2026-11-21 · This blueprint is **public and meant to be free to use** (licence not chosen yet: see `docs/HANDOFF.md`). Generic principles, international standards and original code only; roles are named by function. Repo name `engineering-blueprint` (rename allowed). <!-- blueprint-only -->
+- 2026-11-21 · This blueprint is **public and free to use** (Apache-2.0, chosen 2026-11-22). Generic principles, international standards and original code only; roles are named by function. Repo name `engineering-blueprint` (rename allowed). <!-- blueprint-only -->
 - 2026-11-21 · Intake first: detailed questions before any work; full skill set from requirement to user manual; user manual as a web doc. <!-- blueprint-only -->
 - 2026-11-21 · Memory is stored in the project folder (`memory/`), not pushed to git, so the work moves between machines by copying the folder; folder and repo names may change. <!-- blueprint-only -->
 - 2026-11-21 · This repo is the main system (blueprint); real work = projects created from it by `scripts/new-project.mjs`, any number, each self-contained. <!-- blueprint-only -->
