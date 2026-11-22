@@ -9,7 +9,7 @@ const SKIP = [/^memory\/(?!README\.md$)/, /^scripts\/(new-project|upgrade-projec
   /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/, /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/, /^README\.en\.md$/, /^docs\/images\//];
 // โปรเจกต์เป็นเจ้าของตั้งแต่วันแรก upgrade ไม่แตะ
 const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json'];
-export const isOwned = (f) => OWNED.includes(f) || /^site/.*.md$/.test(f); // หน้าคู่มือ = เนื้อหาของโปรเจกต์
+export const isOwned = (f) => OWNED.includes(f) || (f.startsWith('site/') && f.endsWith('.md')); // หน้าคู่มือ = เนื้อหาของโปรเจกต์
 
 export const git = (args, cwd = BLUEPRINT, encoding = 'utf8') => execFileSync('git', args, { cwd, encoding, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 200_000_000 });
 export const versionAt = (commit) => git(['show', `${commit}:VERSION`]).trim();
