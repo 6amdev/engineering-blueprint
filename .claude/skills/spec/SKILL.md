@@ -32,7 +32,7 @@ solution-architect (เขียน) · challenger (ตรวจค้าน) ·
 ## gates
 GATE-SPEC: owner-reviewer ack ก่อนขั้น design · challenger บังคับ R2/R3
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 - spec ไม่ระบุพฤติกรรมในเคสที่กระทบธุรกิจ · เส้นทางเสี่ยงสูง · ข้อความผู้ใช้ · สิ่งที่ขัดกับ PRD ที่ ack แล้ว (ต้องเปิด `change`)
 
 ## checklist done

@@ -111,6 +111,7 @@ These come from how people in different roles work together, rewritten to be neu
 | **Every fact has a source** | Arguments from memory | `file:line@sha`, or command + result line; unchecked is written as "not checked" |
 | **Check fully before handing over** | The next person waits, then sends it back | Dev runs the checklist; an agent rehearses the approver's questions ([`docs/roles/dev.md`](docs/roles/dev.md)) |
 | **Approval is tied to a version** | One thing approved, another deployed | Approval names the sha; a change means check and ask again |
+| **Once agreed, the agent decides** | Asking about every small thing; work stalls | After "go", anything inside what was agreed the agent decides itself and writes the reason on the card; it asks only about what is not agreed yet ([`docs/workflow.md`](docs/workflow.md)) |
 | **Silence is not approval** | Work moves with no decision | No answer means not decided; do the unblocked parts meanwhile |
 | **Ops gets something ready to follow** | The person deploying has to guess | Line-by-line runbook, expected results, stop points, rollback ([`docs/deploy.md`](docs/deploy.md)) |
 | **Reviewed scripts instead of manual clicks** | Mistakes that cannot be repeated or traced | Tested scripts with dry-run; approval bound to the file's hash ([`docs/db-scripts.md`](docs/db-scripts.md)) |

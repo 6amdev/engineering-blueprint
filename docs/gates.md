@@ -16,7 +16,7 @@
 ## บังคับด้วยสคริปต์ (`scripts/gate.mjs`)
 บันทึกเป็นไฟล์ `docs/gates/<card>.jsonl` 1 บรรทัดต่อเหตุการณ์ ต่อท้ายอย่างเดียว · hook `pre-commit` ไม่ให้ commit ที่เปลี่ยน status การ์ดเป็น uat / deploy / release / close ถ้าตรวจไม่ผ่าน (บอร์ด `local`)
 1. ตอน intake: `node scripts/gate.mjs open C-0001 --brief docs/requirements/0001-x.md --budget-usd 10 --max-rounds 3 --gates UI,A11Y --no-prod`
-2. ได้คำอนุมัติ: `gate.mjs approve C-0001 go --role owner-reviewer --via chat` (คำ: ack-brief · ack-scope · go · gates · uat · accept · deploy · second · risk · delegate · budget) · deploy ต้องมาหลังตรวจรับ/UAT
+2. ได้คำอนุมัติ: `gate.mjs approve C-0001 go --role owner-reviewer --via chat` (คำ: ack-brief · ack-scope · go · gates · uat · accept · deploy · second · risk · delegate · budget) · deploy ต้องมาหลังตรวจรับ/UAT · status `deploy` = ยื่นใบขอ deploy ได้ คำอนุมัติ deploy ถูกบังคับตอนไป `release` / `close` · `--no-prod` = งานที่ไม่ขึ้น prod (จบที่ close ไม่มีขั้น deploy) ใช้กับ `hotfix` ไม่ได้
 3. ผลด่าน: `gate.mjs add C-0001 VERIFY pass --by test-engineer --evidence "npm test → pass 12, fail 0" --mutations 5/5` · ตรวจเฉพาะส่วนที่เปลี่ยนใส่ `--from <sha ที่ด่านนี้ตรวจไปแล้ว>` (ต้องมีครั้งที่ตรวจเต็มมาก่อน)
 4. ต้นทุน: `gate.mjs cost C-0001 3.20` (ตัวเลขจาก `scripts/cost-report.mjs`) · เกินงบหรือเกินรอบ = exit 3 หยุดถาม Owner
 5. `gate.mjs check C-0001 --stage uat|deploy|release|close` หรือปล่อยให้ hook ตรวจตอน commit
@@ -24,7 +24,7 @@
 7. ใน CI: `gate.mjs audit <base>..<head>` ตรวจซ้ำทุก commit แบบเดียวกับ hook จับคนที่ใช้ `--no-verify` หรือ merge / revert (แม่แบบ `templates/github-ci.yml`)
 
 **ตรวจให้:** brief และ `docs/stack-decisions.md` ไม่มีช่องที่ยังไม่ตอบ (lane feature) · ด่านครบตาม lane + ที่เปิดไว้ · VERIFY/SEC/PRIVACY ผ่านแบบมีเงื่อนไขไม่ได้ · โค้ดไม่เปลี่ยนหลังตรวจ (ไม่นับ *.md · ภาพ/pdf/txt ใน docs, site, templates, .claude · VERSION/LICENSE/NOTICE · memory · เมนูคู่มือ `site/.vitepress/config.mjs`) · บั๊กลอง ≥ 5 จับครบ (R2/R3 ทุก lane รวม hotfix) · คำอนุมัติครบตามระดับ R บนโค้ดปัจจุบันหลังผลด่านล่าสุด · งบและบันทึกต้นทุน · รูปแบบทุกบรรทัด · R ลดไม่ได้ (เพิ่มด้วย `raise`) · ด่านที่เคยมีผลต้องผ่าน · merge แล้วบันทึกของทั้งสองฝั่งต้องอยู่ครบ · การ์ดลบหรือย้ายออกไม่ได้
-**ตรวจไม่ได้:** ตัวตนผู้อนุมัติ · หลักฐานจริงแค่ไหน · คนที่ใช้ `--no-verify` หรือ commit จาก revert / cherry-pick / merge ที่ไม่ผ่าน hook ถ้าไม่ได้เปิด CI (`audit`) · บอร์ด Trello/GitHub (เรียก `check` เองก่อนขยับการ์ด)
+**ตรวจไม่ได้:** ตัวตนผู้อนุมัติ · หลักฐานจริงแค่ไหน · คนที่ใช้ `--no-verify` หรือ commit จาก revert / cherry-pick / merge ที่ไม่ผ่าน hook ถ้าไม่ได้เปิด CI (`audit`) · บอร์ด Trello/GitHub (เรียก `check` เองก่อนขยับการ์ด) · ไม่ได้เปิด DEPS ทั้งที่แตะ dependency (lane `chore` ต้องเปิดเอง) · ADR ที่ใช้กับ `--adr` อนุมัติล่วงหน้าจริงไหม · หลักฐาน RED · แผนถอย · postmortem ของ hotfix · เหตุผลที่ข้ามขั้นในการ์ด · บันทึก UAT/smoke ของ R1/R2 — reviewer (`lead-reviewer`) ไล่ดูข้อเหล่านี้ตอน REVIEW
 
 ## คำตัดสิน: ผ่าน / ผ่านแบบมีเงื่อนไข / ไม่ผ่าน
 - **ผ่าน** — เกณฑ์ครบทุกข้อ + หลักฐานครบ

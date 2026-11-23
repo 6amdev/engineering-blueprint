@@ -32,7 +32,7 @@ implementer (เขียน) · test-engineer (เทส) · security-engineer 
 ## gates
 GATE-VERIFY · GATE-SEC · DB-READ หรือ DB-WRITE · GATE-PRIVACY เมื่อมีข้อมูลส่วนบุคคล
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 เขียน/ลบ/ย้ายข้อมูลจริง · อ่านข้อมูลส่วนบุคคล · เป้าหมายหรือ allowlist ไม่ชัด
 
 ## checklist done

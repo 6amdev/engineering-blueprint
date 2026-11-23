@@ -285,7 +285,7 @@ test('ด่านที่มีผลแล้วหรือเปิดเ�
   const r = repo(t); full(r); r.ok('add', 'C-0001', 'DEPS', 'fail', '--by', 'security-engineer', '--evidence', 'npm audit: 1 high'); bad(r.gate('check', 'C-0001', '--stage', 'close'), /ด่าน DEPS ไม่ผ่าน/);
   const q = repo(t); full(q); q.ok('update', 'C-0001', '--gates', 'GATE-PERF, a11y'); bad(q.gate('check', 'C-0001', '--stage', 'close'), /ด่าน PERF ยังไม่มีผล[\s\S]*ด่าน A11Y ยังไม่มีผล/);
   bad(q.gate('update', 'C-0001', '--gates', 'PRIVACY'), /R3/); bad(q.gate('update', 'C-0001', '--gates', 'NOPE'), /ไม่รู้จัก NOPE/);
-  const h = repo(t, { lane: 'hotfix' }); h.ok('open', 'C-0001', '--budget-usd', '5', '--no-prod'); ['VERIFY', 'REVIEW'].forEach((g) => pass(h, g)); h.ok('add', 'C-0001', 'SEC', 'fail', '--by', 'security-engineer', '--evidence', 'High at src/a.mjs:1'); bad(h.gate('check', 'C-0001', '--stage', 'uat'), /ด่าน SEC ไม่ผ่าน/);
+  const h = repo(t, { lane: 'hotfix' }); bad(h.gate('open', 'C-0001', '--budget-usd', '5', '--no-prod'), /hotfix/); h.ok('open', 'C-0001', '--budget-usd', '5'); ['VERIFY', 'REVIEW'].forEach((g) => pass(h, g)); h.ok('add', 'C-0001', 'SEC', 'fail', '--by', 'security-engineer', '--evidence', 'High at src/a.mjs:1'); bad(h.gate('check', 'C-0001', '--stage', 'uat'), /ด่าน SEC ไม่ผ่าน/);
   const p = repo(t, { risk: 'R1' }); bad(p.gate('open', 'C-0001', '--brief', 'docs/requirements/0001.md', '--budget-usd', '5', '--gates', 'PRIVACY'), /R3/);
 });
 test('merge แล้วทิ้งผลที่ไม่ผ่านของอีกฝั่ง = hook และ audit ปฏิเสธ · รวมครบ = ผ่าน', (t) => {
@@ -319,3 +319,26 @@ test('ตัวเลือกไม่มีค่า = error · ต้นท�
   r.git('add', 'src/b.mjs'); bad(r.gate('add', 'C-0001', 'SEC', 'pass', '--by', 'security-engineer', '--evidence', 'ASVS L1 reviewed'), /stage/);
 });
 test('ค่าลับในไฟล์ชื่อภาษาไทย = hook ปฏิเสธ', (t) => { const r = repo(t); r.write('src/ไทย.mjs', `const h = "${[8, 8, 8, 8].join('.')}";\n`); bad(r.commit('feat: x'), /public-ip/); });
+test('git add -N ไฟล์โค้ดค้างไว้ = ไม่นับเป็นโค้ดที่ commit · ปิดการ์ดได้', (t) => {
+  const r = repo(t); full(r);
+  r.write('src/c.mjs', 'export const c = 1;\n'); r.git('add', '-N', 'src/c.mjs');
+  r.card('close'); r.git('add', 'docs/cards/C-0001.md', GATES);
+  const c = spawnSync('git', ['commit', '-q', '-m', 'docs: close card'], { cwd: r.dir, encoding: 'utf8' });
+  assert.equal(c.status, 0, c.stdout + c.stderr);
+});
+test('โค้ดที่เป็น symlink ชี้ไป .md: แก้ปลายทาง = โค้ดเปลี่ยน', (t) => {
+  const r = repo(t); r.git('config', 'core.symlinks', 'false');
+  r.write('docs/impl.md', 'export const x = 1;\n'); r.write('src/link.mjs', '../docs/impl.md');
+  r.git('add', 'docs/impl.md'); r.git('update-index', '--add', '--cacheinfo', `120000,${r.git('hash-object', '-w', 'src/link.mjs')},src/link.mjs`);
+  assert.equal(r.commit('chore: link').status, 0);
+  full(r); r.ok('check', 'C-0001', '--stage', 'close');
+  r.write('docs/impl.md', 'export const x = 2;\n'); assert.equal(r.commit('docs: impl').status, 0);
+  bad(r.gate('check', 'C-0001', '--stage', 'close'), /โค้ดเปลี่ยน/);
+});
+test('ซ่อนการแก้โค้ดด้วย assume-unchanged / skip-worktree = ไม่ผ่าน', (t) => {
+  for (const flag of ['--assume-unchanged', '--skip-worktree']) {
+    const r = repo(t); full(r);
+    r.write('src/a.mjs', 'export const a = 7;\n'); r.git('update-index', flag, 'src/a.mjs');
+    bad(r.gate('check', 'C-0001', '--stage', 'close'), /โค้ดเปลี่ยน/);
+  }
+});

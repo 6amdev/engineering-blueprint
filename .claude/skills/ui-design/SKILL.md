@@ -50,7 +50,7 @@ solution-architect (flow) · implementer (เขียนตามแบบ) · 
 ## gates
 GATE-UI (คะแนน + ภาพเทียบ) · GATE-A11Y เมื่อเปิด
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 เลือกแนว · เปลี่ยนแบรนด์ · ข้อความถึงผู้ใช้ · แบบที่เลือกต้องเปลี่ยน spec (→ `change-request`)
 
 ## checklist done

@@ -30,7 +30,7 @@ intake-analyst · solution-architect (เรื่อง stack และแบ�
 ## gates
 ไม่ใช่ด่าน · ช่วยให้ DoR และ GATE-SPEC/DESIGN ผ่าน · `gate.mjs` ไม่รับ "go" ถ้ายังมี `❓`
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 คำตอบเปลี่ยนขอบเขตหรือระดับ R · ขัดกับสิ่งที่ ACK แล้ว (→ `change-request`) · ไม่มีสิทธิ์หรือผิดกฎหมาย
 
 ## checklist done

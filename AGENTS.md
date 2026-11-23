@@ -33,7 +33,7 @@ Do not design or code from a one-line request. Follow `.claude/skills/intake/SKI
 - In a shared folder: never stash, reset or switch branches.
 
 ## 4. Report so a busy owner can decide
-Ask for approval only at the points for the risk level (`docs/workflow.md` → จุดอนุมัติตามระดับ R); record answers given in chat on the card at once. Short messages. Show results as images, files or links. Put each decision as options with one recommendation. Group the steps only a person can do.
+Ask for approval only at the points for the risk level (`docs/workflow.md` → จุดอนุมัติตามระดับ R). Once something is agreed (brief · spec · design · stack, then "go"), decide everything inside it yourself and keep going: write the reason on the card, do not ask again; ask only for what is not agreed yet, out of scope, over budget/rounds, or on the always-ask list; record answers given in chat on the card at once. Short messages. Show results as images, files or links. Put each decision as options with one recommendation. Group the steps only a person can do.
 
 ## 5. Map — where things are
 | Want | File |
@@ -67,7 +67,7 @@ intake → Definition of Ready → requirements (PRD + stories) → spec + test 
 → UAT (say which commit and when) → real-UI check → compare with scope → deploy request
 → ops deploys step by step → release notes + user manual → Definition of Done → HANDOFF.
 Pick the lane at intake: `feature` (all stages) · `change` (skill `change-request`) · `bug` (skill `bugfix`) ·
-`hotfix` (skill `hotfix`, then `postmortem`) · `chore`. Around it: `planning` before, `retro` after.
+`hotfix` (skill `hotfix`, then `postmortem`) · `chore` (no skill of its own: `intake` short + `tdd`; adding/updating a dependency opens GATE-DEPS). Around it: `planning` before, `retro` after.
 Conditional gates turned on at intake when the work touches them: GATE-PERF · GATE-A11Y · GATE-PRIVACY · GATE-DEPS · GATE-OBS (`docs/gates.md`).
 
 ## 7. Hard rules

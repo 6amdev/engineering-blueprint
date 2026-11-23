@@ -2,6 +2,9 @@
 
 ## Unreleased
 - เปิด CI บน repo นี้ (`.github/workflows/ci.yml`) · แม่แบบ CI ใช้ Node 24 และ actions v7
+- กติกา: ตกลงแล้ว agent ตัดสินใจเอง — หลัง "go" เรื่องในสิ่งที่ตกลงแล้วไม่ต้องถามซ้ำ เขียนเหตุผลลงการ์ด ถามเฉพาะเรื่องที่ยังไม่ตกลง (owner, 2026-11-23) · `docs/workflow.md` · `AGENTS.md` · หัวข้อ "หยุดถาม" ของทุก skill
+- `gate.mjs`: ไฟล์ที่ `git add -N` ไม่ทำให้เตือนผิดว่าโค้ดเปลี่ยน · โค้ดที่เป็น symlink ชี้ไปเอกสาร นับเนื้อหาปลายทาง · ไฟล์ที่ตั้ง assume-unchanged / skip-worktree นับเป็นโค้ดค้าง · hotfix เปิดแบบ `--no-prod` ไม่ได้
+- ซ้อมครบทุก lane × R (bug · hotfix · chore · change · feature R1/R3) · แก้เอกสารที่ไม่ตรงกับสคริปต์ (เวลาบังคับคำอนุมัติ deploy · `R?` · bug/hotfix/chore ที่ R3 · chore ไม่มี skill เอง) · รายการ "ตรวจไม่ได้" ครบขึ้น
 
 ## 1.0.0 — 2026-11-22
 - `scripts/upgrade-project.mjs`: ดึงเวอร์ชันใหม่เข้าโปรเจกต์เดิมแบบเทียบ 3 ทาง ไม่ทับสิ่งที่โปรเจกต์แก้ · เทส `npm run project:test`

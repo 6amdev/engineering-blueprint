@@ -45,10 +45,30 @@ const cardDirs = () => [...new Set(['docs/cards', posix(loadConfig().board?.loca
 // --- โค้ด = ทุกไฟล์ ยกเว้นเอกสารและภาพประกอบ (โค้ดที่ซ่อนใน docs/ ยังนับเป็นโค้ด)
 const isDoc = (f) => /\.md$/i.test(f) || /^(VERSION|NOTICE|LICENSE(-blueprint)?(\.txt)?)$/.test(f) || f.startsWith('memory/') || f === 'site/.vitepress/config.mjs' /* เมนูคู่มือ แก้หลังด่านได้ */ || /^docs\/gates\/[^/]+\.jsonl$/.test(f)
   || (/^(docs|site|templates|\.claude)\//.test(f) && /\.(png|jpe?g|gif|svg|webp|pdf|txt)$/i.test(f));
-const hashOf = (rows) => createHash('sha256').update(rows.filter(([f]) => !isDoc(f)).map(([f, id]) => `${f}\0${id}`).sort().join('\n')).digest('hex').slice(0, 40);
+// symlink ที่เป็นโค้ดแต่ชี้ไปเอกสาร (src/a.mjs → docs/a.md): นับเนื้อหาปลายทางเป็นโค้ดด้วย ไม่งั้นแก้ปลายทางแล้วไม่มีใครรู้
+const linkTargets = (rows) => {
+  const ids = new Map(rows); const out = [];
+  for (const [f, mid] of rows) {
+    if (isDoc(f) || !mid.startsWith('120000 ')) continue;
+    let cur = f; let id = mid;
+    for (let n = 0; n < 8 && id?.startsWith('120000 '); n += 1) { // ตามต่อเมื่อปลายทางเป็น symlink อีกชั้น
+      const to = gitTry('cat-file', 'blob', id.split(' ')[1]);
+      if (to === null) break;
+      cur = path.posix.normalize(path.posix.join(path.posix.dirname(cur), to.trim()));
+      id = ids.get(cur);
+      for (const [g, gid] of rows) if (g.startsWith(`${cur}/`)) out.push([`${f}->${g}`, gid]); // ชี้ไปทั้ง folder
+    }
+    if (id && cur !== f) out.push([`${f}->${cur}`, id]);
+  }
+  return out;
+};
+const hashOf = (rows) => createHash('sha256').update([...rows.filter(([f]) => !isDoc(f)), ...linkTargets(rows)].map(([f, id]) => `${f}\0${id}`).sort().join('\n')).digest('hex').slice(0, 40);
 const codeOfCommit = (sha) => { const t = gitTry('ls-tree', '-r', '-z', sha); return t === null ? null : hashOf(t.split('\0').filter(Boolean).map((l) => { const [meta, f] = l.split('\t'); const [mode, , id] = meta.split(' '); return [f, `${mode} ${id}`]; })); };
-const codeOfIndex = () => hashOf(gitRaw('ls-files', '-s', '-z').split('\0').filter(Boolean).map((l) => { const [meta, f] = l.split('\t'); const [mode, id] = meta.split(' '); return [f, `${mode} ${id}`]; }));
-const dirtyCode = () => [...gitRaw('diff', '--name-only', '--no-renames', '--ignore-submodules=none', '-z').split('\0'), ...gitRaw('ls-files', '--others', '--exclude-standard', '-z').split('\0')].filter((f) => f && !isDoc(f));
+// write-tree ข้ามไฟล์ที่ `git add -N` ไว้ (ยังไม่ stage จริง ไม่เข้า commit) · merge ค้าง write-tree ใช้ไม่ได้ จึงอ่าน index ตรง
+const codeOfIndex = () => codeOfCommit(gitTry('write-tree')?.trim() || '-') ?? hashOf(gitRaw('ls-files', '-s', '-z').split('\0').filter(Boolean).map((l) => { const [meta, f] = l.split('\t'); const [mode, id] = meta.split(' '); return [f, `${mode} ${id}`]; }));
+// ไฟล์ที่ตั้ง assume-unchanged / skip-worktree ไว้ git diff มองไม่เห็นการแก้ จึงนับเป็นของค้างเสมอ
+const hiddenFromDiff = () => gitRaw('ls-files', '-v', '-z').split('\0').filter((l) => /^([a-z]|S) /.test(l)).map((l) => l.slice(2));
+const dirtyCode = () => [...new Set([...gitRaw('diff', '--name-only', '--no-renames', '--ignore-submodules=none', '-z').split('\0'), ...gitRaw('ls-files', '--others', '--exclude-standard', '-z').split('\0'), ...hiddenFromDiff()])].filter((f) => f && !isDoc(f));
 // null = มีโค้ดที่ยังไม่ stage/track (ใช้เฉพาะตอนไม่ได้อยู่ใน hook)
 const currentCode = (staged) => (!staged && dirtyCode().length ? null : codeOfIndex());
 
@@ -334,6 +354,7 @@ function main() {
     const info = cardInfo(card, false);
     const [lane, risk] = [info.lane ?? val('lane'), info.risk ?? val('risk')];
     if (!LANES.includes(lane) || !/^R[123]$/.test(risk ?? '')) die(`ต้องมี lane และ R1-R3 ในหัวการ์ด (ได้ ${lane} ${risk})`);
+    if (lane === 'hotfix' && opts['no-prod']) die('hotfix แก้ของบน prod: deploy + คำอนุมัติห้ามข้าม จึงใช้ --no-prod ไม่ได้ (docs/workflow.md)');
     if (lane === 'feature' && (!val('brief') || readText(file('brief'), false) === null)) die('feature ต้องมี --brief <ไฟล์ที่มีจริง>');
     if (val('adr') && readText(file('adr'), false) === null) die(`ไม่พบ ${val('adr')}`);
     if (val('adr') && !ADR.test(file('adr'))) die(`--adr ไม่ถูกต้อง: ต้องเป็นไฟล์ใน docs/decisions/ ที่ไม่ใช่แม่แบบ`);

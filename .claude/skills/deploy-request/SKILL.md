@@ -33,7 +33,7 @@ uat-release (เตรียมใบ + ยืนยัน sha) · runbook-rehea
 ## gates
 ต้องผ่านครบก่อนยื่น: GATE-VERIFY · GATE-SEC · GATE-REGRESSION · GATE-UI (ถ้า UI เปลี่ยน) · code review · conditional gates ที่เปิดไว้ (PERF · A11Y · PRIVACY · DEPS) · GATE-OBS (ถ้าเปิด)
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 - มีขั้นย้อนกลับไม่ได้ · downtime ที่ผู้ใช้เห็น · เลือกหน้าต่างเวลา · ข้อความประกาศผู้ใช้ · R3 ต้องการผู้อนุมัติคนที่สอง
 
 ## checklist done

@@ -31,7 +31,7 @@ tech-writer (หลัก) · status-reporter (สรุปการ์ด) · l
 ## gates
 ผ่าน draft-check ถ้าโพสต์ประกาศ · เวอร์ชันสอดคล้องกับชนิดการเปลี่ยน (ตรวจโดย reviewer)
 
-## หยุดถาม owner เมื่อ
+## หยุดถาม owner เมื่อ (เฉพาะเรื่องที่ยังไม่ได้ตกลง · ที่ตกลงแล้วตัดสินเอง: `docs/workflow.md`)
 - ข้อความฝั่งผู้ใช้ · การประกาศ breaking change · ตัดสินว่ารอบนี้เป็น MAJOR/MINOR · จะเปิดเผยเรื่อง security fix หรือไม่
 
 ## checklist done
