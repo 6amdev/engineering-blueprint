@@ -9,7 +9,7 @@ Clone it, run one command, and get a project folder with rules, a workflow, docu
 
 > Status: v1.0.0. The principles come from experience of working as a team. Two full cycles have been run on local trials ([results](#trial-run)); it has not been used on a system with real users. The files in `docs/`, the skills and the templates are written in Thai; agents can still read and follow them, and reply in your language.
 
-**Contents:** [Why](#why) · [How work flows](#how-one-piece-of-work-flows) · [What is asked](#what-is-asked-before-work-starts) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [23 skills](#23-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Start](#start)
+**Contents:** [Why](#why) · [3 steps](#use-it-in-3-steps) · [How work flows](#how-one-piece-of-work-flows) · [What is asked](#what-is-asked-before-work-starts) · [How agents work together](#how-agents-work-together) · [Team principles](#team-principles) · [Worked example](#worked-example-meeting-room-booking) · [23 skills](#23-skills) · [16 agents](#16-agents) · [5 lanes](#five-lanes) · [Gates](#quality-gates) · [Trial run](#trial-run) · [Common commands](#common-commands)
 
 ## Why
 AI writes code fast. Real work usually breaks on everything around the code:
@@ -28,6 +28,45 @@ Four words to know:
 - **Skill**: a step-by-step way of working, like a procedure manual.
 - **Agent**: a role that follows skills, such as designer, writer or checker.
 - **Gate**: a check that must pass before moving on.
+
+## Use it in 3 steps
+You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
+
+**1. Create a project (once).** This repo is the template; real work happens in the new folder it creates.
+```bash
+git clone https://github.com/6amdev/engineering-blueprint.git
+cd engineering-blueprint
+node scripts/new-project.mjs ../my-project    # creates a new project (no push, no remote)
+cd ../my-project
+npm install                                   # turns on the git hooks
+node scripts/board.mjs new C-0001 "First job" # first card, a file in docs/cards/
+```
+You get a folder with the rules, skills, agents, document templates, a hook that stops secrets leaking, and CI/CD.
+
+**2. Talk to the agent in plain words.** Open the folder with your agent and say what you want, for example:
+```text
+You:   I want a meeting-room booking system. Start card C-0001 with the intake skill
+Agent: Question 1/3: may two bookings overlap?
+       a) No, refuse at once (recommended: stops two teams clashing)
+       b) Yes, with an approver
+You:   a
+Agent: (asks until done, writes the brief and spec) Read it and reply ACK
+You:   ACK
+Agent: Recommended design … compared with … reply go to start building
+You:   go
+Agent: (writes tests first → code → a separate set of agents checks 4 things)
+       All gates pass, with evidence. Accept?
+```
+- After "go" the agent decides by itself inside what was agreed and writes its reasons on the card. It comes back only for what was not agreed, is over budget, or is always asked (push · deleting data · live systems).
+- Other kinds of work take one sentence, e.g. `Saving hangs the page, use the bugfix skill` ([common commands](#common-commands)).
+- To stop for the day type `close the round with the handoff skill`: status goes to `docs/HANDOFF.md`, and a new chat picks up from there.
+
+**3. Release.**
+- Push to GitHub and CI checks every push (secrets · gates on every commit · lint · test · build).
+- To release to uat/prod: GitHub → Actions → deploy → pick the target and card. It checks gates and approvals first, checks health after, and rolls back by itself on failure.
+- Set up once per project: environments `uat` · `prod` (prod needs a person to approve) + the server secrets in [`docs/deploy.md`](docs/deploy.md).
+
+The rest of this page is detail, for when you want to know how it works inside.
 
 ## How one piece of work flows
 
@@ -307,20 +346,8 @@ Not good yet: still costly for one screen; the first UI score was lenient (16/16
 
 **Every lane rehearsed before 1.0.0:** an agent that had never seen the repo started from the README, created a project, and took a `bug` R1, a `chore` R1, a `hotfix` R2 to prod and a `feature` R3 to prod through the real hooks until all four cards closed. One agent played every role and the approvals and deploys were simulated, so this proves the tooling, not the quality of the work. A separate reviewer then attacked `gate.mjs` and found 17 high or medium issues; all are fixed and covered by 11 new tests. The friction it found is fixed ([`CHANGELOG.md`](CHANGELOG.md), Thai).
 
-## Start
-You need Node.js 20+, git, and an AI coding agent that reads `AGENTS.md` (for example Claude Code or Codex).
-```bash
-git clone https://github.com/6amdev/engineering-blueprint.git
-cd engineering-blueprint
-node scripts/new-project.mjs ../my-project    # creates a new project (no push, no remote)
-cd ../my-project
-npm install                                   # turns on the git hooks
-node scripts/board.mjs new C-0001 "First job" # first card, a file in docs/cards/
-```
-
-**CI/CD comes with every project:** once pushed to GitHub, CI checks every push (secrets · gates on every commit · lint · test · build). To release, open GitHub → Actions → deploy, pick uat/prod and the card: it checks the gates and approvals first, checks health after, and rolls back by itself on failure. Set up once: environments + secrets as in [`docs/deploy.md`](docs/deploy.md)
-
-Open the folder with your agent and type:
+## Common commands
+Open the project folder with your agent and type:
 
 | You want to | Type |
 |---|---|
