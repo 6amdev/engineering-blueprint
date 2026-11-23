@@ -318,6 +318,8 @@ npm install                                   # turns on the git hooks
 node scripts/board.mjs new C-0001 "First job" # first card, a file in docs/cards/
 ```
 
+**CI/CD comes with every project:** once pushed to GitHub, CI checks every push (secrets · gates on every commit · lint · test · build). To release, open GitHub → Actions → deploy, pick uat/prod and the card: it checks the gates and approvals first, checks health after, and rolls back by itself on failure. Set up once: environments + secrets as in [`docs/deploy.md`](docs/deploy.md)
+
 Open the folder with your agent and type:
 
 | You want to | Type |
@@ -362,7 +364,7 @@ memory/            agent memory (not in git)
 ```
 
 ## Known limits
-- Hooks work only on machines where `npm install` has run, and `--no-verify` skips them. Turn on CI from `templates/github-ci.yml` so `gate.mjs audit` checks again.
+- Hooks work only on machines where `npm install` has run, and `--no-verify` skips them. CI (`.github/workflows/ci.yml`, shipped with every project) runs `gate.mjs audit` again on GitHub.
 - `gate.mjs` cannot know who really typed an approval, or how true the evidence is.
 - The Trello and GitHub boards have not been tested with real posts, and the hook does not check cards kept outside the repo.
 - The manual uses VitePress 1; `npm audit` reports 3 issues in its dev server (no stable fix as of 2026-11-22). Run `docs:dev` on your own machine only; the built files contain no dev server.

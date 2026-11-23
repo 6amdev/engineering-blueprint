@@ -94,3 +94,37 @@ test('upgrade: ปฏิเสธเมื่อยังไม่พร้อ�
   assert.equal(up('--apply').status, 0);
   assert.match(pj.git('ls-files', '-s', '.githooks'), /^100755.*\n100755/);
 });
+
+test('โปรเจกต์ใหม่ได้ CI/CD พร้อมใช้: workflow ทั้งสอง · deploy.sh รันได้ · AGENTS บอกวิธีใช้', (t) => {
+  const { pj } = setup(t);
+  for (const f of ['.github/workflows/ci.yml', '.github/workflows/deploy.yml', 'scripts/deploy.sh']) assert.ok(pj.has(f), f);
+  assert.match(pj.git('ls-files', '-s', 'scripts/deploy.sh'), /^100755/);
+  assert.match(pj.read('.github/workflows/ci.yml'), /npm run build --if-present/);
+  assert.match(pj.read('AGENTS.md'), /Actions → deploy/);
+});
+
+// ขึ้น/ถอยจริงด้วย ssh rsync curl ปลอมที่ทำในเครื่อง · ต้องมี symlink และ mv -T จึงรันบน Linux/macOS (CI) เท่านั้น
+test('deploy.sh: ขึ้น · เก็บชุดก่อนหน้า · เช็คไม่ผ่านถอยเอง · rollback', { skip: process.platform === 'win32' && !process.env.MSYS?.includes('winsymlinks:native') && 'ต้องใช้ symlink จริง (CI · หรือ Windows ตั้ง MSYS=winsymlinks:nativestrict)' }, (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'deploy-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const bin = path.join(dir, 'bin'); const srv = path.join(dir, 'srv'); fs.mkdirSync(bin); fs.mkdirSync(srv);
+  const fake = (n, body) => fs.writeFileSync(path.join(bin, n), `#!/usr/bin/env bash\n${body}\n`, { mode: 0o755 });
+  fake('ssh', 'while [ $# -gt 0 ]; do case $1 in -i|-o) shift 2;; *) shift; break;; esac; done; exec bash -c "$*"');
+  fake('rsync', 'src=${@: -2:1}; dst=${@: -1}; dst=${dst#*:}; mkdir -p "$dst" && cp -a "$src/." "$dst"');
+  fake('curl', 'exit ${FAKE_HEALTH:-0}'); fake('sleep', ':');
+  const run = (args, health = 0, build = 'v1') => {
+    fs.rmSync(path.join(dir, 'dist'), { recursive: true, force: true }); fs.mkdirSync(path.join(dir, 'dist')); fs.writeFileSync(path.join(dir, 'dist/index.html'), build);
+    const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => k.toUpperCase() !== 'PATH')); // Windows ใช้ชื่อ Path
+    const posix = (p) => p.replace(/^([A-Za-z]):/, (m, l) => `/${l.toLowerCase()}`).replaceAll('\\', '/');
+    return spawnSync('bash', [path.join(SRC, 'templates/deploy.sh'), ...args], { cwd: dir, encoding: 'utf8', env: { ...env, PATH: `${bin}${path.delimiter}${process.env.PATH}`, FAKE_HEALTH: String(health), DEPLOY_HOST: 'h', DEPLOY_USER: 'u', DEPLOY_SSH_KEY: 'k', DEPLOY_KNOWN_HOSTS: 'k', DEPLOY_PATH: posix(srv), HEALTH_URL: 'http://x' } });
+  };
+  const live = () => fs.readFileSync(path.join(srv, 'current/index.html'), 'utf8');
+  const ok = (r) => assert.equal(r.status, 0, r.stdout + r.stderr);
+  ok(run(['deploy', 'uat', 'aaaaaaa'], 0, 'v1')); assert.equal(live(), 'v1');
+  ok(run(['deploy', 'uat', 'bbbbbbb'], 0, 'v2')); assert.equal(live(), 'v2');
+  assert.equal(fs.readFileSync(path.join(srv, 'previous'), 'utf8').trim(), 'aaaaaaa');
+  const bad = run(['deploy', 'uat', 'ccccccc'], 7, 'v3'); assert.equal(bad.status, 1); assert.match(bad.stdout, /ถอยกลับ bbbbbbb/); assert.equal(live(), 'v2');
+  ok(run(['rollback', 'uat'])); assert.equal(live(), 'v1');
+  ok(run(['rollback', 'uat'])); assert.equal(live(), 'v2'); // ถอยซ้ำ = กลับไปชุดที่เพิ่งถอยออกมา
+  assert.equal(run(['deploy', 'uat', 'not-a-sha']).status, 2);
+});

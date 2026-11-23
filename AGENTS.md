@@ -89,6 +89,7 @@ Conditional gates turned on at intake when the work touches them: GATE-PERF · G
 ## 8. Commands
 `npm install` (also turns on git hooks) · `npm run secret-scan` · docs site `npm run docs:dev` / `docs:build` · board `node scripts/board.mjs post|read <card>`.
 Every script here explains itself: `node scripts/<name>.mjs --help`.
+CI/CD: `.github/workflows/ci.yml` runs on every push · deploy = GitHub → Actions → deploy (set up once: `docs/deploy.md` → CI/CD pipeline).
 กรอกต่อโปรเจกต์: dev · test (point it at your own folder, e.g. `node --test test/`; a bare `node --test` also runs the 3-minute `scripts/test/`) · build · deploy.
 
 ## 9. Owner decisions

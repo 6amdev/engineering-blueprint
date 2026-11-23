@@ -318,6 +318,8 @@ npm install                                   # เปิด git hooks
 node scripts/board.mjs new C-0001 "งานแรก"    # การ์ดแรก เป็นไฟล์ใน docs/cards/
 ```
 
+**CI/CD มาพร้อมโปรเจกต์:** push ขึ้น GitHub แล้ว CI ตรวจเองทุกครั้ง (ค่าลับ · ด่านทุก commit · lint · test · build) · ขึ้นระบบกดที่ GitHub → Actions → deploy เลือก uat/prod และการ์ด ตรวจด่านและคำอนุมัติก่อนขึ้น เช็คหลังขึ้น ไม่ผ่านถอยเอง · ตั้งครั้งเดียว: environment + secrets ตาม [`docs/deploy.md`](docs/deploy.md)
+
 เปิด folder ด้วย agent แล้วพิมพ์:
 
 | อยากทำอะไร | พิมพ์ว่า |
@@ -362,7 +364,7 @@ memory/            ความจำของ agent (ไม่ขึ้น git)
 ```
 
 ## ข้อจำกัดที่รู้
-- hook ใช้กับเครื่องที่รัน `npm install` แล้วเท่านั้น และข้ามได้ด้วย `--no-verify` → เปิด CI จาก `templates/github-ci.yml` ให้ `gate.mjs audit` ตรวจซ้ำ
+- hook ใช้กับเครื่องที่รัน `npm install` แล้วเท่านั้น และข้ามได้ด้วย `--no-verify` → CI (`.github/workflows/ci.yml` มาพร้อมโปรเจกต์) ให้ `gate.mjs audit` ตรวจซ้ำบน GitHub
 - `gate.mjs` ไม่รู้ว่าใครพิมพ์คำอนุมัติจริง และหลักฐานจริงแค่ไหน
 - บอร์ด Trello/GitHub ยังไม่ได้ทดสอบส่งจริง และ hook ไม่ตรวจการ์ดที่อยู่นอก repo
 - คู่มือใช้ VitePress 1 ซึ่ง `npm audit` เตือน 3 รายการใน dev server (ยังไม่มีรุ่นเสถียรที่แก้ · ณ 2026-11-22) ใช้ `docs:dev` ในเครื่องเท่านั้น ไฟล์ที่ build แล้วไม่มี dev server

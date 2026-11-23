@@ -1,6 +1,7 @@
 # Changelog (blueprint)
 
 ## Unreleased
+- **CI/CD พร้อมใช้ในทุกโปรเจกต์ใหม่:** `new-project` วาง `.github/workflows/ci.yml` (รัน lint · test · build ของโปรเจกต์ถ้ามี) · `.github/workflows/deploy.yml` (กดเอง · ตรวจด่านและคำอนุมัติด้วย `gate.mjs` · prod ผ่าน GitHub environment ที่ต้องมีคนอนุมัติ) · `scripts/deploy.sh` (ขึ้นแบบสลับ folder · เช็ค · ถอยเอง · rollback · มีเทส)
 - เปิด CI บน repo นี้ (`.github/workflows/ci.yml` · รันบน Linux ผ่าน) · แม่แบบ CI ใช้ Node 24 และ actions v7
 - กติกา: ตกลงแล้ว agent ตัดสินใจเอง — หลัง "go" เรื่องในสิ่งที่ตกลงแล้วไม่ต้องถามซ้ำ เขียนเหตุผลลงการ์ด ถามเฉพาะเรื่องที่ยังไม่ตกลง (owner, 2026-11-23) · `docs/workflow.md` · `AGENTS.md` · หัวข้อ "หยุดถาม" ของทุก skill
 - `gate.mjs`: ไฟล์ที่ `git add -N` ไม่ทำให้เตือนผิดว่าโค้ดเปลี่ยน · โค้ดที่เป็น symlink ชี้ไปเอกสาร นับเนื้อหาปลายทาง · ไฟล์ที่ตั้ง assume-unchanged / skip-worktree นับเป็นโค้ดค้าง · hotfix เปิดแบบ `--no-prod` ไม่ได้

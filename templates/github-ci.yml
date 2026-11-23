@@ -1,4 +1,5 @@
-# CI ตัวอย่าง — คัดลอกไป .github/workflows/ci.yml เมื่อมี remote บน GitHub แล้ว (token ที่ push ต้องมีสิทธิ์ workflow) · เพิ่ม job ของโปรเจกต์ (lint · test · build) ตามที่ AGENTS.md §8 ตั้ง
+# CI — new-project วางไว้ที่ .github/workflows/ci.yml ให้แล้ว · ทำงานเองเมื่อ push ขึ้น GitHub (token ที่ push ต้องมีสิทธิ์ workflow: gh auth refresh -s workflow)
+# รัน lint · test · build ของโปรเจกต์เองถ้ามี script ชื่อนั้นใน package.json · ระบบที่ไม่ใช่ Node เพิ่มขั้นของตัวเองท้ายไฟล์
 name: ci
 on:
   pull_request:
@@ -25,5 +26,7 @@ jobs:
           HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: node scripts/gate.mjs audit "$BASE..$HEAD"
       - run: npm run gate:test
+      - run: npm run lint --if-present
       - run: npm test --if-present
+      - run: npm run build --if-present
       - run: npm run docs:build

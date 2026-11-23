@@ -85,9 +85,10 @@ runbook-rehearsal/ops ตรวจ ผ่านครบจึงขึ้น pr
 - [ ] backup + ทดสอบ restore แล้ว
 
 ## CI/CD pipeline
-- แม่แบบ CI (`templates/github-ci.yml` คัดลอกไป `.github/workflows/ci.yml` เพื่อเปิดใช้): secret-scan · test (ถ้าโปรเจกต์มี) · build คู่มือ ทุก push/PR · ต้องผ่านก่อน merge · กรอกต่อโปรเจกต์: เพิ่ม lint และ build ของระบบ
-- CD: build artifact ครั้งเดียวจาก SHA ที่ merge → ขึ้น UAT → prod โดย ops ตามใบ (ด่านอนุมัติคนคั่นเสมอ)
-- กรอกต่อโปรเจกต์: เครื่องมือ pipeline · คำสั่ง deploy แต่ละเป้าหมาย (ใส่ใน `AGENTS.md` §8)
+- **CI** (`.github/workflows/ci.yml` · new-project วางให้ · ทำงานเองทุก push/PR เมื่อมี repo บน GitHub): secret-scan · `gate.mjs audit` ทุก commit · lint · test · build ของโปรเจกต์ (ถ้ามี script ชื่อนั้น) · build คู่มือ · ต้องผ่านก่อน merge
+- **CD** (`.github/workflows/deploy.yml` + `scripts/deploy.sh` · new-project วางให้): กดเองที่ GitHub → Actions → deploy → เลือก deploy/rollback · uat/prod · การ์ด → ตรวจด่านและคำอนุมัติบนโค้ดนั้นด้วย `gate.mjs check` (prod = ขั้น release) → build → ขึ้นแบบสลับ folder → เช็ค `HEALTH_URL` → ไม่ผ่านถอยเอง · ไม่รันเองตอน push เพราะขึ้นระบบต้องมีคนตัดสิน
+- ตั้งครั้งเดียวต่อโปรเจกต์: GitHub → Settings → Environments → `uat` · `prod` (prod ติ๊ก Required reviewers = Ops + Owner-reviewer) → ใส่ secrets `DEPLOY_HOST` · `DEPLOY_USER` · `DEPLOY_SSH_KEY` (key เฉพาะ deploy ไม่ใช่ของคน) · `DEPLOY_KNOWN_HOSTS` (`ssh-keyscan <host>`) · `DEPLOY_PATH` · `HEALTH_URL` · บน server ให้เว็บ/service ชี้ไปที่ `<DEPLOY_PATH>/current`
+- กรอกต่อโปรเจกต์: ระบบที่ไม่ได้ขึ้นแบบ ssh + ไฟล์ (cloud · container) แก้ `upload` / `swap` ใน `scripts/deploy.sh` · service ที่ต้อง restart เติมใน `after_swap` · ใบขอ deploy ยังต้องมีเหมือนเดิม (workflow ไม่แทนใบ)
 
 ## DORA metrics ที่ติดตาม
 ดูเป็นแนวโน้มต่อทีม ไม่ใช้วัดตัวบุคคล · ทบทวนใน retro

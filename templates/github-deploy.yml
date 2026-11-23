@@ -1,0 +1,62 @@
+# CD — ขึ้นระบบตามใบขอ deploy (docs/deploy.md) · new-project วางไว้ที่ .github/workflows/deploy.yml ให้แล้ว
+# กดเอง: GitHub → Actions → deploy → Run workflow (ไม่รันเองตอน push: ขึ้นระบบต้องมีคนตัดสินเสมอ)
+# ก่อนใช้ครั้งแรก (ครั้งเดียวต่อโปรเจกต์):
+#   1. GitHub → Settings → Environments → สร้าง uat และ prod · prod ติ๊ก Required reviewers = Ops + Owner-reviewer (คนกดอนุมัติก่อนรัน)
+#   2. ใส่ secrets ใน environment นั้น: DEPLOY_HOST · DEPLOY_USER · DEPLOY_SSH_KEY · DEPLOY_KNOWN_HOSTS · DEPLOY_PATH · HEALTH_URL
+#   3. กรอก scripts/deploy.sh ถ้าไม่ได้ขึ้นแบบ ssh + สลับ folder
+name: deploy
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: deploy = ขึ้นโค้ดของ branch ที่เลือก · rollback = กลับไปชุดก่อนหน้า
+        type: choice
+        options: [deploy, rollback]
+        default: deploy
+      target:
+        description: ขึ้นที่ไหน
+        type: choice
+        options: [uat, prod]
+        default: uat
+      card:
+        description: การ์ดที่ขึ้น (เช่น C-0001) · rollback ไม่ต้องใส่
+        required: false
+permissions:
+  contents: read
+concurrency:
+  group: deploy-${{ inputs.target }} # ห้าม deploy ซ้อนกันบนเป้าเดียวกัน
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target }}
+    env:
+      ACTION: ${{ inputs.action }}
+      TARGET: ${{ inputs.target }}
+      CARD: ${{ inputs.card }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: ด่านและคำอนุมัติครบบนโค้ดนี้ (gate.mjs)
+        if: inputs.action == 'deploy'
+        run: |
+          [ -n "$CARD" ] || { echo "ใส่การ์ดที่ขึ้น"; exit 2; }
+          if [ "$TARGET" = prod ]; then stage=release; else stage=uat; fi
+          node scripts/gate.mjs check "$CARD" --stage "$stage"
+      - if: inputs.action == 'deploy'
+        run: npm run build --if-present
+      - name: ขึ้นระบบ · เช็ค · ถอยเองเมื่อเช็คไม่ผ่าน
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          HEALTH_URL: ${{ secrets.HEALTH_URL }}
+        run: bash scripts/deploy.sh "$ACTION" "$TARGET" "$GITHUB_SHA"

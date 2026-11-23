@@ -8,7 +8,7 @@ export const BLUEPRINT = path.resolve(path.dirname(fileURLToPath(import.meta.url
 const SKIP = [/^memory\/(?!README\.md$)/, /^scripts\/(new-project|upgrade-project|readme-diagrams|lib\/project-files|test\/project\.test)\.mjs$/,
   /^(CHANGELOG|CONTRIBUTING|SECURITY)\.md$/, /^(LICENSE|NOTICE|VERSION)$/, /^docs\/(blueprint|onboarding)\.md$/, /^README\.en\.md$/, /^docs\/images\//, /^\.github\//];
 // โปรเจกต์เป็นเจ้าของตั้งแต่วันแรก upgrade ไม่แตะ
-const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json'];
+const OWNED = ['README.md', 'docs/HANDOFF.md', 'docs/stack-decisions.md', 'memory/MEMORY.md', 'package-lock.json', 'scripts/deploy.sh'];
 export const isOwned = (f) => OWNED.includes(f) || (f.startsWith('site/') && f.endsWith('.md')); // หน้าคู่มือ = เนื้อหาของโปรเจกต์
 
 export const git = (args, cwd = BLUEPRINT, encoding = 'utf8') => execFileSync('git', args, { cwd, encoding, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 200_000_000 });
@@ -39,6 +39,10 @@ export function projectFiles(commit, name, today = new Date().toISOString().slic
   set('README.md', `# ${name}\n\nกรอกต่อโปรเจกต์: ระบบนี้คืออะไร (1–2 ประโยค)\n\nสร้างจาก blueprint ${versionAt(commit)} · กติกาอยู่ \`AGENTS.md\` · สถานะ \`docs/HANDOFF.md\` · เริ่มงานแรกด้วย skill \`intake\`\n`);
   set('docs/HANDOFF.md', `# HANDOFF — ▶ ตอนนี้\n\n> จบงานเมื่อไรให้อัปเดตไฟล์นี้\n\n## ▶ ตอนนี้ (${today})\n- **เสร็จ:** สร้างโปรเจกต์จาก blueprint\n- **ถัดไป:** รัน skill \`intake\` กับงานแรก → brief ผ่าน DoR\n- **รอ:** owner เล่างานแรก\n- **ใช้งานจริง:** ยังไม่มี\n`);
   if (out.has('templates/stack-decisions.md')) out.set('docs/stack-decisions.md', out.get('templates/stack-decisions.md')); // ตอบให้ครบตอน intake
+  // CI/CD พร้อมใช้: CI ทำงานเองเมื่อ push · CD กดเองที่ GitHub Actions หลังตั้ง environment (templates/github-deploy.yml)
+  for (const [from, to, exec] of [['templates/github-ci.yml', '.github/workflows/ci.yml'], ['templates/github-deploy.yml', '.github/workflows/deploy.yml'], ['templates/deploy.sh', 'scripts/deploy.sh', true]]) {
+    if (out.has(from)) out.set(to, { data: out.get(from).data, exec: !!exec });
+  }
   set('memory/MEMORY.md', '# MEMORY — สารบัญ (1 บรรทัดต่อเรื่อง · เนื้อหาอยู่ในไฟล์ของมัน)\n');
   try { out.set('LICENSE-blueprint', { data: git(['show', `${commit}:LICENSE`], BLUEPRINT, 'buffer'), exec: false }); } catch { /* เวอร์ชันก่อนมี license */ }
   return out;
